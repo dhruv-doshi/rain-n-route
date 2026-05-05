@@ -165,10 +165,11 @@ Legend: `[ ]` todo · `[x]` done · `(✓)` verified
 
 ## Phase 12 — Notifications & Alerts
 
-- [ ] Permission UX (deferred prompt on intent).
-- [ ] SW push handler.
-- [ ] `lib/leaveNow.ts` scheduling math + tests.
-- [ ] Severe-weather watcher every 30 min on app focus.
+- [x] Permission UX (deferred prompt on intent). — `useLocalNotifications` only requests on user click in `<LeaveNowScheduler>`
+- [x] `lib/leaveNow.ts` scheduling math + tests. — pure, 7 cases
+- [x] Severe-weather watcher every 30 min on app focus. — `useSevereWeatherWatcher` (visibility + focus gated)
+- [x] `<LeaveNowScheduler>` component on the trip page schedules a local notification.
+- [ ] ~~SW push handler.~~ **Deferred** — Web Push needs a backend (VAPID keys + push service). Out of scope for portfolio. Local notifications fire only while the tab is open; documented in `useLocalNotifications.ts`.
 
 **Verify**: granted permission + manual trigger shows test notification.
 
@@ -176,11 +177,14 @@ Legend: `[ ]` todo · `[x]` done · `(✓)` verified
 
 ## Phase 13 — PWA & Offline Polish
 
-- [ ] `next-pwa` runtime caching matrix from `architecture.md` §6.
-- [ ] `app/manifest.ts` + icons.
-- [ ] `<PWAInstallPrompt>` (debounced 7d).
-- [ ] `public/offline.html` fallback.
-- [ ] Playwright offline scenario green.
+- [x] `app/manifest.ts` (Next.js 13+ convention, no plugin needed).
+- [x] `public/sw.js` — minimal hand-rolled SW: cache-first for static assets, network-first for navigations with offline fallback, network-only for `/api/*`.
+- [x] `<PWAInstallPrompt>` with 7-day localStorage cooldown after dismiss.
+- [x] `public/offline.html` fallback page.
+- [x] SW registered via `<ServiceWorkerRegister>` in production builds only (HMR vs SW caching is a fight in dev).
+- [ ] ~~next-pwa~~ — not used. v5.6.0 is Next-12-era; hand-rolled SW is simpler and avoids the plugin's compat risk on Next 16 + Turbopack. Caching matrix is implemented directly in `public/sw.js`.
+- [ ] Playwright offline scenario — see Phase 14 verify.
+- [ ] Manifest icons (`/icon-192.png`, `/icon-512.png`, `/icon-maskable-512.png`) — referenced in the manifest but not yet generated. Needs design assets before deploy.
 
 **Verify**: Lighthouse PWA ≥ 90.
 
@@ -188,12 +192,13 @@ Legend: `[ ]` todo · `[x]` done · `(✓)` verified
 
 ## Phase 14 — Accessibility, SEO, Performance
 
-- [ ] Axe pass on top 5 routes.
-- [ ] `next/font` + `next/image` everywhere.
-- [ ] Skip-to-content + focus rings.
-- [ ] `metadata` exports + sitemap + robots.
-- [ ] First-load JS budget enforced via `@next/bundle-analyzer` check in CI.
-- [ ] Lighthouse CI with thresholds.
+- [x] `next/font` — already in use (`Geist` + `Geist_Mono` in `app/layout.tsx`).
+- [x] Skip-to-content + focus rings — `<a href="#main-content">` in `app/layout.tsx`; Tailwind `focus-visible:ring-*` is the project default.
+- [x] `metadata` exports + sitemap + robots — page-level `metadata`, `app/sitemap.ts`, `app/robots.ts`.
+- [ ] Axe pass on top 5 routes — partially covered by `tests/unit/smoke.test.ts`; full axe-core + Playwright sweep is deferred (needs CI runner setup).
+- [ ] First-load JS budget enforced via `@next/bundle-analyzer` check in CI — deferred (CI gate, not code).
+- [ ] Lighthouse CI with thresholds — deferred (CI gate, not code).
+- [ ] `next/image` everywhere — no user-facing raster images currently in the app; manifest icons + favicon are the only static images. Will revisit if/when images are added.
 
 **Verify**: all four Lighthouse categories ≥ stated bars.
 
@@ -201,11 +206,11 @@ Legend: `[ ]` todo · `[x]` done · `(✓)` verified
 
 ## Phase 15 — Hardening & Release
 
-- [ ] Top-level error boundary + reload CTA.
-- [ ] Sentry stub (opt-in via env).
-- [ ] Privacy page + LICENSE.
-- [ ] Manual QA matrix: iOS Safari, Android Chrome, Desktop Chrome/Firefox/Safari.
-- [ ] Tag `v0.1.0` and deploy.
+- [x] Top-level error boundary + reload CTA — `src/app/error.tsx` (Next.js convention; calls `captureException` then renders a Reload button).
+- [x] Sentry stub (opt-in via env) — `src/lib/telemetry.ts`. No-op unless `NEXT_PUBLIC_SENTRY_DSN` is set; even then, it just logs with `[telemetry-stub]` prefix. To wire real Sentry, swap the body of `captureException`.
+- [x] Privacy page (`/privacy`) + MIT `LICENSE`.
+- [ ] Manual QA matrix: iOS Safari, Android Chrome, Desktop Chrome/Firefox/Safari — **user task**, see post-MVP summary.
+- [ ] Tag `v0.1.0` and deploy — **user task**.
 
 **Verify**: production smoke test of all 3 E2E flows.
 

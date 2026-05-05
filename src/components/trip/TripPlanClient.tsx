@@ -12,6 +12,7 @@ import { RouteListSkeleton } from './RouteListSkeleton';
 import { PlanErrorState } from './PlanErrorState';
 import { PlanEmptyState } from './PlanEmptyState';
 import { EssentialsChecklist } from './EssentialsChecklist';
+import { LeaveNowScheduler } from './LeaveNowScheduler';
 import { ShareTripButton } from './ShareTripButton';
 import { MapCanvas } from '@/components/map/MapCanvas';
 import { RouteOverlay } from '@/components/map/RouteOverlay';
@@ -140,6 +141,13 @@ export function TripPlanClient({
             onSelect={() => selectRoute(route.id)}
           />
         ))}
+      {selectedRoute && status === 'success' && (
+        <LeaveNowScheduler
+          durationSec={selectedRoute.totalDuration}
+          bufferMinutes={selectedRoute.weatherRisk?.bufferMinutesRecommended ?? 5}
+          routeLabel={fromLabel + ' → ' + toLabel}
+        />
+      )}
       {selectedRoute?.weatherRisk?.gear && selectedRoute.weatherRisk.gear.length > 0 && (
         <EssentialsChecklist gear={selectedRoute.weatherRisk.gear} />
       )}
