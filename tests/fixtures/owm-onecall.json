@@ -1,0 +1,42 @@
+{
+  "lat": 12.9716,
+  "lon": 77.5946,
+  "timezone": "Asia/Kolkata",
+  "current": {
+    "dt": 1746345600,
+    "temp": 28.4,
+    "feels_like": 31.2,
+    "humidity": 65,
+    "wind_speed": 3.2,
+    "rain": { "1h": 0 },
+    "weather": [{ "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04d" }]
+  },
+  "hourly": [
+    {
+      "dt": 1746345600,
+      "temp": 28.4,
+      "feels_like": 31.2,
+      "wind_speed": 3.2,
+      "pop": 0.1,
+      "weather": [{ "id": 803, "description": "broken clouds", "icon": "04d" }]
+    },
+    {
+      "dt": 1746349200,
+      "temp": 27.8,
+      "feels_like": 30.5,
+      "wind_speed": 3.5,
+      "pop": 0.6,
+      "rain": { "1h": 3.2 },
+      "weather": [{ "id": 501, "description": "moderate rain", "icon": "10d" }]
+    },
+    {
+      "dt": 1746352800,
+      "temp": 26.5,
+      "feels_like": 28.0,
+      "wind_speed": 4.0,
+      "pop": 0.8,
+      "rain": { "1h": 8.5 },
+      "weather": [{ "id": 502, "description": "heavy intensity rain", "icon": "10d" }]
+    }
+  ]
+}

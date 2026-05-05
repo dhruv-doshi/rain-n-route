@@ -1,0 +1,20 @@
+{
+  "suggestedLocations": [
+    {
+      "eLoc": "MMI001",
+      "placeName": "Indiranagar",
+      "placeAddress": "Indiranagar, Bengaluru, Karnataka",
+      "latitude": "12.9784",
+      "longitude": "77.6410",
+      "type": "LOCALITY"
+    },
+    {
+      "eLoc": "MMI002",
+      "placeName": "Indiranagar Metro Station",
+      "placeAddress": "100 Feet Road, Indiranagar, Bengaluru, Karnataka",
+      "latitude": "12.9790",
+      "longitude": "77.6408",
+      "type": "METRO_STATION"
+    }
+  ]
+}

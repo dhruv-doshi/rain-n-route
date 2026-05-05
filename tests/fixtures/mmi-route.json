@@ -1,0 +1,30 @@
+{
+  "routes": [
+    {
+      "distance": 12500,
+      "duration": 2700,
+      "geometry": "encoded_polyline_string",
+      "legs": [
+        {
+          "summary": "100 Feet Road, Outer Ring Road",
+          "steps": [
+            {
+              "name": "100 Feet Road",
+              "distance": 500,
+              "duration": 120,
+              "geometry": "step_polyline_1",
+              "maneuver": { "type": "depart", "modifier": "south" }
+            },
+            {
+              "name": "Outer Ring Road",
+              "distance": 12000,
+              "duration": 2580,
+              "geometry": "step_polyline_2",
+              "maneuver": { "type": "turn", "modifier": "right" }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
