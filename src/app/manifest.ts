@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'CommuteWise — Weather-Aware Trip Planner',
-    short_name: 'CommuteWise',
+    name: 'Rain-N-Route — Weather-Aware Trip Planner',
+    short_name: 'Rain-N-Route',
     description:
       'Plan your daily commute with real-time weather, multi-modal routes, and gear suggestions.',
     start_url: '/',

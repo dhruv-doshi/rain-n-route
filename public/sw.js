@@ -1,4 +1,4 @@
-// Minimal service worker for CommuteWise.
+// Minimal service worker for Rain-N-Route.
 // - Static assets (Next.js _next, fonts, icons): cache-first.
 // - Navigations (HTML): network-first with offline fallback.
 // - API requests: network-only (we never want to serve stale weather/route data).

@@ -67,12 +67,12 @@ export function PWAInstallPrompt(): React.ReactElement | null {
   return (
     <div
       role="dialog"
-      aria-label="Install CommuteWise"
+      aria-label="Install Rain-N-Route"
       className="fixed inset-x-3 bottom-20 z-50 flex items-center gap-3 rounded-xl border border-border bg-background/95 p-3 shadow-lg backdrop-blur md:bottom-3 md:left-auto md:right-3 md:max-w-sm"
     >
       <Download className="size-5 shrink-0 text-brand" />
       <div className="min-w-0 flex-1">
-        <p className="text-sm font-medium">Install CommuteWise</p>
+        <p className="text-sm font-medium">Install Rain-N-Route</p>
         <p className="text-xs text-muted-foreground">Add to your home screen for quick access.</p>
       </div>
       <Button size="sm" onClick={handleInstall}>

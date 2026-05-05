@@ -1,5 +1,5 @@
 /**
- * CommuteWise — Canonical Data Models (MVP-1)
+ * Rain-N-Route — Canonical Data Models (MVP-1)
  *
  * This file is the single source of truth for the shapes that flow
  * between the UI, stores, and service adapters. Keep it free of any

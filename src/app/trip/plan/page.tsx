@@ -3,7 +3,7 @@ import { TripPlanClient } from '@/components/trip/TripPlanClient';
 import { getMapsProvider } from '@/services';
 
 export const metadata: Metadata = {
-  title: 'Plan your trip — CommuteWise',
+  title: 'Plan your trip — Rain-N-Route',
 };
 
 interface Props {

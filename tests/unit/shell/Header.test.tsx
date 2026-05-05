@@ -9,7 +9,7 @@ vi.mock('next-themes', () => ({
 describe('Header', () => {
   it('renders the app name', () => {
     render(<Header />);
-    expect(screen.getByText('CommuteWise')).toBeInTheDocument();
+    expect(screen.getByText('Rain-N-Route')).toBeInTheDocument();
   });
 
   it('has a link to the dashboard', () => {

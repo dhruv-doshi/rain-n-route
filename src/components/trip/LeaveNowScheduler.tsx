@@ -79,7 +79,7 @@ export function LeaveNowScheduler({ durationSec, bufferMinutes = 5, routeLabel }
   return (
     <div className="flex flex-wrap items-center gap-2 rounded-md border border-border bg-card p-3 text-sm">
       <Bell className="size-4 shrink-0 text-brand" />
-      <span className="text-muted-foreground">Notify me to leave by</span>
+      <span className="text-muted-foreground">Notify me when to leave to arrive by</span>
       <Input
         type="time"
         value={arriveTime}
@@ -108,7 +108,9 @@ export function LeaveNowScheduler({ durationSec, bufferMinutes = 5, routeLabel }
         <span className="text-xs text-green-700 dark:text-green-400">Notification sent.</span>
       )}
       {status === 'late' && (
-        <span className="text-xs text-destructive">Already past leave time.</span>
+        <span className="text-xs text-destructive">
+          Trip takes longer than the time until that arrival — pick a later arrival time.
+        </span>
       )}
       {permission === 'denied' && (
         <span className="text-xs text-destructive">Notifications blocked.</span>

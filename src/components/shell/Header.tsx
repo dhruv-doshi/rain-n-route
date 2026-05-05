@@ -8,7 +8,7 @@ export function Header() {
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 font-semibold">
           <MapPin className="size-5 text-brand" />
-          <span>CommuteWise</span>
+          <span>Rain-N-Route</span>
         </Link>
 
         {/* Desktop nav — hidden on mobile, shown md+ */}

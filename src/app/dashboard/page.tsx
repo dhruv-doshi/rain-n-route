@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { DashboardClient } from '@/components/dashboard/DashboardClient';
 
 export const metadata: Metadata = {
-  title: 'Dashboard — CommuteWise',
+  title: 'Dashboard — Rain-N-Route',
 };
 
 export default function DashboardPage() {

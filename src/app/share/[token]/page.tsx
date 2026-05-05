@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { decodeShareToken } from '@/services/share';
 
 export const metadata: Metadata = {
-  title: 'Shared trip — CommuteWise',
+  title: 'Shared trip — Rain-N-Route',
 };
 
 interface Props {

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy — CommuteWise',
-  description: 'How CommuteWise handles your data.',
+  title: 'Privacy — Rain-N-Route',
+  description: 'How Rain-N-Route handles your data.',
 };
 
 export default function PrivacyPage() {
@@ -11,7 +11,7 @@ export default function PrivacyPage() {
       <h1>Privacy</h1>
 
       <p>
-        CommuteWise is a portfolio app. There are no user accounts and no analytics SDKs. This page
+        Rain-N-Route is a portfolio app. There are no user accounts and no analytics SDKs. This page
         explains the data the app touches and where it goes.
       </p>
 

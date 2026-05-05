@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'CommuteWise — Weather-Aware Trip Planner',
+  title: 'Rain-N-Route — Weather-Aware Trip Planner',
   description:
     'Plan your daily commute with real-time weather, multi-modal routes, and gear suggestions. India-first, no account required.',
 };
