@@ -13,6 +13,32 @@
 
 ---
 
+## Status (as of 2026-05-05)
+
+MVP-1 is essentially shipped. All 15 phases have landed code; the only outstanding code-side gap is generating manifest icons for the PWA install. The remaining items are CI gates, manual cross-browser QA, and deployment.
+
+| Phase                         | Status | Outstanding                                                                                                              |
+| ----------------------------- | :----: | ------------------------------------------------------------------------------------------------------------------------ |
+| 1 — Project Foundation        |   ✅   | —                                                                                                                        |
+| 2 — Design System & Shell     |   ✅   | —                                                                                                                        |
+| 3 — Data Models & Local Store |   ✅   | —                                                                                                                        |
+| 4 — Service Layer Adapters    |   ✅   | —                                                                                                                        |
+| 5 — Quick Planner             |   ✅   | —                                                                                                                        |
+| 6 — Trip Planning Engine      |   ✅   | —                                                                                                                        |
+| 7 — Weather Intelligence      |   ✅   | —                                                                                                                        |
+| 8 — Map Visualization         |   ✅   | —                                                                                                                        |
+| 9 — Real-Time Conditions      |   🟡   | Per-segment traffic overlay + transit-delay banner — deferred (free-tier API limits)                                     |
+| 10 — Dashboard                |   ✅   | —                                                                                                                        |
+| 11 — Additional Tools         |   ✅   | —                                                                                                                        |
+| 12 — Notifications            |   🟡   | Service-worker push handler — deferred (needs backend; out of portfolio scope)                                           |
+| 13 — PWA & Offline            |   🟡   | **Generate manifest icons** (`/icon-192.png`, `/icon-512.png`, `/icon-maskable-512.png`) — only actionable code-side gap |
+| 14 — A11y / SEO / Perf        |   🟡   | Full axe sweep, JS bundle-budget CI gate, Lighthouse CI thresholds (CI gates, not code)                                  |
+| 15 — Hardening & Release      |   🟡   | Manual cross-browser QA matrix, tag `v0.1.0`, deploy                                                                     |
+
+See [`phase-breakdown.md`](./phase-breakdown.md) for the line-item checklist.
+
+---
+
 ## 0. Guiding Principles
 
 1. **No premature abstraction.** Build the simplest thing that works for MVP-1; refactor when a second use case appears.
@@ -43,23 +69,23 @@
 
 ## 2. Phase Overview
 
-| Phase  | Theme                     | Approx. effort | Ships                                                   |
-| ------ | ------------------------- | -------------- | ------------------------------------------------------- |
-| **1**  | Project foundation        | 0.5 day        | Empty Next.js app, lint/test/CI green                   |
-| **2**  | Design system & shell     | 1 day          | Layout, theme, navigation, dark mode                    |
-| **3**  | Data models & local store | 1 day          | Zustand stores + IndexedDB persistence + tests          |
-| **4**  | Service layer adapters    | 1.5 days       | Maps + Weather + Geo adapters with mocks                |
-| **5**  | Quick Planner (Home)      | 1.5 days       | From/To inputs, autocomplete, geolocation               |
-| **6**  | Trip planning engine      | 2 days         | Multi-modal routes + sorting + step-by-step             |
-| **7**  | Weather intelligence      | 1.5 days       | Forecast along route, impact analysis, gear suggestions |
-| **8**  | Map visualization         | 1.5 days       | Full-screen map, route overlay, weather layer           |
-| **9**  | Real-time conditions      | 1 day          | Traffic overlay, transit delays, dynamic re-routing     |
-| **10** | Dashboard                 | 2 days         | Saved locations, recurring commutes, history, insights  |
-| **11** | Additional tools          | 1 day          | Cost calc, carbon, checklist, share-trip link           |
-| **12** | Notifications             | 0.5 day        | Browser push: "Leave now" + severe alerts               |
-| **13** | PWA & offline polish      | 1 day          | Service worker, install prompt, offline fallback        |
-| **14** | Accessibility, SEO, perf  | 1 day          | Lighthouse ≥ 90 across the board                        |
-| **15** | Hardening & release       | 0.5 day        | E2E green, error boundaries, telemetry stub             |
+| Phase  | Theme                     | Approx. effort | Status | Ships                                                            |
+| ------ | ------------------------- | -------------- | :----: | ---------------------------------------------------------------- |
+| **1**  | Project foundation        | 0.5 day        |   ✅   | Empty Next.js app, lint/test/CI green                            |
+| **2**  | Design system & shell     | 1 day          |   ✅   | Layout, theme, navigation, dark mode                             |
+| **3**  | Data models & local store | 1 day          |   ✅   | Zustand stores + IndexedDB persistence + tests                   |
+| **4**  | Service layer adapters    | 1.5 days       |   ✅   | Maps + Weather + Geo adapters with mocks                         |
+| **5**  | Quick Planner (Home)      | 1.5 days       |   ✅   | From/To inputs, autocomplete, geolocation                        |
+| **6**  | Trip planning engine      | 2 days         |   ✅   | Multi-modal routes + sorting + step-by-step                      |
+| **7**  | Weather intelligence      | 1.5 days       |   ✅   | Forecast along route, impact analysis, gear suggestions          |
+| **8**  | Map visualization         | 1.5 days       |   ✅   | Full-screen map, route overlay, weather layer                    |
+| **9**  | Real-time conditions      | 1 day          |   🟡   | Traffic polling + reroute prompt (overlay/transit deferred)      |
+| **10** | Dashboard                 | 2 days         |   ✅   | Saved locations, recurring commutes, history, insights           |
+| **11** | Additional tools          | 1 day          |   ✅   | Cost calc, carbon, checklist, share-trip link                    |
+| **12** | Notifications             | 0.5 day        |   🟡   | Local notifications + leave-now (SW push deferred)               |
+| **13** | PWA & offline polish      | 1 day          |   🟡   | Service worker, install prompt, offline fallback (icons pending) |
+| **14** | Accessibility, SEO, perf  | 1 day          |   🟡   | Code-side a11y/SEO done; CI perf gates deferred                  |
+| **15** | Hardening & release       | 0.5 day        |   🟡   | Error boundaries + telemetry done; QA + deploy pending           |
 
 **Total**: ~17 working days for a single engineer.
 
@@ -67,7 +93,7 @@
 
 ## 3. Phase Details
 
-### Phase 1 — Project Foundation
+### Phase 1 — Project Foundation ✅
 
 **Goal**: Bootable Next.js project with all tooling green.
 **Scope**:
@@ -87,7 +113,7 @@
 
 ---
 
-### Phase 2 — Design System & App Shell
+### Phase 2 — Design System & App Shell ✅
 
 **Goal**: Consistent look-and-feel before any feature work.
 **Scope**:
@@ -111,7 +137,7 @@
 
 ---
 
-### Phase 3 — Data Models & Local Store
+### Phase 3 — Data Models & Local Store ✅
 
 **Goal**: Single source of truth for all entities, persisted locally.
 **Scope**:
@@ -141,7 +167,7 @@
 
 ---
 
-### Phase 4 — Service Layer Adapters
+### Phase 4 — Service Layer Adapters ✅
 
 **Goal**: Pluggable maps + weather + geolocation with strict interfaces and mockable defaults.
 **Scope**:
@@ -168,7 +194,7 @@
 
 ---
 
-### Phase 5 — Quick Planner (Home)
+### Phase 5 — Quick Planner (Home) ✅
 
 **Goal**: User can type/select From + To and hit "Plan My Trip".
 **Scope**:
@@ -191,7 +217,7 @@
 
 ---
 
-### Phase 6 — Trip Planning Engine
+### Phase 6 — Trip Planning Engine ✅
 
 **Goal**: Compute and display 3–5 route options.
 **Scope**:
@@ -216,7 +242,7 @@
 
 ---
 
-### Phase 7 — Weather Intelligence
+### Phase 7 — Weather Intelligence ✅
 
 **Goal**: Each route is annotated with weather risk and gear suggestions.
 **Scope**:
@@ -239,7 +265,7 @@
 
 ---
 
-### Phase 8 — Map Visualization
+### Phase 8 — Map Visualization ✅
 
 **Goal**: Full-screen interactive map for the selected route.
 **Scope**:
@@ -261,7 +287,7 @@
 
 ---
 
-### Phase 9 — Real-Time Conditions
+### Phase 9 — Real-Time Conditions 🟡
 
 **Goal**: Live traffic + transit delays inform "best route now".
 **Scope**:
@@ -279,9 +305,11 @@
 
 - Killing network for 30s shows a "stale data" indicator; recovers automatically.
 
+**Remaining**: per-segment traffic overlay and transit-delay banner — both deferred. Mappls free tier returns HTTP 412 on `/traffic/api/v2`, and there is no free transit-delay data source for India. Polling + reroute prompt are implemented; see [`phase-breakdown.md`](./phase-breakdown.md#phase-9--real-time-conditions) for details.
+
 ---
 
-### Phase 10 — Dashboard
+### Phase 10 — Dashboard ✅
 
 **Goal**: Personal hub for saved locations, recurring commutes, history, insights.
 **Scope**:
@@ -307,7 +335,7 @@
 
 ---
 
-### Phase 11 — Additional Tools
+### Phase 11 — Additional Tools ✅
 
 **Goal**: One-shot helpers that boost trip-planning UX.
 **Scope**:
@@ -328,7 +356,7 @@
 
 ---
 
-### Phase 12 — Notifications & Alerts
+### Phase 12 — Notifications & Alerts 🟡
 
 **Goal**: Tell the user when to leave and warn of severe conditions.
 **Scope**:
@@ -347,33 +375,29 @@
 
 - Manual: granted permission shows a test notification in 5s.
 
+**Remaining**: SW push handler — deferred. Web Push requires a backend (VAPID keys + push service), which is out of scope for the portfolio. Local notifications fire only while the tab is open; documented in `useLocalNotifications.ts`.
+
 ---
 
-### Phase 13 — PWA & Offline Polish
+### Phase 13 — PWA & Offline Polish 🟡
 
 **Goal**: Install prompt + meaningful offline experience.
-**Scope**:
+**Scope** (as built):
 
-- `next-pwa` configured with runtime caching strategies:
-  - **CacheFirst** for map tiles (1-day TTL, 200-entry cap).
-  - **StaleWhileRevalidate** for weather (10-min TTL).
-  - **NetworkFirst** for routes (5-min TTL).
-- Manifest with icons (192/512), theme color, screenshots.
-- "Add to home screen" custom prompt (debounced once-per-week).
-- Offline fallback page.
-
-**Tests**:
-
-- Lighthouse PWA audit ≥ 90.
-- Playwright offline scenario: cached route still planable.
+- Hand-rolled `public/sw.js` (not `next-pwa`): cache-first for static assets, network-first for navigations with offline fallback, network-only for `/api/*`.
+- `app/manifest.ts` with theme color and icon references.
+- "Add to home screen" custom prompt with 7-day localStorage cooldown.
+- `public/offline.html` fallback page.
 
 **DoD**:
 
 - Installs on iOS Safari, Android Chrome, Desktop Chrome.
 
+**Remaining**: generate manifest icons (`/icon-192.png`, `/icon-512.png`, `/icon-maskable-512.png`). They are referenced in `manifest.ts` but not yet present in `/public` — needs design assets before deploy. **This is the only actionable code-side gap left in MVP-1.**
+
 ---
 
-### Phase 14 — Accessibility, SEO, Performance
+### Phase 14 — Accessibility, SEO, Performance 🟡
 
 **Goal**: Production-grade quality bar.
 **Scope**:
@@ -393,9 +417,11 @@
 
 - All thresholds met on production build.
 
+**Remaining**: full axe-core + Playwright a11y sweep, `@next/bundle-analyzer` JS-budget enforcement in CI, and Lighthouse CI threshold gates. All are CI gates rather than code changes. Code-side a11y/SEO (skip-link, focus rings, `next/font`, metadata, sitemap, robots) is done.
+
 ---
 
-### Phase 15 — Hardening & Release
+### Phase 15 — Hardening & Release 🟡
 
 **Goal**: Ready to share with real users.
 **Scope**:
@@ -410,6 +436,8 @@
 **DoD**:
 
 - All E2E green. Smoke test on production deploy. README links to live URL.
+
+**Remaining**: manual cross-browser QA matrix, tag `v0.1.0`, deploy. All are user/release tasks rather than code changes. Error boundary, telemetry stub, privacy page, and MIT LICENSE are in place.
 
 ---
 

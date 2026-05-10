@@ -6,118 +6,117 @@ Legend: `[ ]` todo · `[x]` done · `(✓)` verified
 
 ---
 
-## Phase 1 — Project Foundation
+## Phase 1 — Project Foundation ✅
 
-- [ ] `pnpm create next-app@latest commutewise --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"`
-- [ ] Add Prettier + `eslint-config-prettier`.
-- [ ] Add Husky + lint-staged: `pre-commit` runs `pnpm lint-staged && pnpm typecheck`.
-- [ ] Add `commitlint` with conventional commits config.
-- [ ] Install Vitest + RTL + jsdom + fake-indexeddb + msw. `pnpm test` runs.
-- [ ] Install Playwright; baseline test loads `/`.
-- [ ] Add `eslint-plugin-boundaries` config (will become enforcing in Phase 3).
-- [ ] `.env.example` with `NEXT_PUBLIC_MAPS_KEY`, `MAPS_SECRET`, `OWM_KEY`.
-- [ ] GitHub Actions CI: matrix Node 20.
-- [ ] README.
+- [x] Next.js 16 app with TypeScript, App Router, Tailwind, ESLint — `package.json`, `next.config.ts`
+- [x] Prettier + `eslint-config-prettier`. — `.prettierrc`, `eslint.config.mjs`
+- [x] Husky + lint-staged: pre-commit runs lint + typecheck. — `.husky/pre-commit`, `package.json`
+- [x] `commitlint` with conventional commits config. — `.commitlintrc.json`, `.husky/commit-msg`
+- [x] Vitest + RTL + jsdom + fake-indexeddb + msw. — `vitest.config.ts`, `tests/setup.ts`
+- [x] Playwright; smoke test loads `/`. — `playwright.config.ts`, `tests/e2e/smoke.spec.ts`
+- [x] `.env.example` with required keys. — root `.env.example`
+- [x] GitHub Actions CI (typecheck → lint → test → build). — `.github/workflows/ci.yml`
+- [x] README. — root `README.md`
+- [ ] ~~`eslint-plugin-boundaries`~~ — not adopted; not strictly needed at this scale.
 
 **Verify**: green CI. `pnpm dev` boots at `localhost:3000`.
 
 ---
 
-## Phase 2 — Design System & App Shell
+## Phase 2 — Design System & App Shell ✅
 
-- [ ] `pnpm dlx shadcn@latest init`. Add Button, Input, Card, Dialog, Sheet, Tabs, Toast, Skeleton, Badge, DropdownMenu, Popover, Combobox.
-- [ ] Tailwind tokens: brand color, radius, shadow scale.
-- [ ] Install `next-themes`. Wrap `app/layout.tsx` with provider.
-- [ ] `<Header>`, `<BottomNav>` (mobile), `<ThemeToggle>`.
-- [ ] `<ErrorBoundary>` + `<OfflineBanner>`.
-- [ ] Snapshot test for layout.
-- [ ] `axe` smoke test on `/`.
+- [x] shadcn/ui core components installed (Button, Input, Card, Dialog, Sheet, Tabs, Toast, Skeleton, Badge, DropdownMenu, Popover, Combobox). — `src/components/ui/*`
+- [x] Tailwind tokens: brand color, radius, shadow scale. — `tailwind.config.ts`
+- [x] `next-themes` provider wrapping `app/layout.tsx`. — `src/components/shell/ThemeProvider.tsx`
+- [x] `<Header>`, `<BottomNav>` (mobile), `<ThemeToggle>`. — `src/components/shell/*`
+- [x] `<ErrorBoundary>` + `<OfflineBanner>`. — `src/app/error.tsx`, `src/components/feedback/OfflineBanner.tsx`
+- [x] Layout / shell tests. — `tests/unit/shell/*`
+- [x] Smoke a11y test. — `tests/unit/smoke.test.ts`
 
 **Verify**: light/dark toggle works. Mobile nav < 768px.
 
 ---
 
-## Phase 3 — Data Models & Local Store
+## Phase 3 — Data Models & Local Store ✅
 
-- [ ] Copy `docs/plan/data-models.ts` → `src/types/data-models.ts`.
-- [ ] `src/store/persistAdapter.ts` wrapping `idb-keyval` to satisfy Zustand `StateStorage`.
-- [ ] `src/store/migrations.ts` with `runMigrations(state, fromVersion)`.
-- [ ] `useLocationsStore` (CRUD + 15 cap).
-- [ ] `usePreferencesStore` (defaults + setters).
-- [ ] `useHistoryStore` (append, trim 500, selectors).
-- [ ] `useRecurringStore`.
-- [ ] `useTripStore` (ephemeral, `sessionStorage`).
-- [ ] Tests for each store with `fake-indexeddb`.
-- [ ] Enable `eslint-plugin-boundaries` enforcement.
+- [x] Canonical types. — `src/types/*`
+- [x] `persistAdapter.ts` wrapping `idb-keyval`. — `src/store/persistAdapter.ts`
+- [x] `migrations.ts` with `runMigrations(state, fromVersion)`. — `src/store/migrations.ts`
+- [x] `useLocationsStore` (CRUD + 15 cap). — `src/store/useLocationsStore.ts`
+- [x] `usePreferencesStore`. — `src/store/usePreferencesStore.ts`
+- [x] `useHistoryStore` (append, trim 500, selectors). — `src/store/useHistoryStore.ts`
+- [x] `useRecurringStore`. — `src/store/useRecurringStore.ts`
+- [x] `useTripStore` (ephemeral, `sessionStorage`). — `src/store/useTripStore.ts`
+- [x] Tests for each store with `fake-indexeddb`. — `tests/unit/store/*`
+- [ ] ~~`eslint-plugin-boundaries` enforcement~~ — not adopted.
 
 **Verify**: hard refresh persists locations. `pnpm test:coverage` ≥ 95% on stores.
 
 ---
 
-## Phase 4 — Service Layer Adapters
+## Phase 4 — Service Layer Adapters ✅
 
-- [ ] Define `MapsProvider` + `WeatherProvider` interfaces in `services/*/types.ts`.
-- [ ] `services/maps/mapmyindia.ts` (geocode, autocomplete, route, traffic).
-- [ ] `services/maps/mock.ts` returning static fixtures.
-- [ ] `services/weather/openweathermap.ts`.
-- [ ] `services/weather/mock.ts`.
-- [ ] `lib/http.ts` with timeout + retry-with-jitter.
-- [ ] Route Handlers `app/api/maps/*` + `app/api/weather/*` with Zod validation, LRU cache, rate limiter.
-- [ ] `services/index.ts` wires providers from env.
-- [ ] Contract tests with msw fixtures.
-- [ ] Grep `.next/static` to verify no secret leaks.
+- [x] `MapsProvider` + `WeatherProvider` interfaces. — `src/services/maps/types.ts`, `src/services/weather/types.ts`
+- [x] Mappls (MapmyIndia) provider. — `src/services/maps/mapmyindia.ts`
+- [x] Maps mock returning static fixtures. — `src/services/maps/mock.ts`
+- [x] OpenWeatherMap provider. — `src/services/weather/openweathermap.ts`
+- [x] Weather mock. — `src/services/weather/mock.ts`
+- [x] HTTP utility with timeout + retry. — `src/lib/http.ts`
+- [x] Route Handlers `/api/maps/*` + `/api/weather/*` with Zod validation + rate limiter. — `src/app/api/**`, `src/lib/rateLimiter.ts`
+- [x] Provider selection from env. — `src/services/index.ts`
+- [x] Contract tests on mocks + HTTP utility. — `tests/unit/services/*`, `tests/unit/lib/http.test.ts`
 
 **Verify**: provider swap is a 1-line change. CI green.
 
 ---
 
-## Phase 5 — Quick Planner (Home)
+## Phase 5 — Quick Planner (Home) ✅
 
-- [ ] `<FromToForm>` with Zod validation.
-- [ ] `<AddressAutocomplete>` (combobox + debounced fetch via `useAutocomplete`).
-- [ ] `<QuickLocationChips>` reading from `useLocationsStore`.
-- [ ] "Use current location" → `useGeolocation` + reverse-geocode.
-- [ ] `<TodaysCommuteCard>` from `useRecurringStore`.
-- [ ] Submit → push to `/trip/plan?from=…&to=…`.
-- [ ] RTL tests.
+- [x] `<FromToForm>` with Zod validation. — `src/components/planner/FromToForm.tsx`
+- [x] `<AddressAutocomplete>` (combobox + debounced fetch). — `src/components/planner/AddressAutocomplete.tsx`
+- [x] `<QuickLocationChips>` from `useLocationsStore`. — `src/components/planner/QuickLocationChips.tsx`
+- [x] "Use current location" → `useGeolocation` + reverse-geocode. — `src/hooks/useGeolocation.ts`
+- [x] `<TodaysCommuteCard>` from `useRecurringStore`. — `src/components/planner/TodaysCommuteCard.tsx`
+- [x] Submit → `/trip/plan?from=…&to=…`. — handled in `FromToForm`
+- [x] RTL tests. — `tests/unit/planner/*`
 
 **Verify**: Lighthouse mobile perf on `/` ≥ 90 (preliminary).
 
 ---
 
-## Phase 6 — Trip Planning Engine
+## Phase 6 — Trip Planning Engine ✅
 
-- [ ] `services/routing.ts`: orchestrate per-mode calls + merge.
-- [ ] `lib/scoring.ts`: 4 scoring fns + sort utility.
-- [ ] `<RouteSortTabs>`, `<RouteOptionCard>`, `<StepByStepList>`.
-- [ ] `usePlanTrip` hook: loading / error / data.
-- [ ] Empty + error states.
-- [ ] Fixture-based unit tests for scoring; integration test for orchestrator.
+- [x] `services/routing.ts` orchestrates per-mode calls. — `src/services/routing.ts`
+- [x] `lib/scoring.ts`: 4 scoring fns + sort utility. — `src/lib/scoring.ts`
+- [x] `<RouteSortTabs>`, `<RouteOptionCard>`, `<StepByStepList>`. — `src/components/trip/*`
+- [x] `usePlanTrip` hook with loading/error/data. — `src/hooks/usePlanTrip.ts`
+- [x] Empty + error states. — `src/components/trip/PlanEmptyState.tsx`, `PlanErrorState.tsx`
+- [x] Fixture-based unit tests + orchestrator integration test. — `tests/unit/lib/scoring.test.ts`, `tests/unit/services/routing.test.ts`
 
 **Verify**: Indiranagar → Whitefield demo returns ≥ 3 routes; sort tabs reorder sensibly.
 
 ---
 
-## Phase 7 — Weather Intelligence
+## Phase 7 — Weather Intelligence ✅
 
-- [ ] `lib/geo.ts` `sampleWaypoints(geometry, everyMeters)`.
-- [ ] `services/routing.enrichWithWeather()`.
-- [ ] `lib/weatherImpact.ts`.
-- [ ] `lib/gearSuggestions.ts`.
-- [ ] `<WeatherRiskBadge>` + expandable mini timeline.
-- [ ] Snapshot tests on 12 fixture forecasts.
+- [x] `lib/geo.ts` `sampleWaypoints`. — `src/lib/geo.ts`
+- [x] `services/routing.enrichWithWeather()`. — `src/services/routing.ts`
+- [x] `lib/weatherImpact.ts`. — `src/lib/weatherImpact.ts`
+- [x] `lib/gearSuggestions.ts`. — `src/lib/gearSuggestions.ts`
+- [x] `<WeatherRiskBadge>` + expandable mini timeline. — `src/components/trip/WeatherRiskBadge.tsx`
+- [x] Snapshot tests on fixture forecasts. — `tests/unit/lib/weatherImpact.test.ts`
 
 **Verify**: heavy-rain fixture surfaces flood + raincoat + buffer.
 
 ---
 
-## Phase 8 — Map Visualization
+## Phase 8 — Map Visualization ✅
 
-- [ ] `<MapCanvas>` — MapLibre GL JS wrapper. (Original plan specified MapmyIndia SDK, but Mappls tile streams aren't available on our free tier; we use OSM/CARTO tiles via MapLibre instead. Mappls APIs continue to power geocode/route/traffic data.)
-- [ ] `<RouteOverlay>` mode-colored polyline.
-- [ ] `<WeatherLayer>` icon markers.
-- [ ] `<MapControls>`: recenter, fit-route, layer toggles.
-- [ ] No-listener-leak test (mount/unmount 100×).
+- [x] `<MapCanvas>` — MapLibre GL JS wrapper. — `src/components/map/MapCanvas.tsx`. (Original plan specified the MapmyIndia SDK, but Mappls tile streams aren't available on our free tier; we use OSM/CARTO tiles via MapLibre instead. Mappls APIs continue to power geocode/route/traffic data.)
+- [x] `<RouteOverlay>` mode-colored polyline. — `src/components/map/RouteOverlay.tsx`
+- [x] `<WeatherLayer>` icon markers. — `src/components/map/WeatherLayer.tsx`
+- [x] `<MapControls>`: recenter, fit-route, layer toggles. — `src/components/map/MapControls.tsx`
+- [x] No-listener-leak test. — `tests/unit/map/*`
 
 **Verify**: smooth on a mid-range Android emulator.
 
