@@ -99,3 +99,10 @@ Commits follow [Conventional Commits](https://www.conventionalcommits.org/). Hus
 ## License
 
 MIT
+
+
+---
+
+## About
+
+Built by [Dhruv Doshi](https://dhruvdoshi.vercel.app) — see more projects on the [portfolio](https://dhruvdoshi.vercel.app/projects) or connect on [LinkedIn](https://www.linkedin.com/in/dhruvdoshi/).
