@@ -55,7 +55,8 @@ Standard forward / reverse geocoding.
 }
 ```
 
-**Response 200**: `RouteResponse` (see `data-models.ts`).
+**Response 200**: `RouteResponse` (see
+[`../../src/types/data-models.ts`](../../src/types/data-models.ts)).
 
 ### 1.4 `GET /api/maps/traffic?routeId=...`
 

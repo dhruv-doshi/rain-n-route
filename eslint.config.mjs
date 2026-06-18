@@ -19,7 +19,7 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   prettierConfig,
-  // Boundaries plugin — enforced as errors from Phase 3 onward
+  // Keep imports flowing from UI layers toward domain layers.
   {
     plugins: { boundaries },
     settings: {
@@ -32,13 +32,28 @@ const eslintConfig = defineConfig([
         {
           default: 'disallow',
           rules: [
-            { from: 'app', allow: ['components', 'hooks', 'lib', 'types'] },
-            { from: 'components', allow: ['components', 'hooks', 'lib', 'types'] },
-            { from: 'hooks', allow: ['services', 'store', 'lib', 'types'] },
-            { from: 'services', allow: ['lib', 'types'] },
-            { from: 'store', allow: ['lib', 'types'] },
-            { from: 'lib', allow: ['types'] },
-            { from: 'types', allow: [] },
+            {
+              from: { type: 'app' },
+              allow: { to: { type: ['components', 'hooks', 'lib', 'types'] } },
+            },
+            {
+              from: { type: 'components' },
+              allow: { to: { type: ['components', 'hooks', 'lib', 'types'] } },
+            },
+            {
+              from: { type: 'hooks' },
+              allow: { to: { type: ['services', 'store', 'lib', 'types'] } },
+            },
+            {
+              from: { type: 'services' },
+              allow: { to: { type: ['lib', 'types'] } },
+            },
+            {
+              from: { type: 'store' },
+              allow: { to: { type: ['lib', 'types'] } },
+            },
+            { from: { type: 'lib' }, allow: { to: { type: 'types' } } },
+            { from: { type: 'types' }, disallow: { to: { type: '*' } } },
           ],
         },
       ],

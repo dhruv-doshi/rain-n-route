@@ -1,108 +1,83 @@
-# CommuteWise (rain-n-route)
+# Rain-N-Route
 
-A weather-aware, India-first commute planning progressive web app. Plan your trip, check weather along the route, and get gear suggestions — all without creating an account.
+An India-first, weather-aware trip planner built with Next.js. It compares transport options, adds weather risk and gear guidance, and stores user data locally without requiring an account.
 
-## Tech Stack
+## Current Scope
 
-| Layer     | Choice                                       |
-| --------- | -------------------------------------------- |
-| Framework | Next.js 16 (App Router)                      |
-| Language  | TypeScript (strict)                          |
-| Styling   | Tailwind CSS v4 + shadcn/ui                  |
-| State     | Zustand + IndexedDB persistence              |
-| Maps      | MapmyIndia (primary), Google Maps (fallback) |
-| Weather   | OpenWeatherMap One Call 3.0                  |
-| PWA       | next-pwa (Workbox)                           |
-| Testing   | Vitest + React Testing Library + Playwright  |
+The current priority is a reliable MVP:
 
-## Getting Started
+- Enter an origin and destination.
+- Compare route options by time, cost, transfers, and carbon impact.
+- View directions and route geometry on a map.
+- See weather risks and practical gear suggestions.
+- Save locations, preferences, recurring commutes, and trip history locally.
+- Use mock services for local development without API keys.
 
-### Prerequisites
+See [PROJECT_STATUS.md](./PROJECT_STATUS.md) for the verified implementation status. Future ideas and nonessential work live in [docs/BACKLOG.md](./docs/BACKLOG.md).
+
+## Setup
+
+Prerequisites:
 
 - Node.js 20+
-- pnpm 9+
-
-### Setup
+- pnpm 10+
 
 ```bash
-# Clone the repo
-git clone https://github.com/dhruv-doshi/rain-n-route.git
-cd rain-n-route
-
-# Install dependencies
-pnpm install
-
-# Copy env template and fill in your keys
+pnpm install --frozen-lockfile
 cp .env.example .env.local
-
-# Start the dev server
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000).
 
-### Environment Variables
+The example environment enables mock services, so the basic app works without third-party credentials. To use live data, set `NEXT_PUBLIC_USE_MOCK_SERVICES=false` and provide the MapmyIndia and OpenWeatherMap keys in `.env.local`.
 
-| Variable               | Description                                        | Required |
-| ---------------------- | -------------------------------------------------- | -------- |
-| `NEXT_PUBLIC_MAPS_KEY` | MapmyIndia client key (safe to expose)             | Yes      |
-| `MAPS_SECRET`          | MapmyIndia secret (server-side only)               | Yes      |
-| `OWM_KEY`              | OpenWeatherMap One Call 3.0 key (server-side only) | Yes      |
+## Environment
 
-## Scripts
+| Variable                        | Purpose                                           | Default |
+| ------------------------------- | ------------------------------------------------- | ------- |
+| `NEXT_PUBLIC_USE_MOCK_SERVICES` | Use deterministic local map and weather data      | `true`  |
+| `NEXT_PUBLIC_MAPS_KEY`          | MapmyIndia client ID for live services            | empty   |
+| `MAPS_SECRET`                   | MapmyIndia client secret; server only             | empty   |
+| `OWM_KEY`                       | OpenWeatherMap API key; server only               | empty   |
+| `NEXT_PUBLIC_SITE_URL`          | Canonical URL used by sitemap and robots metadata | local   |
 
-| Command              | Description                           |
-| -------------------- | ------------------------------------- |
-| `pnpm dev`           | Start development server              |
-| `pnpm build`         | Production build                      |
-| `pnpm start`         | Start production server               |
-| `pnpm lint`          | Run ESLint                            |
-| `pnpm lint:fix`      | Run ESLint with auto-fix              |
-| `pnpm format`        | Format with Prettier                  |
-| `pnpm typecheck`     | Run TypeScript compiler check         |
-| `pnpm test`          | Run unit + integration tests (Vitest) |
-| `pnpm test:coverage` | Run tests with coverage report        |
-| `pnpm test:e2e`      | Run end-to-end tests (Playwright)     |
+Never commit `.env.local` or real credentials.
 
-## Project Structure
+## Commands
 
-```
+| Command              | Purpose                                |
+| -------------------- | -------------------------------------- |
+| `pnpm dev`           | Start the development server           |
+| `pnpm build`         | Create a production build              |
+| `pnpm start`         | Run the production build               |
+| `pnpm lint`          | Run ESLint with zero warning tolerance |
+| `pnpm typecheck`     | Run the TypeScript compiler            |
+| `pnpm test`          | Run unit and integration tests         |
+| `pnpm test:coverage` | Run tests with coverage                |
+| `pnpm test:e2e`      | Run Playwright tests                   |
+| `pnpm format`        | Format the repository                  |
+
+## Structure
+
+```text
 src/
-├── app/          # Next.js App Router pages and API routes
-├── components/   # React components (shell, planner, routes, map, dashboard)
-├── hooks/        # Custom React hooks
-├── services/     # External API adapters (maps, weather, geolocation)
-├── store/        # Zustand stores with IndexedDB persistence
-├── lib/          # Pure utility functions (scoring, weather impact, geo)
-└── types/        # Canonical TypeScript types
+├── app/          Next.js pages and API route handlers
+├── components/   UI grouped by product area
+├── hooks/        Client-side orchestration
+├── services/     Maps, weather, routing, and sharing adapters
+├── store/        Zustand stores and persistence
+├── lib/          Pure domain utilities
+└── types/        Canonical TypeScript models
 ```
 
-Layer boundaries are enforced via `eslint-plugin-boundaries` (see `eslint.config.mjs`).
+## Documentation
 
-## Development Phases
-
-See [`docs/plan/plan.md`](./docs/plan/plan.md) for the full incremental build plan.
-
-| Phase                         | Status     |
-| ----------------------------- | ---------- |
-| 1 — Project Foundation        | ✅ Done    |
-| 2 — Design System & Shell     | ⬜ Pending |
-| 3 — Data Models & Local Store | ⬜ Pending |
-| 4 — Service Layer Adapters    | ⬜ Pending |
-| 5 — Quick Planner (Home)      | ⬜ Pending |
-| 6–15                          | ⬜ Pending |
-
-## Contributing
-
-Commits follow [Conventional Commits](https://www.conventionalcommits.org/). Husky enforces this on every commit via `commitlint`.
+- [PROJECT_STATUS.md](./PROJECT_STATUS.md): current scope, completed work, and release blockers
+- [docs/BACKLOG.md](./docs/BACKLOG.md): deferred features and optional engineering work
+- [docs/plan/](./docs/plan): historical architecture and implementation planning
+- [docs/chrome-extension-concept.md](./docs/chrome-extension-concept.md): separate product concept, not part of this app
 
 ## License
 
 MIT
-
-
----
-
-## About
-
-Built by [Dhruv Doshi](https://dhruvdoshi.vercel.app) — see more projects on the [portfolio](https://dhruvdoshi.vercel.app/projects) or connect on [LinkedIn](https://www.linkedin.com/in/dhruvdoshi/).

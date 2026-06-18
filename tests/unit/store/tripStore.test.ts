@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { useTripStore } from '@/store/tripStore';
 import type { PlannedTrip } from '@/types';
 
-function makeTrip(id = 'trip-1'): PlannedTrip {
+function makeTrip(): PlannedTrip {
   return {
     request: {
       from: { lat: 12.97, lng: 77.59 },

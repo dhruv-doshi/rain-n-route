@@ -144,7 +144,7 @@ commutewise/
 │   │
 │   ├── types/
 │   │   ├── index.ts                # re-exports from data-models.ts
-│   │   └── data-models.ts          # canonical types (mirrors docs/plan/data-models.ts)
+│   │   └── data-models.ts          # canonical types
 │   │
 │   └── styles/
 │       └── tokens.css              # CSS variables consumed by Tailwind
@@ -159,7 +159,7 @@ commutewise/
 ├── .eslintrc.cjs
 ├── .prettierrc
 ├── eslint.config.mjs               # boundaries plugin
-├── next.config.mjs                 # next-pwa
+├── next.config.ts
 ├── tailwind.config.ts
 ├── postcss.config.mjs
 ├── tsconfig.json                   # strict

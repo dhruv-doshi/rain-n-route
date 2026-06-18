@@ -51,8 +51,6 @@ interface Props {
 }
 
 export function RouteOptionCard({ route, isSelected, onSelect }: Props) {
-  const primaryMode = route.modes[0] ?? 'mixed';
-  const Icon = MODE_ICON[primaryMode] ?? ArrowLeftRight;
   const modeLabel = route.modes.map((m) => MODE_LABEL[m]).join(' + ');
 
   return (

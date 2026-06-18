@@ -1,39 +1,43 @@
 # CommuteWise — Incremental Development Plan (MVP-1)
 
+> **Historical document.** This records the original phased implementation plan. Use
+> [`../../PROJECT_STATUS.md`](../../PROJECT_STATUS.md) for current status and
+> [`../BACKLOG.md`](../BACKLOG.md) for deferred work.
+
 > **Methodology**: Spec-Driven Development. Every phase has a clear scope, deliverables, tests, and a Definition of Done (DoD). Phases are sequential but each one ships a _runnable, demonstrable_ increment.
 
 > **Companion documents**:
 >
 > - [`architecture.md`](./architecture.md) — System architecture, layering, data flow
 > - [`api-design.md`](./api-design.md) — External API contracts and internal service interfaces
-> - [`data-models.ts`](./data-models.ts) — Canonical TypeScript types
+> - [`../../src/types/data-models.ts`](../../src/types/data-models.ts) — Canonical TypeScript types
 > - [`folder-structure.md`](./folder-structure.md) — Directory layout
 > - [`testing-strategy.md`](./testing-strategy.md) — Test layers, tooling, coverage targets
 > - [`phase-breakdown.md`](./phase-breakdown.md) — Detailed checklist per phase
 
 ---
 
-## Status (as of 2026-05-05)
+## Historical Status (as of 2026-05-05)
 
 MVP-1 is essentially shipped. All 15 phases have landed code; the only outstanding code-side gap is generating manifest icons for the PWA install. The remaining items are CI gates, manual cross-browser QA, and deployment.
 
-| Phase                         | Status | Outstanding                                                                                                              |
-| ----------------------------- | :----: | ------------------------------------------------------------------------------------------------------------------------ |
-| 1 — Project Foundation        |   ✅   | —                                                                                                                        |
-| 2 — Design System & Shell     |   ✅   | —                                                                                                                        |
-| 3 — Data Models & Local Store |   ✅   | —                                                                                                                        |
-| 4 — Service Layer Adapters    |   ✅   | —                                                                                                                        |
-| 5 — Quick Planner             |   ✅   | —                                                                                                                        |
-| 6 — Trip Planning Engine      |   ✅   | —                                                                                                                        |
-| 7 — Weather Intelligence      |   ✅   | —                                                                                                                        |
-| 8 — Map Visualization         |   ✅   | —                                                                                                                        |
-| 9 — Real-Time Conditions      |   🟡   | Per-segment traffic overlay + transit-delay banner — deferred (free-tier API limits)                                     |
-| 10 — Dashboard                |   ✅   | —                                                                                                                        |
-| 11 — Additional Tools         |   ✅   | —                                                                                                                        |
-| 12 — Notifications            |   🟡   | Service-worker push handler — deferred (needs backend; out of portfolio scope)                                           |
-| 13 — PWA & Offline            |   🟡   | **Generate manifest icons** (`/icon-192.png`, `/icon-512.png`, `/icon-maskable-512.png`) — only actionable code-side gap |
-| 14 — A11y / SEO / Perf        |   🟡   | Full axe sweep, JS bundle-budget CI gate, Lighthouse CI thresholds (CI gates, not code)                                  |
-| 15 — Hardening & Release      |   🟡   | Manual cross-browser QA matrix, tag `v0.1.0`, deploy                                                                     |
+| Phase                         | Status | Outstanding                                                                             |
+| ----------------------------- | :----: | --------------------------------------------------------------------------------------- |
+| 1 — Project Foundation        |   ✅   | —                                                                                       |
+| 2 — Design System & Shell     |   ✅   | —                                                                                       |
+| 3 — Data Models & Local Store |   ✅   | —                                                                                       |
+| 4 — Service Layer Adapters    |   ✅   | —                                                                                       |
+| 5 — Quick Planner             |   ✅   | —                                                                                       |
+| 6 — Trip Planning Engine      |   ✅   | —                                                                                       |
+| 7 — Weather Intelligence      |   ✅   | —                                                                                       |
+| 8 — Map Visualization         |   ✅   | —                                                                                       |
+| 9 — Real-Time Conditions      |   🟡   | Per-segment traffic overlay + transit-delay banner — deferred (free-tier API limits)    |
+| 10 — Dashboard                |   ✅   | —                                                                                       |
+| 11 — Additional Tools         |   ✅   | —                                                                                       |
+| 12 — Notifications            |   🟡   | Service-worker push handler — deferred (needs backend; out of portfolio scope)          |
+| 13 — PWA & Offline            |   🟡   | Branded install icons remain deferred to the backlog                                    |
+| 14 — A11y / SEO / Perf        |   🟡   | Full axe sweep, JS bundle-budget CI gate, Lighthouse CI thresholds (CI gates, not code) |
+| 15 — Hardening & Release      |   🟡   | Manual cross-browser QA matrix, tag `v0.1.0`, deploy                                    |
 
 See [`phase-breakdown.md`](./phase-breakdown.md) for the line-item checklist.
 
@@ -142,7 +146,7 @@ See [`phase-breakdown.md`](./phase-breakdown.md) for the line-item checklist.
 **Goal**: Single source of truth for all entities, persisted locally.
 **Scope**:
 
-- Implement types from [`data-models.ts`](./data-models.ts).
+- Implement types in [`../../src/types/data-models.ts`](../../src/types/data-models.ts).
 - Zustand stores:
   - `useLocationsStore` (saved locations)
   - `usePreferencesStore` (transport priority, walk limit, weather sensitivity)
@@ -393,7 +397,8 @@ See [`phase-breakdown.md`](./phase-breakdown.md) for the line-item checklist.
 
 - Installs on iOS Safari, Android Chrome, Desktop Chrome.
 
-**Remaining**: generate manifest icons (`/icon-192.png`, `/icon-512.png`, `/icon-maskable-512.png`). They are referenced in `manifest.ts` but not yet present in `/public` — needs design assets before deploy. **This is the only actionable code-side gap left in MVP-1.**
+**Remaining**: branded install icons are deferred to [`../BACKLOG.md`](../BACKLOG.md). The
+current manifest uses the existing favicon so it does not reference missing assets.
 
 ---
 

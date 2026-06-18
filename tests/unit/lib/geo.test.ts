@@ -1,11 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { decodePolyline, haversineMeters, sampleWaypoints } from '@/lib/geo';
 
-// A known encoded polyline: two points approximately 1 km apart in Bengaluru
-// Indiranagar (12.9784, 77.6410) → Domlur (12.9630, 77.6407)
-// Encoded manually: `_p~iF~ps|U_ulLnnqC` is a classic example; use a Bengaluru segment
-const SIMPLE_ENCODED = '_lrlDiqd`N~CaA'; // ~400 m segment (approximate)
-
 describe('decodePolyline', () => {
   it('returns empty array for empty string', () => {
     expect(decodePolyline('')).toEqual([]);

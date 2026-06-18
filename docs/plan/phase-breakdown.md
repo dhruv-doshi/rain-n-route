@@ -1,5 +1,8 @@
 # CommuteWise — Phase Checklist
 
+> **Historical document.** Use [`../../PROJECT_STATUS.md`](../../PROJECT_STATUS.md) for current
+> status and [`../BACKLOG.md`](../BACKLOG.md) for deferred work.
+
 A granular, copy-pasteable checklist per phase. Mirrors `plan.md` but with line-item tasks, suggested commits, and verification steps. Use this as the working punch list.
 
 Legend: `[ ]` todo · `[x]` done · `(✓)` verified
@@ -17,7 +20,7 @@ Legend: `[ ]` todo · `[x]` done · `(✓)` verified
 - [x] `.env.example` with required keys. — root `.env.example`
 - [x] GitHub Actions CI (typecheck → lint → test → build). — `.github/workflows/ci.yml`
 - [x] README. — root `README.md`
-- [ ] ~~`eslint-plugin-boundaries`~~ — not adopted; not strictly needed at this scale.
+- [x] `eslint-plugin-boundaries` import rules. — `eslint.config.mjs`
 
 **Verify**: green CI. `pnpm dev` boots at `localhost:3000`.
 
@@ -48,7 +51,7 @@ Legend: `[ ]` todo · `[x]` done · `(✓)` verified
 - [x] `useRecurringStore`. — `src/store/useRecurringStore.ts`
 - [x] `useTripStore` (ephemeral, `sessionStorage`). — `src/store/useTripStore.ts`
 - [x] Tests for each store with `fake-indexeddb`. — `tests/unit/store/*`
-- [ ] ~~`eslint-plugin-boundaries` enforcement~~ — not adopted.
+- [x] `eslint-plugin-boundaries` enforcement. — `eslint.config.mjs`
 
 **Verify**: hard refresh persists locations. `pnpm test:coverage` ≥ 95% on stores.
 
@@ -183,7 +186,7 @@ Legend: `[ ]` todo · `[x]` done · `(✓)` verified
 - [x] SW registered via `<ServiceWorkerRegister>` in production builds only (HMR vs SW caching is a fight in dev).
 - [ ] ~~next-pwa~~ — not used. v5.6.0 is Next-12-era; hand-rolled SW is simpler and avoids the plugin's compat risk on Next 16 + Turbopack. Caching matrix is implemented directly in `public/sw.js`.
 - [ ] Playwright offline scenario — see Phase 14 verify.
-- [ ] Manifest icons (`/icon-192.png`, `/icon-512.png`, `/icon-maskable-512.png`) — referenced in the manifest but not yet generated. Needs design assets before deploy.
+- [ ] Branded manifest icons — deferred to `docs/BACKLOG.md`; the current manifest uses `favicon.ico`.
 
 **Verify**: Lighthouse PWA ≥ 90.
 

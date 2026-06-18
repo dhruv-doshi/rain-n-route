@@ -47,15 +47,16 @@ export const MOCK_AQI_READING: AQIReading = {
 export class MockWeatherProvider implements WeatherProvider {
   constructor(private readonly overrides: { rain?: boolean } = {}) {}
 
-  async current(_coords: LatLng): Promise<CurrentWeather> {
+  async current(): Promise<CurrentWeather> {
     return this.overrides.rain ? MOCK_HEAVY_RAIN_WEATHER : MOCK_CURRENT_WEATHER;
   }
 
   async hourly(_coords: LatLng, hours: number): Promise<HourlyForecast[]> {
+    void _coords;
     return MOCK_HOURLY_FORECAST.slice(0, hours);
   }
 
-  async airQuality(_coords: LatLng): Promise<AQIReading> {
+  async airQuality(): Promise<AQIReading> {
     return MOCK_AQI_READING;
   }
 }

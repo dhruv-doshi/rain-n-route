@@ -2,7 +2,6 @@ import type {
   GeoResult,
   GeoSuggestion,
   LatLng,
-  RouteRequest,
   RouteResponse,
   TileLayer,
   TrafficSnapshot,
@@ -136,19 +135,19 @@ export const MOCK_ROUTE_RESPONSE: RouteResponse = {
 };
 
 export class MockMapsProvider implements MapsProvider {
-  async autocomplete(_query: string, _signal?: AbortSignal): Promise<GeoSuggestion[]> {
+  async autocomplete(): Promise<GeoSuggestion[]> {
     return MOCK_SUGGESTIONS;
   }
 
-  async geocode(_query: string): Promise<GeoResult[]> {
+  async geocode(): Promise<GeoResult[]> {
     return [MOCK_GEO_RESULT];
   }
 
-  async reverseGeocode(_coords: LatLng): Promise<GeoResult> {
+  async reverseGeocode(): Promise<GeoResult> {
     return MOCK_GEO_RESULT;
   }
 
-  async route(_req: RouteRequest): Promise<RouteResponse> {
+  async route(): Promise<RouteResponse> {
     return MOCK_ROUTE_RESPONSE;
   }
 
@@ -164,8 +163,8 @@ export class MockMapsProvider implements MapsProvider {
     };
   }
 
-  tilesUrl(_layer: TileLayer): string {
-    return `https://tiles.example.com/${_layer}/{z}/{x}/{y}.png`;
+  tilesUrl(layer: TileLayer): string {
+    return `https://tiles.example.com/${layer}/{z}/{x}/{y}.png`;
   }
 }
 
