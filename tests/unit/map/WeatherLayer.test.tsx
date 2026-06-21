@@ -118,6 +118,10 @@ describe('WeatherLayer', () => {
     expect(createdMarkers.length).toBeGreaterThan(0);
 
     unmount();
+    // Cleanup is deferred to a microtask to avoid unmounting during a React render
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 0));
+    });
     // React roots should be unmounted (cleanup called root.unmount())
     expect(mockUnmount).toHaveBeenCalled();
     // Markers should have map set to null
