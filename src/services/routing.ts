@@ -100,6 +100,7 @@ async function fetchWeatherFromApi(
  */
 export async function enrichWithWeather(trip: PlannedTrip): Promise<PlannedTrip> {
   const { from, to } = trip.request;
+  console.log('[weather enrichment] Starting enrichment for', trip.routes.length, 'routes');
 
   const enrichedRoutes = await Promise.all(
     trip.routes.map(async (route): Promise<RouteOption> => {
@@ -107,13 +108,30 @@ export async function enrichWithWeather(trip: PlannedTrip): Promise<PlannedTrip>
       const representativePoint = points[Math.floor(points.length / 2)];
 
       try {
+        console.log('[weather enrichment] Fetching weather for', representativePoint);
         const { hourly, aqi } = await fetchWeatherFromApi(representativePoint, 12);
-        return { ...route, weatherRisk: computeWeatherImpact(hourly, aqi) };
-      } catch {
+        const risk = computeWeatherImpact(hourly, aqi);
+        console.log(
+          '[weather enrichment] Computed risk:',
+          risk.overall,
+          'with',
+          risk.factors.length,
+          'factors',
+        );
+        return { ...route, weatherRisk: risk };
+      } catch (err) {
+        console.error('[weather enrichment] Error enriching route:', err);
         return route;
       }
     }),
   );
 
+  console.log(
+    '[weather enrichment] Complete - enriched',
+    enrichedRoutes.filter((r) => r.weatherRisk).length,
+    'of',
+    enrichedRoutes.length,
+    'routes',
+  );
   return { ...trip, routes: enrichedRoutes };
 }
