@@ -1,0 +1,43 @@
+{
+  "suggestions": [
+    {
+      "placePrediction": {
+        "placeId": "ChIJbU60yXAWrjsR4E9-UejD3_g",
+        "text": {
+          "text": "Indiranagar, Bengaluru, Karnataka, India"
+        },
+        "structuredFormat": {
+          "mainText": { "text": "Indiranagar" },
+          "secondaryText": { "text": "Bengaluru, Karnataka, India" }
+        },
+        "types": ["sublocality_level_1", "sublocality", "political"]
+      }
+    },
+    {
+      "placePrediction": {
+        "placeId": "ChIJLfyY2E4UrjsRVq4AjI7zgkY",
+        "text": {
+          "text": "Indira Nagar BDA Complex, Bengaluru, Karnataka, India"
+        },
+        "structuredFormat": {
+          "mainText": { "text": "Indira Nagar BDA Complex" },
+          "secondaryText": { "text": "Bengaluru, Karnataka, India" }
+        },
+        "types": ["point_of_interest", "establishment"]
+      }
+    },
+    {
+      "placePrediction": {
+        "placeId": "ChIJkbeSa_BZwjsRqq1PAL7cHSM",
+        "text": {
+          "text": "Indiranagar Metro Station, Bengaluru, Karnataka, India"
+        },
+        "structuredFormat": {
+          "mainText": { "text": "Indiranagar Metro Station" },
+          "secondaryText": { "text": "Bengaluru, Karnataka, India" }
+        },
+        "types": ["transit_station", "point_of_interest", "establishment"]
+      }
+    }
+  ]
+}

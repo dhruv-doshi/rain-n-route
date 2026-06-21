@@ -18,10 +18,6 @@ export default function PrivacyPage() {
       <h2>What stays on your device</h2>
       <ul>
         <li>
-          Saved locations, recurring commutes, history entries, and preferences are stored in your
-          browser&apos;s IndexedDB. They never leave your device.
-        </li>
-        <li>
           The current trip plan is stored in <code>sessionStorage</code> and clears when the tab
           closes.
         </li>
@@ -34,21 +30,15 @@ export default function PrivacyPage() {
       <h2>What we send to third parties</h2>
       <ul>
         <li>
-          <strong>MapmyIndia (Mappls):</strong> address autocomplete and route requests are proxied
-          through our own <code>/api/maps/*</code> handlers, which call Mappls server-side. Your
-          search query and trip coordinates are sent to Mappls as part of the request.
-        </li>
-        <li>
-          <strong>OpenStreetMap Nominatim:</strong> when an address needs resolving to coordinates,
-          the place label is sent to Nominatim&apos;s public endpoint.
+          <strong>Google Maps Platform:</strong> place autocomplete, geocoding, and route requests
+          are proxied through our own <code>/api/maps/*</code> handlers, which call Google Places
+          API, Geocoding API, and Routes API server-side. Your search query and trip coordinates are
+          sent to Google as part of these requests. The browser loads the Google Maps JavaScript API
+          to render the interactive map.
         </li>
         <li>
           <strong>OpenWeatherMap:</strong> coordinates of route waypoints are sent to fetch the
           current weather and forecast.
-        </li>
-        <li>
-          <strong>OpenStreetMap / CARTO basemap tiles:</strong> the map tiles you see are fetched
-          directly from OSM / CARTO tile servers.
         </li>
       </ul>
       <p>We do not include any user identifier in those requests. They are made over HTTPS.</p>

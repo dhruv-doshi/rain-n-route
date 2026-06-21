@@ -95,8 +95,12 @@ describe('usePlanTrip', () => {
   it('retry re-fetches (fetch called twice)', async () => {
     const { result } = renderHook(() => usePlanTrip(FROM, TO));
     await waitFor(() => expect(result.current.status).toBe('success'));
+    const callsBefore = vi.mocked(fetch).mock.calls.length;
     result.current.retry();
-    await waitFor(() => expect(vi.mocked(fetch)).toHaveBeenCalledTimes(2));
+    await waitFor(() => expect(vi.mocked(fetch).mock.calls.length).toBeGreaterThan(callsBefore));
+    // Verify at least one new /api/maps/route call was made for the retry
+    const routeCalls = vi.mocked(fetch).mock.calls.filter(([url]) => url === '/api/maps/route');
+    expect(routeCalls.length).toBe(2);
   });
 
   it('does not set error state on AbortError', async () => {

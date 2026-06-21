@@ -1,6 +1,5 @@
 import { Cloud } from 'lucide-react';
 import { FromToForm } from '@/components/planner/FromToForm';
-import { TodaysCommuteCard } from '@/components/planner/TodaysCommuteCard';
 
 export default function Home() {
   return (
@@ -19,8 +18,6 @@ export default function Home() {
       </div>
 
       <FromToForm />
-
-      <TodaysCommuteCard />
     </div>
   );
 }

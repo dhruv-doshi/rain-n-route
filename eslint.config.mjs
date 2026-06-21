@@ -19,6 +19,12 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   prettierConfig,
+  // Allow underscore-prefixed unused variables (common in TypeScript interfaces)
+  {
+    rules: {
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+    },
+  },
   // Keep imports flowing from UI layers toward domain layers.
   {
     plugins: { boundaries },
@@ -34,7 +40,7 @@ const eslintConfig = defineConfig([
           rules: [
             {
               from: { type: 'app' },
-              allow: { to: { type: ['components', 'hooks', 'lib', 'types'] } },
+              allow: { to: { type: ['components', 'hooks', 'services', 'lib', 'types'] } },
             },
             {
               from: { type: 'components' },
@@ -59,7 +65,7 @@ const eslintConfig = defineConfig([
       ],
     },
   },
-  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
+  globalIgnores(['.next/**', 'out/**', 'build/**', 'coverage/**', 'next-env.d.ts']),
 ]);
 
 export default eslintConfig;

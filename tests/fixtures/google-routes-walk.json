@@ -1,0 +1,51 @@
+{
+  "routes": [
+    {
+      "distanceMeters": 3200,
+      "duration": "2400s",
+      "staticDuration": "2400s",
+      "polyline": {
+        "encodedPolyline": "oqcnAm}ciMeAeA{@kAaBqB"
+      },
+      "legs": [
+        {
+          "steps": [
+            {
+              "distanceMeters": 1100,
+              "staticDuration": "820s",
+              "polyline": {
+                "encodedPolyline": "oqcnAm}ciMeAeA"
+              },
+              "navigationInstruction": {
+                "instructions": "Walk north on 100 Feet Rd"
+              },
+              "travelMode": "WALK"
+            },
+            {
+              "distanceMeters": 900,
+              "staticDuration": "680s",
+              "polyline": {
+                "encodedPolyline": "oycnAkgdiM{@kA"
+              },
+              "navigationInstruction": {
+                "instructions": "Turn right onto 12th Main Rd"
+              },
+              "travelMode": "WALK"
+            },
+            {
+              "distanceMeters": 1200,
+              "staticDuration": "900s",
+              "polyline": {
+                "encodedPolyline": "o_dnAmtdiMaBqB"
+              },
+              "navigationInstruction": {
+                "instructions": "Continue to destination"
+              },
+              "travelMode": "WALK"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

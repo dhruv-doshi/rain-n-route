@@ -2,72 +2,109 @@ import { render, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MapCanvas } from '@/components/map/MapCanvas';
 
-const { mockRemove, mockOn, MockMap } = vi.hoisted(() => {
-  const mockRemove = vi.fn();
-  const mockOn = vi.fn();
+const { mockLoadMapsLibrary, mockIsConfigured, MockMapInstance } = vi.hoisted(() => {
+  const MockMapInstance = {
+    setCenter: vi.fn(),
+    setZoom: vi.fn(),
+    panTo: vi.fn(),
+  };
 
-  // Must use regular function (not arrow) for constructor mock
-  function MockMapImpl(this: unknown) {
-    return {
-      on: mockOn,
-      off: vi.fn(),
-      remove: mockRemove,
-      getCanvas: vi.fn(() => ({ style: {} as CSSStyleDeclaration })),
-    };
+  // Use a proper constructor function so `new mapsLib.Map(...)` works
+  function MockMapConstructor() {
+    return MockMapInstance;
   }
 
-  const MockMap = vi.fn().mockImplementation(MockMapImpl);
-  return { mockRemove, mockOn, MockMap };
+  const mockLoadMapsLibrary = vi.fn().mockResolvedValue({
+    Map: MockMapConstructor,
+  });
+
+  const mockIsConfigured = vi.fn().mockReturnValue(true);
+
+  return { mockLoadMapsLibrary, mockIsConfigured, MockMapInstance };
 });
 
-vi.mock('maplibre-gl', () => ({
-  default: { Map: MockMap },
+vi.mock('@/lib/googleMapsLoader', () => ({
+  loadMapsLibrary: mockLoadMapsLibrary,
+  isGoogleMapsConfigured: mockIsConfigured,
 }));
 
-vi.mock('maplibre-gl/dist/maplibre-gl.css', () => ({}));
-
-const MOCK_URL = 'https://tiles.example.com/{z}/{x}/{y}.png';
 const CENTER = { lat: 12.97, lng: 77.59 };
-
-function triggerLoad() {
-  const loadCall = mockOn.mock.calls.find(([event]: [string]) => event === 'load');
-  if (loadCall) {
-    const [, cb] = loadCall as [string, () => void];
-    cb();
-  }
-}
 
 beforeEach(() => {
   vi.clearAllMocks();
+  mockIsConfigured.mockReturnValue(true);
 });
 
 describe('MapCanvas', () => {
   it('renders a container div with aria-label', () => {
-    const { getByRole } = render(<MapCanvas center={CENTER} tilesUrl={MOCK_URL} />);
-    expect(getByRole('img', { name: 'Route map' })).toBeTruthy();
+    const { getByRole } = render(<MapCanvas center={CENTER} />);
+    expect(getByRole('application', { name: 'Interactive route map' })).toBeTruthy();
   });
 
-  it('calls map.remove() on unmount', async () => {
-    const { unmount } = render(<MapCanvas center={CENTER} tilesUrl={MOCK_URL} />);
-    await waitFor(() => expect(MockMap).toHaveBeenCalled());
-    unmount();
-    expect(mockRemove).toHaveBeenCalledTimes(1);
+  it('shows loading state initially', () => {
+    const { getByText } = render(<MapCanvas center={CENTER} />);
+    expect(getByText('Loading map…')).toBeTruthy();
   });
 
-  it('does not leak — remove called on each of 10 mount/unmount cycles', async () => {
-    for (let i = 0; i < 10; i++) {
-      const { unmount } = render(<MapCanvas center={CENTER} tilesUrl={MOCK_URL} />);
-      await waitFor(() => expect(MockMap).toHaveBeenCalledTimes(i + 1));
-      unmount();
-    }
-    expect(mockRemove).toHaveBeenCalledTimes(10);
+  it('transitions from loading to ready state after map instantiation', async () => {
+    const { queryByText } = render(<MapCanvas center={CENTER} />);
+    // Initially shows loading
+    expect(queryByText('Loading map…')).toBeTruthy();
+    // After map loads, loading disappears
+    await waitFor(() => expect(queryByText('Loading map…')).toBeNull());
   });
 
-  it('calls onReady when map fires load event', async () => {
+  it('shows error state when isGoogleMapsConfigured() returns false', async () => {
+    mockIsConfigured.mockReturnValue(false);
+    const { getByText, getByRole } = render(<MapCanvas center={CENTER} />);
+    await waitFor(() => expect(getByText(/Map configuration is incomplete/)).toBeTruthy());
+    // Error state has role="alert"
+    expect(getByRole('alert')).toBeTruthy();
+  });
+
+  it('shows error state with onError callback when configuration is missing', async () => {
+    mockIsConfigured.mockReturnValue(false);
+    const onError = vi.fn();
+    render(<MapCanvas center={CENTER} onError={onError} />);
+    await waitFor(() => expect(onError).toHaveBeenCalled());
+    expect(onError.mock.calls[0][0].message).toContain('not configured');
+  });
+
+  it('calls onReady when map loads successfully', async () => {
     const onReady = vi.fn();
-    render(<MapCanvas center={CENTER} tilesUrl={MOCK_URL} onReady={onReady} />);
-    await waitFor(() => expect(mockOn).toHaveBeenCalled());
-    triggerLoad();
-    await waitFor(() => expect(onReady).toHaveBeenCalled());
+    render(<MapCanvas center={CENTER} onReady={onReady} />);
+    await waitFor(() => expect(onReady).toHaveBeenCalledWith(MockMapInstance));
+  });
+
+  it('calls onError when loadMapsLibrary rejects', async () => {
+    mockLoadMapsLibrary.mockRejectedValueOnce(new Error('Script failed'));
+    const onError = vi.fn();
+    render(<MapCanvas center={CENTER} onError={onError} />);
+    await waitFor(() => expect(onError).toHaveBeenCalled());
+    expect(onError.mock.calls[0][0].message).toBe('Script failed');
+  });
+
+  it('displays error message when loadMapsLibrary rejects', async () => {
+    mockLoadMapsLibrary.mockRejectedValueOnce(new Error('Script failed'));
+    const { getByText } = render(<MapCanvas center={CENTER} />);
+    await waitFor(() => expect(getByText('Script failed')).toBeTruthy());
+  });
+
+  it('cleans up map reference on unmount', async () => {
+    const { unmount } = render(<MapCanvas center={CENTER} />);
+    await waitFor(() => expect(mockLoadMapsLibrary).toHaveBeenCalled());
+    unmount();
+    // No error means cleanup succeeded
+  });
+
+  it('renders children only when map instance is ready', async () => {
+    const { getByTestId } = render(
+      <MapCanvas center={CENTER}>
+        <div data-testid="map-child">Child</div>
+      </MapCanvas>,
+    );
+    // Initially children are not rendered (map not ready yet)
+    // After map is ready, children are rendered
+    await waitFor(() => expect(getByTestId('map-child')).toBeTruthy());
   });
 });

@@ -33,16 +33,18 @@ jobs:
 
       - name: Typecheck
         run: pnpm typecheck
+        env:
+          NEXT_PUBLIC_USE_MOCK_SERVICES: 'true'
 
       - name: Lint
         run: pnpm lint
 
       - name: Unit & Integration Tests
         run: pnpm test
+        env:
+          NEXT_PUBLIC_USE_MOCK_SERVICES: 'true'
 
       - name: Build
         run: pnpm build
         env:
-          NEXT_PUBLIC_MAPS_KEY: ${{ secrets.NEXT_PUBLIC_MAPS_KEY }}
-          MAPS_SECRET: ${{ secrets.MAPS_SECRET }}
-          OWM_KEY: ${{ secrets.OWM_KEY }}
+          NEXT_PUBLIC_USE_MOCK_SERVICES: 'true'
