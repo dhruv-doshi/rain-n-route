@@ -1,18 +1,35 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MapInstanceContext } from '@/components/map/MapInstanceContext';
 import { MapControls } from '@/components/map/MapControls';
 import type { RouteOption } from '@/types';
 
-const mockFlyTo = vi.fn();
+const mockPanTo = vi.fn();
+const mockSetZoom = vi.fn();
 const mockFitBounds = vi.fn();
-const mockGetSource = vi.fn();
+const mockTrafficSetMap = vi.fn();
+const mockTransitSetMap = vi.fn();
 
 const mockMap = {
-  flyTo: mockFlyTo,
+  panTo: mockPanTo,
+  setZoom: mockSetZoom,
   fitBounds: mockFitBounds,
-  getSource: mockGetSource,
-};
+} as unknown as google.maps.Map;
+
+// Mock google.maps globals with proper constructors
+vi.stubGlobal('google', {
+  maps: {
+    TrafficLayer: function MockTrafficLayer() {
+      return { setMap: mockTrafficSetMap };
+    },
+    TransitLayer: function MockTransitLayer() {
+      return { setMap: mockTransitSetMap };
+    },
+    LatLngBounds: function MockLatLngBounds() {
+      return { extend: vi.fn() };
+    },
+  },
+});
 
 const routes: RouteOption[] = [
   {
@@ -32,15 +49,18 @@ const routes: RouteOption[] = [
 const defaultProps = {
   center: { lat: 12.97, lng: 77.59 },
   routes,
-  currentLayer: 'base' as const,
+  activeLayer: 'base' as const,
   onLayerChange: vi.fn(),
-  tilesUrlForLayer: vi.fn(() => 'https://tiles.example.com/{z}/{x}/{y}.png'),
 };
+
+beforeEach(() => {
+  vi.clearAllMocks();
+});
 
 describe('MapControls', () => {
   it('renders three control buttons', () => {
     render(
-      <MapInstanceContext.Provider value={mockMap as never}>
+      <MapInstanceContext.Provider value={mockMap}>
         <MapControls {...defaultProps} />
       </MapInstanceContext.Provider>,
     );
@@ -49,19 +69,20 @@ describe('MapControls', () => {
     expect(screen.getByRole('button', { name: /toggle map layer/i })).toBeTruthy();
   });
 
-  it('calls map.flyTo on recenter click', () => {
+  it('calls map.panTo and setZoom on recenter click', () => {
     render(
-      <MapInstanceContext.Provider value={mockMap as never}>
+      <MapInstanceContext.Provider value={mockMap}>
         <MapControls {...defaultProps} />
       </MapInstanceContext.Provider>,
     );
     fireEvent.click(screen.getByRole('button', { name: /recenter/i }));
-    expect(mockFlyTo).toHaveBeenCalledWith({ center: [77.59, 12.97], zoom: 12 });
+    expect(mockPanTo).toHaveBeenCalledWith({ lat: 12.97, lng: 77.59 });
+    expect(mockSetZoom).toHaveBeenCalledWith(12);
   });
 
   it('calls map.fitBounds on fit-route click', () => {
     render(
-      <MapInstanceContext.Provider value={mockMap as never}>
+      <MapInstanceContext.Provider value={mockMap}>
         <MapControls {...defaultProps} />
       </MapInstanceContext.Provider>,
     );
@@ -71,13 +92,69 @@ describe('MapControls', () => {
 
   it('calls onLayerChange on layer toggle', () => {
     const onLayerChange = vi.fn();
-    mockGetSource.mockReturnValue(null);
     render(
-      <MapInstanceContext.Provider value={mockMap as never}>
+      <MapInstanceContext.Provider value={mockMap}>
         <MapControls {...defaultProps} onLayerChange={onLayerChange} />
       </MapInstanceContext.Provider>,
     );
     fireEvent.click(screen.getByRole('button', { name: /toggle map layer/i }));
     expect(onLayerChange).toHaveBeenCalledWith('traffic');
+  });
+
+  it('calls setMap(null) on traffic and transit layers on unmount', () => {
+    const { unmount } = render(
+      <MapInstanceContext.Provider value={mockMap}>
+        <MapControls {...defaultProps} activeLayer="traffic" />
+      </MapInstanceContext.Provider>,
+    );
+    // During render with activeLayer=traffic, traffic layer gets attached
+    expect(mockTrafficSetMap).toHaveBeenCalledWith(mockMap);
+
+    unmount();
+    // On unmount, both layers should have setMap(null) called
+    expect(mockTrafficSetMap).toHaveBeenCalledWith(null);
+    expect(mockTransitSetMap).toHaveBeenCalledWith(null);
+  });
+
+  it('detaches transit layer when switching from transit to base', () => {
+    const { rerender } = render(
+      <MapInstanceContext.Provider value={mockMap}>
+        <MapControls {...defaultProps} activeLayer="transit" />
+      </MapInstanceContext.Provider>,
+    );
+    expect(mockTransitSetMap).toHaveBeenCalledWith(mockMap);
+
+    mockTrafficSetMap.mockClear();
+    mockTransitSetMap.mockClear();
+
+    rerender(
+      <MapInstanceContext.Provider value={mockMap}>
+        <MapControls {...defaultProps} activeLayer="base" />
+      </MapInstanceContext.Provider>,
+    );
+    // Both layers should be detached when switching to base
+    expect(mockTrafficSetMap).toHaveBeenCalledWith(null);
+    expect(mockTransitSetMap).toHaveBeenCalledWith(null);
+  });
+
+  it('detaches traffic layer when switching to transit', () => {
+    const { rerender } = render(
+      <MapInstanceContext.Provider value={mockMap}>
+        <MapControls {...defaultProps} activeLayer="traffic" />
+      </MapInstanceContext.Provider>,
+    );
+    expect(mockTrafficSetMap).toHaveBeenCalledWith(mockMap);
+
+    mockTrafficSetMap.mockClear();
+    mockTransitSetMap.mockClear();
+
+    rerender(
+      <MapInstanceContext.Provider value={mockMap}>
+        <MapControls {...defaultProps} activeLayer="transit" />
+      </MapInstanceContext.Provider>,
+    );
+    // Traffic detached, transit attached
+    expect(mockTrafficSetMap).toHaveBeenCalledWith(null);
+    expect(mockTransitSetMap).toHaveBeenCalledWith(mockMap);
   });
 });

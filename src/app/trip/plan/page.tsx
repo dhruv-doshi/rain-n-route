@@ -1,25 +1,15 @@
 import type { Metadata } from 'next';
 import { TripPlanClient } from '@/components/trip/TripPlanClient';
-import { getMapsProvider } from '@/services';
 
 export const metadata: Metadata = {
   title: 'Plan your trip — Rain-N-Route',
 };
 
 interface Props {
-  searchParams: Promise<{ from?: string; to?: string }>;
+  searchParams: Promise<{ from?: string; to?: string; departAt?: string }>;
 }
 
 export default async function TripPlanPage({ searchParams }: Props) {
-  const { from = '', to = '' } = await searchParams;
-  const maps = getMapsProvider();
-  return (
-    <TripPlanClient
-      rawFrom={from}
-      rawTo={to}
-      baseTilesUrl={maps.tilesUrl('base')}
-      trafficTilesUrl={maps.tilesUrl('traffic')}
-      transitTilesUrl={maps.tilesUrl('transit')}
-    />
-  );
+  const { from = '', to = '', departAt } = await searchParams;
+  return <TripPlanClient rawFrom={from} rawTo={to} departAt={departAt} />;
 }

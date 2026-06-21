@@ -12,8 +12,8 @@ describe('Header', () => {
     expect(screen.getByText('Rain-N-Route')).toBeInTheDocument();
   });
 
-  it('has a link to the dashboard', () => {
+  it('does not render a Dashboard link', () => {
     render(<Header />);
-    expect(screen.getByRole('link', { name: /dashboard/i })).toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: /dashboard/i })).not.toBeInTheDocument();
   });
 });

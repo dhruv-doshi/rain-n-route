@@ -4,15 +4,25 @@ import { useState, useRef, useId, KeyboardEvent } from 'react';
 import { Loader2, MapPin, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useAutocomplete } from '@/hooks/useAutocomplete';
+import { useSessionToken } from '@/hooks/useSessionToken';
 import type { GeoResult, GeoSuggestion } from '@/types';
 import { cn } from '@/lib/utils';
 
-async function resolveCoords(label: string): Promise<GeoResult | null> {
+/**
+ * Resolve a place suggestion to coordinates via the /api/maps/place endpoint.
+ * Returns a GeoResult with coords on success, or null on failure.
+ */
+async function resolvePlace(
+  placeId: string,
+  sessionToken: string,
+  label: string,
+): Promise<GeoResult | null> {
   try {
-    const res = await fetch(`/api/maps/geocode?q=${encodeURIComponent(label)}`);
+    const params = new URLSearchParams({ placeId, sessionToken, label });
+    const res = await fetch(`/api/maps/place?${params.toString()}`);
     if (!res.ok) return null;
-    const data = (await res.json()) as { results?: GeoResult[] };
-    return data.results?.[0] ?? null;
+    const data = (await res.json()) as GeoResult;
+    return data;
   } catch {
     return null;
   }
@@ -46,7 +56,8 @@ export function AddressAutocomplete({
   const [open, setOpen] = useState(false);
   const [resolving, setResolving] = useState(false);
 
-  const { suggestions, loading } = useAutocomplete(query);
+  const { sessionToken, resetSession, handleFocus } = useSessionToken();
+  const { suggestions, loading } = useAutocomplete(query, sessionToken);
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setQuery(e.target.value);
@@ -55,41 +66,53 @@ export function AddressAutocomplete({
   }
 
   async function handleSelect(suggestion: GeoSuggestion) {
-    setQuery('');
+    // Keep the user's typed text so it can be retained on failure
+    const userText = suggestion.label;
     setOpen(false);
     setActiveIndex(-1);
 
+    // If the suggestion already has coords, use it directly
     if (suggestion.coords) {
+      setQuery('');
       onSelect(suggestion);
+      resetSession();
       return;
     }
 
-    // Short label guard — geocode API requires at least 2 chars
-    if (suggestion.label.length < 2) {
-      onResolutionError?.("Couldn't find this location — please pick a different one");
-      return;
-    }
-
-    // Suggestion has no coords — resolve before confirming selection
+    // Resolve the place to get coordinates via /api/maps/place
     setResolving(true);
     onResolvingChange?.(true);
-    const details = await resolveCoords(suggestion.label);
+
+    const resolved = await resolvePlace(suggestion.id, sessionToken, suggestion.label);
+
     setResolving(false);
     onResolvingChange?.(false);
+    resetSession(); // Always reset session after a selection attempt
 
-    if (!details?.coords) {
+    if (!resolved?.coords) {
+      // Requirement 13.2: On place resolution failure, show error for ≥5 seconds,
+      // retain user's typed text in the field, keep field editable
+      setQuery(userText);
       onResolutionError?.("Couldn't resolve this location — please pick a different one");
       return;
     }
 
-    onSelect({ ...suggestion, coords: details.coords });
+    setQuery('');
+    onSelect({ ...suggestion, coords: resolved.coords });
   }
 
   function handleClear() {
     onClear();
     setQuery('');
     setOpen(false);
+    resetSession(); // Requirement 4.3: generate new token on clear
     inputRef.current?.focus();
+  }
+
+  function handleInputFocus() {
+    const hasContent = !!(value || query);
+    handleFocus(hasContent); // Requirement 4.1/4.6: new token only if empty
+    setOpen(true);
   }
 
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
@@ -109,7 +132,9 @@ export function AddressAutocomplete({
     }
   }
 
-  const showDropdown = open && (suggestions.length > 0 || loading) && !value;
+  // Requirement 3.8: Show dropdown when open, even if suggestions are empty (zero results)
+  // but don't show error. Also show while loading.
+  const showDropdown = open && (suggestions.length > 0 || loading || query.length >= 3) && !value;
 
   return (
     <div className="relative w-full">
@@ -149,7 +174,7 @@ export function AddressAutocomplete({
               value={query}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
-              onFocus={() => setOpen(true)}
+              onFocus={handleInputFocus}
               onBlur={() => setTimeout(() => setOpen(false), 150)}
               placeholder={placeholder}
               autoComplete="off"

@@ -3,9 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { LatLng, PlannedTrip, SortMode } from '@/types';
 import { planRoute, enrichWithWeather } from '@/services/routing';
-import { getWeatherProvider } from '@/services/index';
 import { useTripStore } from '@/store/tripStore';
-import { usePreferencesStore } from '@/store/preferencesStore';
 
 export function parseLocationParam(raw: string): { coords: LatLng; label: string } | null {
   if (!raw) return null;
@@ -32,8 +30,9 @@ export interface UsePlanTripResult {
   retry: () => void;
 }
 
-export function usePlanTrip(rawFrom: string, rawTo: string): UsePlanTripResult {
-  const preferredSort = usePreferencesStore((s) => s.preferences.preferredSort);
+const DEFAULT_SORT: SortMode = 'fastest';
+
+export function usePlanTrip(rawFrom: string, rawTo: string, departAt?: string): UsePlanTripResult {
   const setTrip = useTripStore((s) => s.set);
 
   const [status, setStatus] = useState<PlanStatus>('idle');
@@ -64,7 +63,8 @@ export function usePlanTrip(rawFrom: string, rawTo: string): UsePlanTripResult {
     planRoute({
       from: from.coords,
       to: to.coords,
-      sortBy: preferredSort as SortMode,
+      sortBy: DEFAULT_SORT,
+      departAt: departAt || undefined,
       signal: controller.signal,
     })
       .then(async (result) => {
@@ -73,7 +73,7 @@ export function usePlanTrip(rawFrom: string, rawTo: string): UsePlanTripResult {
         setLocalTrip(result);
         setStatus('success');
         // Enrich with weather in the background — failure is non-fatal
-        const enriched = await enrichWithWeather(result, getWeatherProvider());
+        const enriched = await enrichWithWeather(result);
         if (controller.signal.aborted) return;
         setTrip(enriched);
         setLocalTrip(enriched);
@@ -91,7 +91,7 @@ export function usePlanTrip(rawFrom: string, rawTo: string): UsePlanTripResult {
     return () => controller.abort();
     // retryCount in deps triggers re-fetch on retry()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rawFrom, rawTo, retryCount]);
+  }, [rawFrom, rawTo, departAt, retryCount]);
 
   return { status, trip, error, retry };
 }

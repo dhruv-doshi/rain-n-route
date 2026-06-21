@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowDownUp, ArrowRight } from 'lucide-react';
+import { ArrowDownUp, ArrowRight, Clock } from 'lucide-react';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { AddressAutocomplete } from './AddressAutocomplete';
-import { QuickLocationChips } from './QuickLocationChips';
 import type { GeoSuggestion } from '@/types';
 
 const planSchema = z.object({
@@ -24,16 +23,21 @@ const planSchema = z.object({
 
 type PlanFields = z.infer<typeof planSchema>;
 
-function buildUrl(fields: PlanFields): string {
+function buildUrl(fields: PlanFields, departAt?: string): string {
   const fromParam = `${fields.from.coords.lat},${fields.from.coords.lng},${encodeURIComponent(fields.from.label)}`;
   const toParam = `${fields.to.coords.lat},${fields.to.coords.lng},${encodeURIComponent(fields.to.label)}`;
-  return `/trip/plan?from=${fromParam}&to=${toParam}`;
+  let url = `/trip/plan?from=${fromParam}&to=${toParam}`;
+  if (departAt) {
+    url += `&departAt=${encodeURIComponent(new Date(departAt).toISOString())}`;
+  }
+  return url;
 }
 
 export function FromToForm() {
   const router = useRouter();
   const [from, setFrom] = useState<GeoSuggestion | null>(null);
   const [to, setTo] = useState<GeoSuggestion | null>(null);
+  const [departAt, setDepartAt] = useState('');
   const [errors, setErrors] = useState<{ from?: string; to?: string }>({});
   const [resolutionError, setResolutionError] = useState<{ from?: string; to?: string }>({});
   const [resolving, setResolving] = useState(false);
@@ -59,7 +63,7 @@ export function FromToForm() {
       return;
     }
 
-    router.push(buildUrl(result.data));
+    router.push(buildUrl(result.data, departAt));
   }
 
   function selectFrom(suggestion: GeoSuggestion) {
@@ -127,11 +131,38 @@ export function FromToForm() {
         {(errors.to ?? resolutionError.to) && (
           <p className="text-xs text-destructive">{errors.to ?? resolutionError.to}</p>
         )}
-      </div>
 
-      <div className="px-1">
-        <p className="mb-2 text-xs font-medium text-muted-foreground">Quick fill — From</p>
-        <QuickLocationChips onSelect={selectFrom} />
+        {/* Optional departure time */}
+        <div className="flex flex-col gap-2 pt-2">
+          <label
+            htmlFor="depart-at"
+            className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground"
+          >
+            <Clock className="size-3.5" />
+            Depart at (optional)
+          </label>
+          <div className="relative">
+            <input
+              id="depart-at"
+              type="datetime-local"
+              value={departAt}
+              onChange={(e) => setDepartAt(e.target.value)}
+              className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+            />
+          </div>
+          {departAt && (
+            <p className="text-xs text-muted-foreground">
+              Leaving at{' '}
+              {new Date(departAt).toLocaleString('en-IN', {
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true,
+                month: 'short',
+                day: 'numeric',
+              })}
+            </p>
+          )}
+        </div>
       </div>
 
       <Button type="submit" size="lg" className="w-full gap-2" disabled={resolving}>

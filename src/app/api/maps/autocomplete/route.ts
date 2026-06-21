@@ -5,6 +5,7 @@ import { getMapsProvider } from '@/services';
 
 const schema = z.object({
   q: z.string().min(2),
+  sessionToken: z.string().min(1),
   lat: z.coerce.number().optional(),
   lng: z.coerce.number().optional(),
 });
@@ -15,7 +16,7 @@ export async function GET(req: NextRequest): Promise<Response> {
     const parsed = schema.safeParse(params);
     if (!parsed.success) return validationErrorResponse(parsed.error.issues);
 
-    const { q } = parsed.data;
+    const { q, sessionToken, lat, lng } = parsed.data;
     const cacheKey = `autocomplete:${q}`;
     const cached = lruCache.get(cacheKey);
     if (cached) {
@@ -23,7 +24,8 @@ export async function GET(req: NextRequest): Promise<Response> {
     }
 
     const provider = getMapsProvider();
-    const suggestions = await provider.autocomplete(q);
+    const bias = lat !== undefined && lng !== undefined ? { lat, lng } : undefined;
+    const suggestions = await provider.autocomplete(q, { sessionToken, bias });
 
     lruCache.set(cacheKey, suggestions);
     return Response.json(

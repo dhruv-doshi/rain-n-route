@@ -49,20 +49,8 @@ export interface GeoResult {
 }
 
 // ────────────────────────────────────────────────────────────────────
-// Saved Locations & Preferences
+// Transport
 // ────────────────────────────────────────────────────────────────────
-
-export type SavedLocationKind = 'home' | 'office' | 'favorite' | 'recent';
-
-export interface SavedLocation {
-  id: string;
-  kind: SavedLocationKind;
-  label: string;
-  coords: LatLng;
-  address: string;
-  createdAt: ISODateTime;
-  lastUsedAt: ISODateTime;
-}
 
 export type TransportMode =
   | 'car'
@@ -73,18 +61,6 @@ export type TransportMode =
   | 'walk'
   | 'cycle'
   | 'mixed';
-
-export type WeatherSensitivity = 'low' | 'medium' | 'high';
-
-export interface UserPreferences {
-  transportPriority: TransportMode[]; // ordered preference
-  maxWalkMeters: Meters;
-  weatherSensitivity: WeatherSensitivity;
-  preferredSort: SortMode;
-  defaultBufferMinutes: number;
-  unitSystem: 'metric'; // future: 'imperial'
-  theme: 'system' | 'light' | 'dark';
-}
 
 // ────────────────────────────────────────────────────────────────────
 // Routing
@@ -240,63 +216,6 @@ export interface GearItem {
 }
 
 // ────────────────────────────────────────────────────────────────────
-// Recurring Commutes & History
-// ────────────────────────────────────────────────────────────────────
-
-export type DayOfWeek = 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun';
-
-export interface RecurringCommute {
-  id: string;
-  name: string;
-  fromLocationId: string;
-  toLocationId: string;
-  daysOfWeek: DayOfWeek[];
-  departTime: string; // "HH:mm"
-  preferredMode: TransportMode;
-  bufferMinutes: number;
-  active: boolean;
-  createdAt: ISODateTime;
-}
-
-export interface CommuteLogEntry {
-  id: string;
-  recurringCommuteId?: string;
-  date: ISODateTime;
-  from: SavedLocation | { coords: LatLng; address: string };
-  to: SavedLocation | { coords: LatLng; address: string };
-  mode: TransportMode;
-  estimatedDuration: Seconds;
-  actualDuration?: Seconds;
-  estimatedCost: Paise;
-  actualCost?: Paise;
-  weatherSummary?: string;
-  notes?: string;
-}
-
-// ────────────────────────────────────────────────────────────────────
-// Insights (derived; not persisted)
-// ────────────────────────────────────────────────────────────────────
-
-export interface WeeklyInsight {
-  weekStart: ISODateTime;
-  totalCommutes: number;
-  totalMinutes: number;
-  totalSpendPaise: Paise;
-  totalCarbonGrams: number;
-  byMode: Record<TransportMode, { commutes: number; minutes: number }>;
-}
-
-// ────────────────────────────────────────────────────────────────────
-// Persistence Envelope
-// ────────────────────────────────────────────────────────────────────
-
-export interface PersistedState<T> {
-  schemaVersion: number;
-  state: T;
-  savedAt: ISODateTime;
-}
-
-// ────────────────────────────────────────────────────────────────────
 // Service Errors
 // ────────────────────────────────────────────────────────────────────
 
@@ -316,9 +235,3 @@ export interface ServiceErrorShape {
   retryable: boolean;
   cause?: unknown;
 }
-
-// ────────────────────────────────────────────────────────────────────
-// Tile layers
-// ────────────────────────────────────────────────────────────────────
-
-export type TileLayer = 'base' | 'traffic' | 'transit';

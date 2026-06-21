@@ -1,0 +1,62 @@
+{
+  "routes": [
+    {
+      "distanceMeters": 9800,
+      "duration": "1800s",
+      "staticDuration": "1800s",
+      "polyline": {
+        "encodedPolyline": "oqcnAm}ciMeAeA{@kAaBqB"
+      },
+      "legs": [
+        {
+          "steps": [
+            {
+              "distanceMeters": 450,
+              "staticDuration": "340s",
+              "polyline": {
+                "encodedPolyline": "oqcnAm}ciMeAeA"
+              },
+              "navigationInstruction": {
+                "instructions": "Walk to Indiranagar Metro Station"
+              },
+              "travelMode": "WALK"
+            },
+            {
+              "distanceMeters": 8200,
+              "staticDuration": "1080s",
+              "polyline": {
+                "encodedPolyline": "oycnAkgdiM{@kA"
+              },
+              "travelMode": "TRANSIT",
+              "transitDetails": {
+                "stopDetails": {
+                  "arrivalStop": { "name": "Majestic Metro Station" },
+                  "departureStop": { "name": "Indiranagar Metro Station" },
+                  "arrivalTime": "2024-03-15T09:25:00+05:30",
+                  "departureTime": "2024-03-15T09:07:00+05:30"
+                },
+                "headsign": "Mysuru Road",
+                "transitLine": {
+                  "name": "Purple Line",
+                  "agencies": [{ "name": "Bangalore Metro Rail Corporation" }]
+                },
+                "stopCount": 7
+              }
+            },
+            {
+              "distanceMeters": 1150,
+              "staticDuration": "380s",
+              "polyline": {
+                "encodedPolyline": "o_dnAmtdiMaBqB"
+              },
+              "navigationInstruction": {
+                "instructions": "Walk to destination"
+              },
+              "travelMode": "WALK"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

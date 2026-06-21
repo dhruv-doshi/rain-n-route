@@ -11,19 +11,7 @@ export function Header() {
           <span>Rain-N-Route</span>
         </Link>
 
-        {/* Desktop nav — hidden on mobile, shown md+ */}
-        <nav className="hidden items-center gap-1 md:flex">
-          <Link
-            href="/dashboard"
-            className="rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-          >
-            Dashboard
-          </Link>
-          <ThemeToggle />
-        </nav>
-
-        {/* Mobile: only theme toggle (nav handled by BottomNav) */}
-        <div className="flex items-center md:hidden">
+        <div className="flex items-center">
           <ThemeToggle />
         </div>
       </div>

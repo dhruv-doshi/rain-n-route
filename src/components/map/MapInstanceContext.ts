@@ -1,8 +1,17 @@
+'use client';
+
 import { createContext, useContext } from 'react';
-import type { Map } from 'maplibre-gl';
 
-export const MapInstanceContext = createContext<Map | null>(null);
+/**
+ * Context providing the current google.maps.Map instance to child components.
+ * Returns null while the map is loading or if initialization failed.
+ */
+export const MapInstanceContext = createContext<google.maps.Map | null>(null);
 
-export function useMapInstance(): Map | null {
+/**
+ * Hook to access the current Google Maps map instance.
+ * Returns null if the map is not yet ready or failed to load.
+ */
+export function useMapInstance(): google.maps.Map | null {
   return useContext(MapInstanceContext);
 }

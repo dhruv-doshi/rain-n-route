@@ -21,24 +21,17 @@ import { MapControls } from '@/components/map/MapControls';
 import { usePlanTrip, parseLocationParam } from '@/hooks/usePlanTrip';
 import { useTrafficPolling } from '@/hooks/useTrafficPolling';
 import { useTripStore } from '@/store/tripStore';
-import { usePreferencesStore } from '@/store/preferencesStore';
 import { sortRoutes } from '@/lib/scoring';
 import { haversineMeters } from '@/lib/geo';
 import { planRoute } from '@/services/routing';
-import type { SortMode, TileLayer } from '@/types';
+import type { SortMode } from '@/types';
+
+type MapLayer = 'base' | 'traffic' | 'transit';
 
 interface Props {
   rawFrom: string;
   rawTo: string;
-  baseTilesUrl: string;
-  trafficTilesUrl: string;
-  transitTilesUrl: string;
-}
-
-function tileLayerToUrl(layer: TileLayer, base: string, traffic: string, transit: string): string {
-  if (layer === 'traffic') return traffic;
-  if (layer === 'transit') return transit;
-  return base;
+  departAt?: string;
 }
 
 function deriveZoom(distanceMeters: number): number {
@@ -48,18 +41,11 @@ function deriveZoom(distanceMeters: number): number {
   return 8;
 }
 
-export function TripPlanClient({
-  rawFrom,
-  rawTo,
-  baseTilesUrl,
-  trafficTilesUrl,
-  transitTilesUrl,
-}: Props) {
-  const preferredSort = usePreferencesStore((s) => s.preferences.preferredSort);
-  const [sortBy, setSortBy] = useState<SortMode>(preferredSort as SortMode);
-  const [tileLayer, setTileLayer] = useState<TileLayer>('base');
+export function TripPlanClient({ rawFrom, rawTo, departAt }: Props) {
+  const [sortBy, setSortBy] = useState<SortMode>('fastest');
+  const [tileLayer, setTileLayer] = useState<MapLayer>('base');
   // Render the map only after mount to avoid SSR/CSR hydration mismatch
-  // (MapLibre is client-only and would otherwise diverge from the server HTML).
+  // (Google Maps is client-only and would otherwise diverge from the server HTML).
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -68,7 +54,7 @@ export function TripPlanClient({
   // Mobile-only tab state. Desktop always shows both panels side-by-side.
   const [activeTab, setActiveTab] = useState<'list' | 'map'>('list');
 
-  const { status, trip, error, retry } = usePlanTrip(rawFrom, rawTo);
+  const { status, trip, error, retry } = usePlanTrip(rawFrom, rawTo, departAt);
   const selectedRouteId = useTripStore((s) => s.current?.selectedRouteId);
   const selectRoute = useTripStore((s) => s.selectRoute);
 
@@ -156,7 +142,7 @@ export function TripPlanClient({
 
   const mapPanel = mounted ? (
     <div className="relative h-[60vh] min-h-64 w-full overflow-hidden rounded-xl border border-border lg:h-[600px]">
-      <MapCanvas center={mapCenter} zoom={mapZoom} tilesUrl={baseTilesUrl}>
+      <MapCanvas center={mapCenter} zoom={mapZoom}>
         {sortedRoutes.length > 0 && (
           <RouteOverlay
             routes={sortedRoutes}
@@ -168,11 +154,8 @@ export function TripPlanClient({
         <MapControls
           center={fromParsed?.coords ?? mapCenter}
           routes={sortedRoutes}
-          currentLayer={tileLayer}
+          activeLayer={tileLayer}
           onLayerChange={setTileLayer}
-          tilesUrlForLayer={(l) =>
-            tileLayerToUrl(l, baseTilesUrl, trafficTilesUrl, transitTilesUrl)
-          }
         />
       </MapCanvas>
     </div>

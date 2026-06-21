@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import { CloudRain, Sun, Wind } from 'lucide-react';
 import { sampleWaypoints } from '@/lib/geo';
+import { loadMarkerLibrary } from '@/lib/googleMapsLoader';
 import type { RouteOption, RiskLevel } from '@/types';
 import { useMapInstance } from './MapInstanceContext';
 
@@ -40,7 +41,7 @@ export function WeatherLayer({ route }: Props) {
     const color = RISK_COLOR[overall];
 
     async function addMarkers() {
-      const maplibregl = (await import('maplibre-gl')).default;
+      const { AdvancedMarkerElement } = await loadMarkerLibrary();
       const waypoints = sampleWaypoints(route.geometry, 5000);
 
       for (const wp of waypoints) {
@@ -51,14 +52,16 @@ export function WeatherLayer({ route }: Props) {
         const root = createRoot(el);
         root.render(<WeatherMarkerIcon condition={dominantFactor} color={color} />);
 
-        const marker = new maplibregl.Marker({ element: el })
-          .setLngLat([wp.lng, wp.lat])
-          .addTo(map!);
+        const marker = new AdvancedMarkerElement({
+          map: map!,
+          position: { lat: wp.lat, lng: wp.lng },
+          content: el,
+        });
 
         markersRef.current.push({
           remove: () => {
             root.unmount();
-            marker.remove();
+            marker.map = null;
           },
         });
       }

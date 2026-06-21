@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/shell/ThemeProvider';
 import { Header } from '@/components/shell/Header';
-import { BottomNav } from '@/components/shell/BottomNav';
 import { ServiceWorkerRegister } from '@/components/shell/ServiceWorkerRegister';
 import { OfflineBanner } from '@/components/feedback/OfflineBanner';
 import { PWAInstallPrompt } from '@/components/feedback/PWAInstallPrompt';
@@ -52,11 +51,9 @@ export default function RootLayout({
           </a>
           <OfflineBanner />
           <Header />
-          {/* pb-16 reserves space for the mobile bottom nav */}
-          <main id="main-content" className="flex-1 pb-16 md:pb-0">
+          <main id="main-content" className="flex-1">
             {children}
           </main>
-          <BottomNav />
           <PWAInstallPrompt />
           <Toaster />
         </ThemeProvider>

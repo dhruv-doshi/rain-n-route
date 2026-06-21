@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { decodePolyline } from '@/lib/geo';
 import type { RouteOption, TransportMode } from '@/types';
 import { useMapInstance } from './MapInstanceContext';
@@ -24,12 +24,21 @@ interface Props {
 
 export function RouteOverlay({ routes, selectedRouteId, onRouteClick }: Props) {
   const map = useMapInstance();
+  const polylinesRef = useRef<google.maps.Polyline[]>([]);
+  const listenersRef = useRef<google.maps.MapsEventListener[]>([]);
 
   useEffect(() => {
     if (!map) return;
 
-    const sourceIds: string[] = [];
-    const layerIds: string[] = [];
+    // Clean up previous polylines
+    for (const listener of listenersRef.current) {
+      listener.remove();
+    }
+    listenersRef.current = [];
+    for (const polyline of polylinesRef.current) {
+      polyline.setMap(null);
+    }
+    polylinesRef.current = [];
 
     for (const route of routes) {
       if (!route.geometry) continue;
@@ -37,74 +46,38 @@ export function RouteOverlay({ routes, selectedRouteId, onRouteClick }: Props) {
       const coords = decodePolyline(route.geometry);
       if (coords.length === 0) continue;
 
-      const sourceId = `route-source-${route.id}`;
-      const layerId = `route-layer-${route.id}`;
       const isSelected = route.id === selectedRouteId;
       const primaryMode = route.modes[0] ?? 'mixed';
       const color = MODE_COLOR[primaryMode] ?? '#3b82f6';
 
-      if (!map.getSource(sourceId)) {
-        map.addSource(sourceId, {
-          type: 'geojson',
-          data: {
-            type: 'Feature',
-            geometry: {
-              type: 'LineString',
-              coordinates: coords.map((p) => [p.lng, p.lat]),
-            },
-            properties: { routeId: route.id },
-          },
-        });
-        sourceIds.push(sourceId);
-      }
+      const polyline = new google.maps.Polyline({
+        path: coords.map((p) => ({ lat: p.lat, lng: p.lng })),
+        strokeColor: color,
+        strokeWeight: isSelected ? 6 : 3,
+        strokeOpacity: isSelected ? 1.0 : 0.5,
+        zIndex: isSelected ? 2 : 1,
+        map,
+      });
 
-      if (!map.getLayer(layerId)) {
-        map.addLayer({
-          id: layerId,
-          type: 'line',
-          source: sourceId,
-          layout: { 'line-join': 'round', 'line-cap': 'round' },
-          paint: {
-            'line-color': color,
-            'line-width': isSelected ? 6 : 3,
-            'line-opacity': isSelected ? 1 : 0.5,
-          },
-        });
-        layerIds.push(layerId);
+      polylinesRef.current.push(polyline);
 
-        if (onRouteClick) {
-          map.on('click', layerId, () => onRouteClick(route.id));
-          map.on('mouseenter', layerId, () => {
-            map.getCanvas().style.cursor = 'pointer';
-          });
-          map.on('mouseleave', layerId, () => {
-            map.getCanvas().style.cursor = '';
-          });
-        }
-      } else {
-        map.setPaintProperty(layerId, 'line-width', isSelected ? 6 : 3);
-        map.setPaintProperty(layerId, 'line-opacity', isSelected ? 1 : 0.5);
+      if (onRouteClick) {
+        const listener = polyline.addListener('click', () => {
+          onRouteClick(route.id);
+        });
+        listenersRef.current.push(listener);
       }
     }
 
     return () => {
-      // Map may already be torn down by the parent MapCanvas's cleanup
-      // (map.remove() nulls internal state). Guard against that.
-      if (!map || typeof map.getLayer !== 'function') return;
-      for (const id of layerIds) {
-        try {
-          if (map.getLayer(id)) map.removeLayer(id);
-        } catch {
-          /* style already torn down */
-        }
+      for (const listener of listenersRef.current) {
+        listener.remove();
       }
-      for (const id of sourceIds) {
-        try {
-          if (map.getSource(id)) map.removeSource(id);
-        } catch {
-          /* style already torn down */
-        }
+      listenersRef.current = [];
+      for (const polyline of polylinesRef.current) {
+        polyline.setMap(null);
       }
+      polylinesRef.current = [];
     };
   }, [map, routes, selectedRouteId, onRouteClick]);
 

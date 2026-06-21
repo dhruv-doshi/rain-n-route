@@ -1,0 +1,51 @@
+{
+  "routes": [
+    {
+      "distanceMeters": 8420,
+      "duration": "1140.5s",
+      "staticDuration": "980s",
+      "polyline": {
+        "encodedPolyline": "oqcnAm}ciMeAeA{@kAaBqB"
+      },
+      "legs": [
+        {
+          "steps": [
+            {
+              "distanceMeters": 3200,
+              "staticDuration": "420s",
+              "polyline": {
+                "encodedPolyline": "oqcnAm}ciMeAeA"
+              },
+              "navigationInstruction": {
+                "instructions": "Head north on 100 Feet Rd toward 12th Main Rd"
+              },
+              "travelMode": "DRIVE"
+            },
+            {
+              "distanceMeters": 2100,
+              "staticDuration": "280s",
+              "polyline": {
+                "encodedPolyline": "oycnAkgdiM{@kA"
+              },
+              "navigationInstruction": {
+                "instructions": "Turn right onto CMH Rd"
+              },
+              "travelMode": "DRIVE"
+            },
+            {
+              "distanceMeters": 3120,
+              "staticDuration": "300s",
+              "polyline": {
+                "encodedPolyline": "o_dnAmtdiMaBqB"
+              },
+              "navigationInstruction": {
+                "instructions": "Continue onto Outer Ring Rd"
+              },
+              "travelMode": "DRIVE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

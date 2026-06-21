@@ -11,7 +11,6 @@ import type {
 import { computeScores, sortRoutes } from '@/lib/scoring';
 import { sampleWaypoints } from '@/lib/geo';
 import { computeWeatherImpact } from '@/lib/weatherImpact';
-import type { WeatherProvider } from './weather/types';
 
 export interface PlanRouteParams {
   from: LatLng;
@@ -79,15 +78,27 @@ function pickRepresentativePoints(route: RouteOption, from: LatLng, to: LatLng):
 }
 
 /**
+ * Fetches weather data from the server-side /api/weather endpoint.
+ * This avoids exposing OWM_KEY to the client.
+ */
+async function fetchWeatherFromApi(
+  coords: LatLng,
+  hours = 12,
+): Promise<{ hourly: HourlyForecast[]; aqi: AQIReading }> {
+  const url = `/api/weather?lat=${coords.lat}&lng=${coords.lng}&hours=${hours}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Weather API responded ${res.status}`);
+  return res.json() as Promise<{ hourly: HourlyForecast[]; aqi: AQIReading }>;
+}
+
+/**
  * Enriches each route in a PlannedTrip with weather risk data.
- * Fetches hourly weather and AQI for representative points along each route,
- * then attaches a WeatherRiskSummary to route.weatherRisk.
+ * Fetches hourly weather and AQI for representative points along each route
+ * via the /api/weather server endpoint, then attaches a WeatherRiskSummary
+ * to route.weatherRisk.
  * Silently returns the original trip if weather fetching fails.
  */
-export async function enrichWithWeather(
-  trip: PlannedTrip,
-  provider: WeatherProvider,
-): Promise<PlannedTrip> {
+export async function enrichWithWeather(trip: PlannedTrip): Promise<PlannedTrip> {
   const { from, to } = trip.request;
 
   const enrichedRoutes = await Promise.all(
@@ -95,19 +106,12 @@ export async function enrichWithWeather(
       const points = pickRepresentativePoints(route, from, to);
       const representativePoint = points[Math.floor(points.length / 2)];
 
-      let hourly: HourlyForecast[] = [];
-      let aqiReading: AQIReading | undefined;
-
       try {
-        [hourly, aqiReading] = await Promise.all([
-          provider.hourly(representativePoint, 12),
-          provider.airQuality(representativePoint),
-        ]);
+        const { hourly, aqi } = await fetchWeatherFromApi(representativePoint, 12);
+        return { ...route, weatherRisk: computeWeatherImpact(hourly, aqi) };
       } catch {
         return route;
       }
-
-      return { ...route, weatherRisk: computeWeatherImpact(hourly, aqiReading) };
     }),
   );
 

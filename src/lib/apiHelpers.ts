@@ -37,7 +37,13 @@ export function validationErrorResponse(issues: z.core.$ZodIssue[]): Response {
 }
 
 export function serviceErrorResponse(err: ServiceError): Response {
-  const status = err.code === 'PROVIDER_TIMEOUT' ? 504 : err.code === 'RATE_LIMITED' ? 429 : 502;
+  const statusMap: Record<string, number> = {
+    PROVIDER_TIMEOUT: 504,
+    RATE_LIMITED: 429,
+    NOT_FOUND: 404,
+    VALIDATION_ERROR: 400,
+  };
+  const status = statusMap[err.code] ?? 502;
   const body: Record<string, unknown> = {
     code: err.code,
     message: err.message,
