@@ -15,6 +15,7 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "prepare:bengaluru-data": "node scripts/prepare-bengaluru-data.mjs",
+    "generate:pwa-icons": "node scripts/generate-pwa-icons.mjs",
     "prepare": "husky"
   },
   "lint-staged": {

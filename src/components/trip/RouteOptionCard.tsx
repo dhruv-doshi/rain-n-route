@@ -16,6 +16,7 @@ import { Card, CardHeader, CardTitle, CardAction, CardContent } from '@/componen
 import { Button } from '@/components/ui/button';
 import { StepByStepList } from './StepByStepList';
 import { WeatherRiskBadge } from './WeatherRiskBadge';
+import { FloodPossibilityBadge } from './FloodPossibilityBadge';
 import { CarbonBadge } from './CarbonBadge';
 import { CostCalculatorDialog } from './CostCalculatorDialog';
 import { formatDuration, formatCost, formatDistance } from '@/lib/format';
@@ -106,6 +107,12 @@ export function RouteOptionCard({ route, isSelected, onSelect }: Props) {
         {route.weatherRisk && (
           <div className="mt-3">
             <WeatherRiskBadge risk={route.weatherRisk} />
+          </div>
+        )}
+
+        {route.floodPossibility && (
+          <div className="mt-2">
+            <FloodPossibilityBadge flood={route.floodPossibility} compact />
           </div>
         )}
 

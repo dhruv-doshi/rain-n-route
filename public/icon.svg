@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Rain-N-Route">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#sky)"/>
+  <path fill="#ffffff" d="M156 300c0-41 33-74 74-74 8 0 16 1 23 4 14-52 61-90 117-90 66 0 120 54 120 120 0 8-1 16-3 23 29 8 50 34 50 65 0 37-30 67-67 67H156c-37 0-67-30-67-67 0-37 30-67 67-67z"/>
+  <path fill="none" stroke="#ffffff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" d="M128 352h256"/>
+  <circle cx="190" cy="352" r="28" fill="#ffffff"/>
+  <circle cx="322" cy="352" r="28" fill="#ffffff"/>
+  <path fill="#bae6fd" d="M220 188l36 36-36 36-36-36z"/>
+</svg>

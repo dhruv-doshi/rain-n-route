@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, MapPin, Clock, Droplets } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
@@ -20,7 +20,8 @@ import { RouteOverlay } from '@/components/map/RouteOverlay';
 import { WeatherLayer } from '@/components/map/WeatherLayer';
 import { HazardLayer } from '@/components/map/HazardLayer';
 import { MapControls } from '@/components/map/MapControls';
-import { computeFloodExposure } from '@/lib/floodExposure';
+import { FloodPossibilityBadge } from './FloodPossibilityBadge';
+import { computeRouteFloodPossibility } from '@/lib/floodPossibility';
 import { findNearbyTransit } from '@/lib/nearbyTransit';
 import { recordCorridorDelay } from '@/lib/hotspotMemory';
 import { getStuckPlaybook, nearestStoryName } from '@/lib/stuckPlaybook';
@@ -90,12 +91,11 @@ export function TripPlanClient({ rawFrom, rawTo, departAt }: Props) {
   const selectedRoute = sortedRoutes.find((r) => r.id === selectedRouteId) ?? sortedRoutes[0];
   const baselineSec = selectedRoute?.totalDuration ?? null;
 
-  const routeFloodExposure = selectedRoute?.geometry
-    ? computeFloodExposure(
-        selectedRoute.geometry,
-        selectedRoute.weatherRisk?.factors.some((f) => f.kind === 'rain') ? 8 : 0,
-      )
-    : null;
+  const routeFloodPossibility =
+    selectedRoute?.geometry != null
+      ? (selectedRoute.floodPossibility ??
+        computeRouteFloodPossibility(selectedRoute.geometry, 0, 0))
+      : null;
 
   // Calculate estimated arrival time
   const getEstimatedArrival = (): Date | null => {
@@ -146,7 +146,7 @@ export function TripPlanClient({ rawFrom, rawTo, departAt }: Props) {
       ? getStuckPlaybook({
           delaySec: traffic.delta.deltaSec,
           delayPct: traffic.delta.deltaPct,
-          floodHits: routeFloodExposure?.hits ?? [],
+          floodHits: routeFloodPossibility?.hits ?? [],
           modes: selectedRoute?.modes ?? ['car'],
           nearbyStoryName: routeWaypoints.length ? nearestStoryName(routeWaypoints) : undefined,
           nearbyTransit: routeWaypoints.length ? findNearbyTransit(routeWaypoints) : [],
@@ -190,28 +190,7 @@ export function TripPlanClient({ rawFrom, rawTo, departAt }: Props) {
       {selectedRoute?.weatherRisk?.gear && selectedRoute.weatherRisk.gear.length > 0 && (
         <EssentialsChecklist gear={selectedRoute.weatherRisk.gear} />
       )}
-      {routeFloodExposure && routeFloodExposure.hits.length > 0 && (
-        <div className="rounded-md border border-border bg-card p-3 text-sm">
-          <div className="mb-2 flex items-center gap-1.5 font-medium">
-            <Droplets className="size-4 text-brand" />
-            Flood-prone stretches on this route
-          </div>
-          <ul className="space-y-1 text-muted-foreground">
-            {routeFloodExposure.hits.slice(0, 4).map((h) => (
-              <li key={h.id}>
-                {h.name}
-                {h.valley ? ` (${h.valley})` : ''}
-              </li>
-            ))}
-          </ul>
-          {routeFloodExposure.dominantValley && (
-            <p className="mt-2 text-xs text-muted-foreground">
-              Valley: {routeFloodExposure.dominantValley} — water runs downhill into rajakaluves and
-              tanks.
-            </p>
-          )}
-        </div>
-      )}
+      {routeFloodPossibility?.showAlert && <FloodPossibilityBadge flood={routeFloodPossibility} />}
     </div>
   );
 
@@ -226,8 +205,8 @@ export function TripPlanClient({ rawFrom, rawTo, departAt }: Props) {
           />
         )}
         {selectedRoute && <WeatherLayer route={selectedRoute} />}
-        {selectedRoute && routeFloodExposure && routeFloodExposure.hits.length > 0 && (
-          <HazardLayer hits={routeFloodExposure.hits} routeGeometry={selectedRoute.geometry} />
+        {selectedRoute && routeFloodPossibility && routeFloodPossibility.hits.length > 0 && (
+          <HazardLayer hits={routeFloodPossibility.hits} routeGeometry={selectedRoute.geometry} />
         )}
         <MapControls
           center={fromParsed?.coords ?? mapCenter}
