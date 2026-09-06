@@ -1,0 +1,282 @@
+[
+  {
+    "id": "metro-majestic",
+    "name": "Nadaprabhu Kempegowda Station (Majestic)",
+    "lat": 12.9767,
+    "lng": 77.5713,
+    "mode": "metro",
+    "line": "Purple / Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-indiranagar",
+    "name": "Indiranagar",
+    "lat": 12.9784,
+    "lng": 77.6408,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-mg-road",
+    "name": "MG Road",
+    "lat": 12.975,
+    "lng": 77.6066,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-cubbon-park",
+    "name": "Cubbon Park",
+    "lat": 12.979,
+    "lng": 77.5928,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-vidhana-soudha",
+    "name": "Dr. B. R. Ambedkar Station (Vidhana Soudha)",
+    "lat": 12.9797,
+    "lng": 77.5907,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-kr-puram",
+    "name": "Krishnarajapura (KR Puram)",
+    "lat": 12.9998,
+    "lng": 77.6769,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-baiyappanahalli",
+    "name": "Baiyappanahalli",
+    "lat": 12.9907,
+    "lng": 77.652,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-halasuru",
+    "name": "Halasuru",
+    "lat": 12.9734,
+    "lng": 77.6274,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-ulsoor",
+    "name": "Ulsoor",
+    "lat": 12.983,
+    "lng": 77.622,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-trinity",
+    "name": "Trinity",
+    "lat": 12.973,
+    "lng": 77.608,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-chickpet",
+    "name": "Chickpete",
+    "lat": 12.9674,
+    "lng": 77.5748,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-kr-market",
+    "name": "Krishna Rajendra Market",
+    "lat": 12.9633,
+    "lng": 77.5746,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-national-college",
+    "name": "National College",
+    "lat": 12.949,
+    "lng": 77.573,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-lalbagh",
+    "name": "Lalbagh",
+    "lat": 12.9495,
+    "lng": 77.58,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-jayanagar",
+    "name": "Jayanagar",
+    "lat": 12.9296,
+    "lng": 77.5801,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-rv-road",
+    "name": "Rashtreeya Vidyalaya Road",
+    "lat": 12.9074,
+    "lng": 77.5733,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-banashankari",
+    "name": "Banashankari",
+    "lat": 12.923,
+    "lng": 77.568,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-yeshwantpur",
+    "name": "Yeshwantpur",
+    "lat": 13.0233,
+    "lng": 77.5498,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-peenya",
+    "name": "Peenya",
+    "lat": 13.036,
+    "lng": 77.533,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-nagawara",
+    "name": "Nagawara",
+    "lat": 13.0378,
+    "lng": 77.6103,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-sampige-road",
+    "name": "Sampige Road",
+    "lat": 12.9905,
+    "lng": 77.5567,
+    "mode": "metro",
+    "line": "Green",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-hal",
+    "name": "HAL Airport",
+    "lat": 12.9615,
+    "lng": 77.656,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-kadugodi",
+    "name": "Kadugodi Tree Park",
+    "lat": 12.985,
+    "lng": 77.745,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "metro-whitefield",
+    "name": "Whitefield (Kadugodi)",
+    "lat": 12.996,
+    "lng": 77.758,
+    "mode": "metro",
+    "line": "Purple",
+    "source": "Curated from Namma Metro open data"
+  },
+  {
+    "id": "bus-silk-board",
+    "name": "Silk Board BMTC",
+    "lat": 12.918,
+    "lng": 77.622,
+    "mode": "bus",
+    "source": "Curated BMTC interchange snapshot"
+  },
+  {
+    "id": "bus-hebbal",
+    "name": "Hebbal Bus Terminal",
+    "lat": 13.035,
+    "lng": 77.597,
+    "mode": "bus",
+    "source": "Curated BMTC interchange snapshot"
+  },
+  {
+    "id": "bus-shivajinagar",
+    "name": "Shivajinagar Bus Station",
+    "lat": 12.9833,
+    "lng": 77.603,
+    "mode": "bus",
+    "source": "Curated BMTC interchange snapshot"
+  },
+  {
+    "id": "bus-shantinagar",
+    "name": "Shanthinagar TTMC",
+    "lat": 12.956,
+    "lng": 77.595,
+    "mode": "bus",
+    "source": "Curated BMTC interchange snapshot"
+  },
+  {
+    "id": "bus-kormangala",
+    "name": "Koramangala BMTC",
+    "lat": 12.935,
+    "lng": 77.614,
+    "mode": "bus",
+    "source": "Curated BMTC interchange snapshot"
+  },
+  {
+    "id": "bus-marathahalli",
+    "name": "Marathahalli Bridge BMTC",
+    "lat": 12.959,
+    "lng": 77.697,
+    "mode": "bus",
+    "source": "Curated BMTC interchange snapshot"
+  },
+  {
+    "id": "bus-mysore-road",
+    "name": "Mysore Road Satellite Bus",
+    "lat": 12.914,
+    "lng": 77.487,
+    "mode": "bus",
+    "source": "Curated BMTC interchange snapshot"
+  },
+  {
+    "id": "bus-electronic-city",
+    "name": "Electronic City BMTC",
+    "lat": 12.8456,
+    "lng": 77.6603,
+    "mode": "bus",
+    "source": "Curated BMTC interchange snapshot"
+  }
+]

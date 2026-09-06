@@ -216,6 +216,115 @@ export interface GearItem {
 }
 
 // ────────────────────────────────────────────────────────────────────
+// Bengaluru hazard / explore layers
+// ────────────────────────────────────────────────────────────────────
+
+export type HazardCategory =
+  | 'flood_prone'
+  | 'flood_vulnerable'
+  | 'low_lying'
+  | 'valley'
+  | 'drain'
+  | 'lake'
+  | 'hotspot'
+  | 'story';
+
+export interface HazardPoint {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+  category: HazardCategory;
+  source: string;
+  valley?: string | null;
+  reason?: string;
+  peakHours?: string;
+}
+
+export interface HazardPolygon {
+  id: string;
+  name: string;
+  category: HazardCategory;
+  source: string;
+  /** GeoJSON-style: [lng, lat][] outer ring */
+  polygon: number[][][];
+  valley?: string | null;
+}
+
+export interface HazardLine {
+  id: string;
+  name: string;
+  category: HazardCategory;
+  source: string;
+  valley?: string | null;
+  /** Array of line strings, each [lng, lat][] */
+  lines: number[][][];
+}
+
+export interface PlaceStory {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+  durationSec: number;
+  text: string;
+  links: { label: string; url: string }[];
+  source: string;
+}
+
+export interface TrafficHotspot {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+  valley: string;
+  reason: string;
+  peakHours: string;
+  source: string;
+}
+
+export type TransitMode = 'metro' | 'bus';
+
+export interface TransitStop {
+  id: string;
+  name: string;
+  lat: number;
+  lng: number;
+  mode: TransitMode;
+  /** Namma Metro line name(s), when mode is metro */
+  line?: string;
+  source: string;
+}
+
+export interface FloodExposureHit {
+  id: string;
+  name: string;
+  category: HazardCategory;
+  distanceM: number;
+  lat: number;
+  lng: number;
+  valley?: string | null;
+  reason?: string;
+}
+
+export interface FloodExposureResult {
+  hits: FloodExposureHit[];
+  dominantValley: string | null;
+  spatialLevel: RiskLevel;
+}
+
+export interface BengaluruDataPack {
+  floodPoints: HazardPoint[];
+  lowLying: HazardPoint[];
+  valleys: HazardPolygon[];
+  drains: HazardLine[];
+  lakes: HazardPolygon[];
+  hotspots: TrafficHotspot[];
+  stories: PlaceStory[];
+  transitStops: TransitStop[];
+}
+
+// ────────────────────────────────────────────────────────────────────
 // Service Errors
 // ────────────────────────────────────────────────────────────────────
 

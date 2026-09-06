@@ -189,9 +189,16 @@ describe('GoogleMapsProvider', () => {
       expect(result.placeType).toBe('address');
     });
 
+    it('throws VALIDATION_ERROR outside Bengaluru service area without making network call', async () => {
+      await expect(provider.reverseGeocode({ lat: 0, lng: 0 })).rejects.toSatisfy(
+        (e: unknown) => e instanceof ServiceError && e.code === 'VALIDATION_ERROR',
+      );
+      expect(requestLog.geocode).toHaveLength(0);
+    });
+
     it('throws NOT_FOUND on ZERO_RESULTS', async () => {
       server.use(googleErrorHandlers.reverseGeocodeZeroResults);
-      await expect(provider.reverseGeocode({ lat: 0, lng: 0 })).rejects.toSatisfy(
+      await expect(provider.reverseGeocode({ lat: 12.97, lng: 77.59 })).rejects.toSatisfy(
         (e: unknown) => e instanceof ServiceError && e.code === 'NOT_FOUND',
       );
     });

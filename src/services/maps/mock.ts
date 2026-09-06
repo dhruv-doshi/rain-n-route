@@ -6,7 +6,16 @@ import type {
   RouteRequest,
   RouteResponse,
 } from '@/types';
+import { BENGALURU_ONLY_MESSAGE, isInBengaluruServiceArea } from '@/lib/geo';
+import { withEstimatedCost } from '@/lib/routeCost';
+import { ServiceError } from '@/lib/http';
 import type { AutocompleteOptions, MapsProvider, ResolvePlaceOptions } from './types';
+
+function assertBengaluruServiceArea(coords: LatLng): void {
+  if (!isInBengaluruServiceArea(coords)) {
+    throw new ServiceError('VALIDATION_ERROR', BENGALURU_ONLY_MESSAGE, false);
+  }
+}
 
 // ────────────────────────────────────────────────────────────────────
 // Valid encoded polyline: "oqcnAm}ciMeAeA{@kAaBqB" decodes to 4 points
@@ -128,7 +137,7 @@ const MOCK_ROUTE_TRANSIT: RouteOption = {
   modes: ['transit'],
   totalDuration: 1800,
   totalDistance: 9800,
-  estimatedCost: 4500,
+  estimatedCost: 0,
   numTransfers: 1,
   walkDistance: 800,
   carbonGrams: 490,
@@ -226,16 +235,19 @@ export class MockMapsProvider implements MapsProvider {
    * sessionToken is accepted but never used for network calls.
    */
   async resolvePlace(_placeId: string, _options: ResolvePlaceOptions): Promise<GeoResult> {
+    assertBengaluruServiceArea(MOCK_GEO_RESULT.coords);
     return MOCK_GEO_RESULT;
   }
 
   /** Returns fixture-based GeoResult array. */
   async geocode(_query: string): Promise<GeoResult[]> {
+    assertBengaluruServiceArea(MOCK_GEO_RESULT.coords);
     return [MOCK_GEO_RESULT];
   }
 
   /** Returns fixture-based GeoResult for reverse geocoding. */
-  async reverseGeocode(_coords: LatLng): Promise<GeoResult> {
+  async reverseGeocode(coords: LatLng): Promise<GeoResult> {
+    assertBengaluruServiceArea(coords);
     return MOCK_REVERSE_GEO_RESULT;
   }
 
@@ -244,13 +256,16 @@ export class MockMapsProvider implements MapsProvider {
    * Includes routes for all requested modes that have fixture data.
    */
   async route(req: RouteRequest): Promise<RouteResponse> {
+    assertBengaluruServiceArea(req.from);
+    assertBengaluruServiceArea(req.to);
     const routes: RouteOption[] = req.modes
       .map((mode) => ROUTES_BY_MODE[mode])
-      .filter((r): r is RouteOption => r !== undefined);
+      .filter((r): r is RouteOption => r !== undefined)
+      .map(withEstimatedCost);
 
     // Fallback: if no requested modes match, return car route
     if (routes.length === 0) {
-      routes.push(MOCK_ROUTE_CAR);
+      routes.push(withEstimatedCost(MOCK_ROUTE_CAR));
     }
 
     return {
@@ -274,7 +289,12 @@ export const BENGALURU: LatLng = { lat: 12.9716, lng: 77.5946 };
  * Contains all 4 mode routes with the deterministic timestamp.
  */
 export const MOCK_ROUTE_RESPONSE: RouteResponse = {
-  routes: [MOCK_ROUTE_CAR, MOCK_ROUTE_TRANSIT, MOCK_ROUTE_TWO_WHEELER, MOCK_ROUTE_WALK],
+  routes: [
+    withEstimatedCost(MOCK_ROUTE_CAR),
+    withEstimatedCost(MOCK_ROUTE_TRANSIT),
+    withEstimatedCost(MOCK_ROUTE_TWO_WHEELER),
+    withEstimatedCost(MOCK_ROUTE_WALK),
+  ],
   generatedAt: GENERATED_AT,
   cacheKey: 'mock-12.9784,77.6410-12.9698,77.7499',
 };

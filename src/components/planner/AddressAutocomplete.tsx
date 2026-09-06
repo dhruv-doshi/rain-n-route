@@ -5,6 +5,7 @@ import { Loader2, MapPin, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { useAutocomplete } from '@/hooks/useAutocomplete';
 import { useSessionToken } from '@/hooks/useSessionToken';
+import { BENGALURU_ONLY_MESSAGE, isInBengaluruServiceArea } from '@/lib/geo';
 import type { GeoResult, GeoSuggestion } from '@/types';
 import { cn } from '@/lib/utils';
 
@@ -16,15 +17,22 @@ async function resolvePlace(
   placeId: string,
   sessionToken: string,
   label: string,
-): Promise<GeoResult | null> {
+): Promise<{ ok: true; result: GeoResult } | { ok: false; message?: string }> {
   try {
     const params = new URLSearchParams({ placeId, sessionToken, label });
     const res = await fetch(`/api/maps/place?${params.toString()}`);
-    if (!res.ok) return null;
+    if (!res.ok) {
+      try {
+        const body = (await res.json()) as { error?: { message?: string } };
+        return { ok: false, message: body.error?.message };
+      } catch {
+        return { ok: false };
+      }
+    }
     const data = (await res.json()) as GeoResult;
-    return data;
+    return { ok: true, result: data };
   } catch {
-    return null;
+    return { ok: false };
   }
 }
 
@@ -73,6 +81,11 @@ export function AddressAutocomplete({
 
     // If the suggestion already has coords, use it directly
     if (suggestion.coords) {
+      if (!isInBengaluruServiceArea(suggestion.coords)) {
+        setQuery(userText);
+        onResolutionError?.(BENGALURU_ONLY_MESSAGE);
+        return;
+      }
       setQuery('');
       onSelect(suggestion);
       resetSession();
@@ -89,16 +102,28 @@ export function AddressAutocomplete({
     onResolvingChange?.(false);
     resetSession(); // Always reset session after a selection attempt
 
-    if (!resolved?.coords) {
-      // Requirement 13.2: On place resolution failure, show error for ≥5 seconds,
-      // retain user's typed text in the field, keep field editable
+    if (!resolved.ok) {
+      setQuery(userText);
+      onResolutionError?.(
+        resolved.message ?? "Couldn't resolve this location — please pick a different one",
+      );
+      return;
+    }
+
+    if (!resolved.result.coords) {
       setQuery(userText);
       onResolutionError?.("Couldn't resolve this location — please pick a different one");
       return;
     }
 
+    if (!isInBengaluruServiceArea(resolved.result.coords)) {
+      setQuery(userText);
+      onResolutionError?.(BENGALURU_ONLY_MESSAGE);
+      return;
+    }
+
     setQuery('');
-    onSelect({ ...suggestion, coords: resolved.coords });
+    onSelect({ ...suggestion, coords: resolved.result.coords });
   }
 
   function handleClear() {

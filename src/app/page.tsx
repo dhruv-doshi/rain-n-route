@@ -13,7 +13,8 @@ export default function Home() {
           Plan your commute. <span className="text-brand">Beat the rain.</span>
         </h1>
         <p className="max-w-sm text-sm text-muted-foreground">
-          Multi-modal routes with real-time weather, gear suggestions, and no account required.
+          Multi-modal routes with real-time weather and gear suggestions — Bengaluru only, no
+          account required.
         </p>
       </div>
 

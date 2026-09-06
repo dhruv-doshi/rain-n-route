@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { decodePolyline, haversineMeters, sampleWaypoints } from '@/lib/geo';
+import {
+  decodePolyline,
+  haversineMeters,
+  isInBengaluruServiceArea,
+  sampleWaypoints,
+} from '@/lib/geo';
 
 describe('decodePolyline', () => {
   it('returns empty array for empty string', () => {
@@ -73,5 +78,23 @@ describe('sampleWaypoints', () => {
     const samplesLarge = sampleWaypoints(encoded, 1_000_000);
     const samplesSmall = sampleWaypoints(encoded, 100_000);
     expect(samplesSmall.length).toBeGreaterThanOrEqual(samplesLarge.length);
+  });
+});
+
+describe('isInBengaluruServiceArea', () => {
+  it('accepts central Bengaluru', () => {
+    expect(isInBengaluruServiceArea({ lat: 12.9716, lng: 77.5946 })).toBe(true);
+  });
+
+  it('accepts Whitefield fringe', () => {
+    expect(isInBengaluruServiceArea({ lat: 12.996, lng: 77.758 })).toBe(true);
+  });
+
+  it('rejects Mumbai', () => {
+    expect(isInBengaluruServiceArea({ lat: 19.076, lng: 72.8777 })).toBe(false);
+  });
+
+  it('rejects Chennai', () => {
+    expect(isInBengaluruServiceArea({ lat: 13.0827, lng: 80.2707 })).toBe(false);
   });
 });

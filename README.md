@@ -10,10 +10,12 @@ The current priority is a reliable MVP:
 - Compare route options by time, cost, transfers, and carbon impact.
 - View directions and route geometry on a map.
 - See weather risks and practical gear suggestions.
-- Save locations, preferences, recurring commutes, and trip history locally.
+- **Explore Bengaluru** (`/explore`) — flood-prone areas, valleys, rajakaluves, lakes, and traffic hotspots on a city map (no trip required; works without API keys via bundled data).
 - Use mock services for local development without API keys.
 
 See [PROJECT_STATUS.md](./PROJECT_STATUS.md) for the verified implementation status. Future ideas and nonessential work live in [docs/BACKLOG.md](./docs/BACKLOG.md).
+
+Bengaluru hazard data sources: [data/bengaluru/SOURCES.md](./data/bengaluru/SOURCES.md). Regenerate with `pnpm prepare:bengaluru-data`.
 
 ## Setup
 
@@ -30,7 +32,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-The example environment enables mock services, so the basic app works without third-party credentials. To use live data, set `NEXT_PUBLIC_USE_MOCK_SERVICES=false` and provide the MapmyIndia and OpenWeatherMap keys in `.env.local`.
+The example environment enables mock services, so the basic app and **Explore** tab work without third-party credentials. To use live routing and maps, set `NEXT_PUBLIC_USE_MOCK_SERVICES=false` and provide Google Maps and OpenWeatherMap keys in `.env.local`.
 
 ## Environment
 
@@ -46,17 +48,18 @@ Never commit `.env.local` or real credentials.
 
 ## Commands
 
-| Command              | Purpose                                |
-| -------------------- | -------------------------------------- |
-| `pnpm dev`           | Start the development server           |
-| `pnpm build`         | Create a production build              |
-| `pnpm start`         | Run the production build               |
-| `pnpm lint`          | Run ESLint with zero warning tolerance |
-| `pnpm typecheck`     | Run the TypeScript compiler            |
-| `pnpm test`          | Run unit and integration tests         |
-| `pnpm test:coverage` | Run tests with coverage                |
-| `pnpm test:e2e`      | Run Playwright tests                   |
-| `pnpm format`        | Format the repository                  |
+| Command                       | Purpose                                       |
+| ----------------------------- | --------------------------------------------- |
+| `pnpm dev`                    | Start the development server                  |
+| `pnpm build`                  | Create a production build                     |
+| `pnpm start`                  | Run the production build                      |
+| `pnpm lint`                   | Run ESLint with zero warning tolerance        |
+| `pnpm typecheck`              | Run the TypeScript compiler                   |
+| `pnpm test`                   | Run unit and integration tests                |
+| `pnpm test:coverage`          | Run tests with coverage                       |
+| `pnpm test:e2e`               | Run Playwright tests                          |
+| `pnpm format`                 | Format the repository                         |
+| `pnpm prepare:bengaluru-data` | Regenerate bundled Explore GIS from raw files |
 
 ## Structure
 

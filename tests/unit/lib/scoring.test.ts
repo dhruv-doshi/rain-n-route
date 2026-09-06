@@ -143,13 +143,10 @@ describe('sortRoutes', () => {
     expect(sorted[0].id).toBe('mock-route-two_wheeler');
   });
 
-  it('sorts by cheapest (tie: car and bike score equally; bike id < car id alphabetically... no)', () => {
-    // Both car and bike are Free; stable tie-break is id ascending
+  it('sorts by cheapest (tie: car and bike score equally; stable tie-break is id ascending)', () => {
     const scored = computeScores(FIXTURE);
     const sorted = sortRoutes(scored, 'cheapest');
-    // Transit (4500) last
     expect(sorted[sorted.length - 1].id).toBe('mock-route-transit');
-    // First two are car and bike — sorted by id ascending for stable tie
     expect(sorted[0].id).toBe('mock-route-car');
     expect(sorted[1].id).toBe('mock-route-two_wheeler');
   });

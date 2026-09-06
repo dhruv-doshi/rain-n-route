@@ -23,6 +23,19 @@ This file holds work that is not required for the basic Rain-N-Route MVP. Items 
 - Booking and payment integrations.
 - Imperial units.
 
+## Bengaluru Explore (shipped)
+
+- `/explore` tab with bundled OpenCity / MOD Foundation GIS (see `data/bengaluru/SOURCES.md`).
+- Topic picker (dropdown) to focus map layers and sidebar content — flood, water systems, lakes, traffic, or stories.
+- Spatial flood enrichment on planned routes.
+- Stuck-in-traffic playbook, IndexedDB hotspot memory, Web Speech stories.
+- Wikipedia story excerpts (cached API) and static Metro/BMTC transit snapshot for jam advice.
+
+## Deferred (Bengaluru Step 3+)
+
+- Live BMTC GTFS feed (replace static `transit-stops.json` snapshot).
+- HydroSHEDS stream-order layer (only if simplified under data budget).
+
 ## PWA and Release Polish
 
 - Design and add 192px, 512px, and maskable application icons.

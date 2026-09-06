@@ -43,6 +43,23 @@ export default function PrivacyPage() {
       </ul>
       <p>We do not include any user identifier in those requests. They are made over HTTPS.</p>
 
+      <h2>Open data (Explore)</h2>
+      <p>
+        The <strong>Explore</strong> tab uses bundled public GIS from OpenCity (BBMP / KSRSAC flood
+        locations), MOD Foundation (valleys, primary rajakaluves, lakes), and curated traffic
+        hotspots. This data is shipped with the app — it is not fetched live from those portals at
+        runtime. See <code>data/bengaluru/SOURCES.md</code> in the repository for full attribution.
+      </p>
+      <p>
+        Place stories may optionally load short excerpts from{' '}
+        <a href="https://en.wikipedia.org/" className="underline">
+          Wikipedia
+        </a>{' '}
+        via our server (cached, no API key). If Wikipedia is unavailable, curated text in the app is
+        shown instead.
+      </p>
+      <p>Explore maps are indicative only and are not a flood warning or engineering survey.</p>
+
       <h2>Cookies & tracking</h2>
       <p>None. No analytics, no advertising, no third-party trackers.</p>
 
@@ -59,7 +76,7 @@ export default function PrivacyPage() {
         wipes IndexedDB, sessionStorage, and localStorage in one step.
       </p>
 
-      <p className="text-sm text-muted-foreground">Last updated: 2026-05-05.</p>
+      <p className="text-sm text-muted-foreground">Last updated: 2026-09-06.</p>
     </article>
   );
 }

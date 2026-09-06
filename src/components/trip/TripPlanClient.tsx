@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, MapPin, RefreshCw, Clock } from 'lucide-react';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { ArrowLeft, MapPin, Clock, Droplets } from 'lucide-react';
+import { buttonVariants } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 import { RouteSortTabs } from './RouteSortTabs';
@@ -14,10 +14,17 @@ import { PlanEmptyState } from './PlanEmptyState';
 import { EssentialsChecklist } from './EssentialsChecklist';
 import { LeaveNowScheduler } from './LeaveNowScheduler';
 import { ShareTripButton } from './ShareTripButton';
+import { StuckPlaybookBanner } from './StuckPlaybookBanner';
 import { MapCanvas } from '@/components/map/MapCanvas';
 import { RouteOverlay } from '@/components/map/RouteOverlay';
 import { WeatherLayer } from '@/components/map/WeatherLayer';
+import { HazardLayer } from '@/components/map/HazardLayer';
 import { MapControls } from '@/components/map/MapControls';
+import { computeFloodExposure } from '@/lib/floodExposure';
+import { findNearbyTransit } from '@/lib/nearbyTransit';
+import { recordCorridorDelay } from '@/lib/hotspotMemory';
+import { getStuckPlaybook, nearestStoryName } from '@/lib/stuckPlaybook';
+import { sampleWaypoints } from '@/lib/geo';
 import { usePlanTrip, parseLocationParam } from '@/hooks/usePlanTrip';
 import { useTrafficPolling } from '@/hooks/useTrafficPolling';
 import { useTripStore } from '@/store/tripStore';
@@ -83,6 +90,13 @@ export function TripPlanClient({ rawFrom, rawTo, departAt }: Props) {
   const selectedRoute = sortedRoutes.find((r) => r.id === selectedRouteId) ?? sortedRoutes[0];
   const baselineSec = selectedRoute?.totalDuration ?? null;
 
+  const routeFloodExposure = selectedRoute?.geometry
+    ? computeFloodExposure(
+        selectedRoute.geometry,
+        selectedRoute.weatherRisk?.factors.some((f) => f.kind === 'rain') ? 8 : 0,
+      )
+    : null;
+
   // Calculate estimated arrival time
   const getEstimatedArrival = (): Date | null => {
     if (!selectedRoute) return null;
@@ -119,19 +133,42 @@ export function TripPlanClient({ rawFrom, rawTo, departAt }: Props) {
     enabled: status === 'success' && sortedRoutes.length > 0,
   });
 
+  const stuckDelaySec = traffic.delta?.deltaSec ?? 0;
+  const showStuckPlaybook =
+    traffic.delta != null && (traffic.delta.shouldPromptReroute || stuckDelaySec >= 5 * 60);
+
+  const routeWaypoints = selectedRoute?.geometry
+    ? sampleWaypoints(selectedRoute.geometry, 2000)
+    : [];
+
+  const stuckActions =
+    showStuckPlaybook && traffic.delta
+      ? getStuckPlaybook({
+          delaySec: traffic.delta.deltaSec,
+          delayPct: traffic.delta.deltaPct,
+          floodHits: routeFloodExposure?.hits ?? [],
+          modes: selectedRoute?.modes ?? ['car'],
+          nearbyStoryName: routeWaypoints.length ? nearestStoryName(routeWaypoints) : undefined,
+          nearbyTransit: routeWaypoints.length ? findNearbyTransit(routeWaypoints) : [],
+        })
+      : [];
+
+  useEffect(() => {
+    if (!selectedRoute?.geometry || !traffic.delta || traffic.delta.deltaSec <= 0) return;
+    void recordCorridorDelay(selectedRoute.geometry, traffic.delta.deltaSec);
+  }, [selectedRoute?.geometry, traffic.delta, traffic.lastUpdatedAt]);
+
   const routeList = (
     <div className="space-y-3">
       {status === 'loading' && <RouteListSkeleton />}
       {status === 'error' && error && <PlanErrorState error={error} onRetry={retry} />}
       {status === 'success' && sortedRoutes.length === 0 && <PlanEmptyState />}
-      {traffic.delta?.shouldPromptReroute && (
-        <div className="flex items-center justify-between gap-3 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950/40 dark:text-amber-100">
-          <span>ETA increased by {Math.round(traffic.delta.deltaPct * 100)}% — re-plan?</span>
-          <Button size="sm" variant="outline" onClick={retry} className="gap-1.5">
-            <RefreshCw className="size-3.5" />
-            Re-plan
-          </Button>
-        </div>
+      {showStuckPlaybook && traffic.delta && stuckActions.length > 0 && (
+        <StuckPlaybookBanner
+          actions={stuckActions}
+          delayLabel={`+${formatDuration(traffic.delta.deltaSec)} (${Math.round(traffic.delta.deltaPct * 100)}%)`}
+          onReroute={retry}
+        />
       )}
       {status === 'success' &&
         sortedRoutes.length > 0 &&
@@ -153,6 +190,28 @@ export function TripPlanClient({ rawFrom, rawTo, departAt }: Props) {
       {selectedRoute?.weatherRisk?.gear && selectedRoute.weatherRisk.gear.length > 0 && (
         <EssentialsChecklist gear={selectedRoute.weatherRisk.gear} />
       )}
+      {routeFloodExposure && routeFloodExposure.hits.length > 0 && (
+        <div className="rounded-md border border-border bg-card p-3 text-sm">
+          <div className="mb-2 flex items-center gap-1.5 font-medium">
+            <Droplets className="size-4 text-brand" />
+            Flood-prone stretches on this route
+          </div>
+          <ul className="space-y-1 text-muted-foreground">
+            {routeFloodExposure.hits.slice(0, 4).map((h) => (
+              <li key={h.id}>
+                {h.name}
+                {h.valley ? ` (${h.valley})` : ''}
+              </li>
+            ))}
+          </ul>
+          {routeFloodExposure.dominantValley && (
+            <p className="mt-2 text-xs text-muted-foreground">
+              Valley: {routeFloodExposure.dominantValley} — water runs downhill into rajakaluves and
+              tanks.
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 
@@ -167,6 +226,9 @@ export function TripPlanClient({ rawFrom, rawTo, departAt }: Props) {
           />
         )}
         {selectedRoute && <WeatherLayer route={selectedRoute} />}
+        {selectedRoute && routeFloodExposure && routeFloodExposure.hits.length > 0 && (
+          <HazardLayer hits={routeFloodExposure.hits} routeGeometry={selectedRoute.geometry} />
+        )}
         <MapControls
           center={fromParsed?.coords ?? mapCenter}
           routes={sortedRoutes}
