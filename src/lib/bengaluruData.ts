@@ -56,6 +56,7 @@ export type ExploreTopicId =
   | 'traffic'
   | 'transit'
   | 'commute'
+  | 'monsoon_commute'
   | 'stories';
 
 export type ExploreNearbyKind = 'flood' | 'hotspot' | 'transit' | 'commute' | 'none';
@@ -166,6 +167,15 @@ export const EXPLORE_TOPICS: {
     summary:
       'Traffic hotspots alongside Metro and BMTC hubs — where delays cluster and transit alternatives sit nearby.',
     layers: ['hotspots', 'transit'],
+    nearbyKind: 'commute',
+    group: 'traffic',
+  },
+  {
+    id: 'monsoon_commute',
+    label: 'Rainy-day commute',
+    summary:
+      'Flood-prone points, traffic hotspots, and Metro/BMTC hubs together — when monsoon rain and jams overlap.',
+    layers: ['flood', 'hotspots', 'transit'],
     nearbyKind: 'commute',
     group: 'traffic',
   },

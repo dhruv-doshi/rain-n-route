@@ -3,9 +3,9 @@
 // - Navigations (HTML): network-first with offline fallback.
 // - API requests: network-only (we never want to serve stale weather/route data).
 
-const CACHE_NAME = 'cw-v1';
+const CACHE_NAME = 'cw-v2';
 const OFFLINE_URL = '/offline.html';
-const PRECACHE_URLS = ['/', OFFLINE_URL];
+const PRECACHE_URLS = ['/', '/explore', OFFLINE_URL, '/icon-192.png', '/icon-512.png', '/icon.svg'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS)));
@@ -27,6 +27,8 @@ function isStaticAsset(url) {
   return (
     url.pathname.startsWith('/_next/static') ||
     url.pathname.startsWith('/icon-') ||
+    url.pathname === '/icon.svg' ||
+    url.pathname === '/apple-touch-icon.png' ||
     url.pathname === '/favicon.ico' ||
     /\.(png|jpg|jpeg|svg|webp|woff2?)$/i.test(url.pathname)
   );
@@ -53,6 +55,24 @@ self.addEventListener('fetch', (event) => {
             return res;
           }),
       ),
+    );
+    return;
+  }
+
+  // Explore: network-first with cache fallback for offline revisit.
+  if (req.mode === 'navigate' && url.pathname === '/explore') {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+          return res;
+        })
+        .catch(() =>
+          caches
+            .match(req)
+            .then((hit) => hit || caches.match(OFFLINE_URL).then((r) => r || Response.error())),
+        ),
     );
     return;
   }

@@ -99,6 +99,19 @@ export interface TransitLeg {
   arriveAt: ISODateTime;
 }
 
+export interface RouteFloodPossibility {
+  /** Estimated chance of meaningful waterlogging on this route (0–100). */
+  possibilityPercent: number;
+  level: RiskLevel;
+  /** True when rain is heavy enough and possibility is moderate or worse. */
+  showAlert: boolean;
+  summary: string;
+  maxRainMm: number;
+  maxProb: number;
+  hits: FloodExposureHit[];
+  dominantValley: string | null;
+}
+
 export interface RouteOption {
   id: string;
   modes: TransportMode[]; // multi-modal possible
@@ -111,6 +124,7 @@ export interface RouteOption {
   steps: RouteStep[];
   geometry: string; // encoded polyline
   weatherRisk?: WeatherRiskSummary; // attached in Phase 7
+  floodPossibility?: RouteFloodPossibility;
   scoreBreakdown?: Record<SortMode, number>;
 }
 

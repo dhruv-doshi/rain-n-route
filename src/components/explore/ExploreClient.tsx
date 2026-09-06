@@ -1,11 +1,13 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, ChevronDown, Crosshair, Layers, MapPin } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { AlertTriangle, ChevronDown, Crosshair, Layers, MapPin, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapCanvas } from '@/components/map/MapCanvas';
 import { ExploreGoogleLayers, LAYER_COLORS } from './ExploreGoogleLayers';
+import { ExploreSearchBar, type ExploreSearchHit } from './ExploreSearchBar';
 import { PlaceStoriesPanel } from './PlaceStoriesPanel';
 import {
   DEFAULT_EXPLORE_TOPIC,
@@ -17,10 +19,13 @@ import {
   type ExploreTopicId,
 } from '@/lib/bengaluruData';
 import { haversineMeters } from '@/lib/geo';
+import type { LatLng } from '@/types';
 import { getHotspotDelayHint } from '@/lib/hotspotMemory';
 import { isGoogleMapsConfigured } from '@/lib/googleMapsLoader';
 import { useGeolocation } from '@/hooks/useGeolocation';
 import { cn } from '@/lib/utils';
+
+const BENGALURU_CENTER: LatLng = { lat: 12.9716, lng: 77.5946 };
 
 const selectClassName = cn(
   'h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm transition-colors outline-none',
@@ -39,10 +44,18 @@ function getTopic(topicId: ExploreTopicId) {
   return EXPLORE_TOPICS.find((topic) => topic.id === topicId) ?? EXPLORE_TOPICS[0];
 }
 
-export function ExploreClient() {
+interface Props {
+  initialTopicId?: ExploreTopicId;
+}
+
+export function ExploreClient({ initialTopicId = DEFAULT_EXPLORE_TOPIC }: Props) {
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
-  const [topicId, setTopicId] = useState<ExploreTopicId>(DEFAULT_EXPLORE_TOPIC);
+  const [topicId, setTopicId] = useState<ExploreTopicId>(initialTopicId);
+  const [mapCenter, setMapCenter] = useState<LatLng>(BENGALURU_CENTER);
+  const [mapZoom, setMapZoom] = useState(11);
   const [extraLayers, setExtraLayers] = useState<Set<ExploreLayerId>>(() => new Set());
+  const [hiddenLayers, setHiddenLayers] = useState<Set<ExploreLayerId>>(() => new Set());
   const [showLayerPicker, setShowLayerPicker] = useState(false);
   const [selected, setSelected] = useState<SelectedFeature | null>(null);
   const [hintForId, setHintForId] = useState<{ id: string; hint: string } | null>(null);
@@ -52,15 +65,20 @@ export function ExploreClient() {
 
   const topic = getTopic(topicId);
   const activeLayers = useMemo(() => {
-    const layers = new Set<ExploreLayerId>(topic.layers);
-    for (const layer of extraLayers) layers.add(layer);
+    const layers = new Set<ExploreLayerId>();
+    for (const layer of topic.layers) {
+      if (!hiddenLayers.has(layer)) layers.add(layer);
+    }
+    for (const layer of extraLayers) {
+      if (!hiddenLayers.has(layer)) layers.add(layer);
+    }
     return layers;
-  }, [topic.layers, extraLayers]);
+  }, [topic.layers, extraLayers, hiddenLayers]);
 
-  const activeLayerMeta = useMemo(
-    () => EXPLORE_LAYERS.filter((layer) => activeLayers.has(layer.id)),
-    [activeLayers],
-  );
+  const allLayerMeta = useMemo(() => {
+    const ids = new Set<ExploreLayerId>([...topic.layers, ...extraLayers]);
+    return EXPLORE_LAYERS.filter((layer) => ids.has(layer.id));
+  }, [topic.layers, extraLayers]);
 
   const selectedHotspot = selected?.id.startsWith('hs-')
     ? getBengaluruData().hotspots.find((h) => h.id === selected.id)
@@ -77,12 +95,32 @@ export function ExploreClient() {
     setMounted(true);
   }, []);
 
-  const onTopicChange = useCallback((nextTopicId: ExploreTopicId) => {
-    setTopicId(nextTopicId);
-    setSelected(null);
-    setExtraLayers(new Set());
-    setShowLayerPicker(false);
-  }, []);
+  const onTopicChange = useCallback(
+    (nextTopicId: ExploreTopicId) => {
+      setTopicId(nextTopicId);
+      setSelected(null);
+      setExtraLayers(new Set());
+      setHiddenLayers(new Set());
+      setShowLayerPicker(false);
+      router.replace(`/explore?topic=${nextTopicId}`, { scroll: false });
+    },
+    [router],
+  );
+
+  const onSearchSelect = useCallback(
+    (hit: ExploreSearchHit) => {
+      onTopicChange(hit.suggestedTopic);
+      setMapCenter({ lat: hit.lat, lng: hit.lng });
+      setMapZoom(14);
+      setSelected({
+        id: hit.id,
+        name: hit.name,
+        detail: hit.detail,
+        source: hit.source,
+      });
+    },
+    [onTopicChange],
+  );
 
   useEffect(() => {
     if (!selectedHotspot) return;
@@ -102,9 +140,43 @@ export function ExploreClient() {
       else next.add(id);
       return next;
     });
+    setHiddenLayers((prev) => {
+      if (!prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
   }, []);
 
-  const onFeatureClick = useCallback((f: SelectedFeature) => setSelected(f), []);
+  const setLayerVisible = useCallback((id: ExploreLayerId, visible: boolean) => {
+    if (visible) {
+      setHiddenLayers((prev) => {
+        if (!prev.has(id)) return prev;
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+      return;
+    }
+
+    setHiddenLayers((prev) => {
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+    setExtraLayers((prev) => {
+      if (!prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
+  }, []);
+
+  const clearSelection = useCallback(() => setSelected(null), []);
+
+  const onFeatureClick = useCallback((f: SelectedFeature) => {
+    setSelected((prev) => (prev?.id === f.id ? null : f));
+  }, []);
 
   const nearby = useMemo(() => {
     if (!userCoords || topic.nearbyKind === 'none') return [];
@@ -161,13 +233,17 @@ export function ExploreClient() {
     return items.sort((a, b) => a.distanceM - b.distanceM).slice(0, 5);
   }, [topic.nearbyKind, userCoords]);
 
-  const center = userCoords ?? { lat: 12.9716, lng: 77.5946 };
+  const center = userCoords ?? mapCenter;
 
   const mapPanel = (
     <div className="relative h-[50vh] min-h-64 w-full overflow-hidden rounded-xl border border-border lg:h-[560px]">
       {googleAvailable ? (
-        <MapCanvas center={center} zoom={11}>
-          <ExploreGoogleLayers activeLayers={activeLayers} onFeatureClick={onFeatureClick} />
+        <MapCanvas center={center} zoom={mapZoom}>
+          <ExploreGoogleLayers
+            activeLayers={activeLayers}
+            onFeatureClick={onFeatureClick}
+            onMapClick={clearSelection}
+          />
         </MapCanvas>
       ) : mounted ? (
         <div className="flex h-full flex-col items-center justify-center bg-muted/20 px-6 text-center">
@@ -207,28 +283,31 @@ export function ExploreClient() {
           </p>
         </div>
 
-        <div className="w-full lg:max-w-sm">
-          <label htmlFor="explore-topic" className="text-xs font-medium text-muted-foreground">
-            What to explore
-          </label>
-          <div className="relative mt-1.5">
-            <select
-              id="explore-topic"
-              className={cn(selectClassName, 'appearance-none pr-9')}
-              value={topicId}
-              onChange={(event) => onTopicChange(event.target.value as ExploreTopicId)}
-            >
-              {EXPLORE_TOPIC_GROUPS.map((group) => (
-                <optgroup key={group.id} label={group.label}>
-                  {EXPLORE_TOPICS.filter((item) => item.group === group.id).map((item) => (
-                    <option key={item.id} value={item.id}>
-                      {item.label}
-                    </option>
-                  ))}
-                </optgroup>
-              ))}
-            </select>
-            <ChevronDown className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground" />
+        <div className="w-full space-y-3 lg:max-w-sm">
+          <ExploreSearchBar onSelect={onSearchSelect} />
+          <div>
+            <label htmlFor="explore-topic" className="text-xs font-medium text-muted-foreground">
+              What to explore
+            </label>
+            <div className="relative mt-1.5">
+              <select
+                id="explore-topic"
+                className={cn(selectClassName, 'appearance-none pr-9')}
+                value={topicId}
+                onChange={(event) => onTopicChange(event.target.value as ExploreTopicId)}
+              >
+                {EXPLORE_TOPIC_GROUPS.map((group) => (
+                  <optgroup key={group.id} label={group.label}>
+                    {EXPLORE_TOPICS.filter((item) => item.group === group.id).map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.label}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground" />
+            </div>
           </div>
         </div>
       </div>
@@ -273,19 +352,35 @@ export function ExploreClient() {
             </div>
 
             <ul className="mt-3 flex flex-wrap gap-2">
-              {activeLayerMeta.map((layer) => (
-                <li
-                  key={layer.id}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs"
-                >
-                  <span
-                    className="size-2 rounded-full"
-                    style={{ backgroundColor: LAYER_COLORS[layer.id] }}
-                    aria-hidden
-                  />
-                  {layer.label}
-                </li>
-              ))}
+              {allLayerMeta.map((layer) => {
+                const isActive = activeLayers.has(layer.id);
+                return (
+                  <li key={layer.id}>
+                    <button
+                      type="button"
+                      className={cn(
+                        'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs transition-colors',
+                        isActive
+                          ? 'border-brand/40 bg-brand/10 text-foreground'
+                          : 'border-border bg-muted/20 text-muted-foreground line-through',
+                      )}
+                      aria-pressed={isActive}
+                      onClick={() => setLayerVisible(layer.id, !isActive)}
+                    >
+                      <span
+                        className="size-2 rounded-full"
+                        style={{ backgroundColor: LAYER_COLORS[layer.id] }}
+                        aria-hidden
+                      />
+                      {layer.label}
+                      <X className="size-3 opacity-70" aria-hidden />
+                      <span className="sr-only">
+                        {isActive ? `Hide ${layer.label}` : `Show ${layer.label}`}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
 
             {showLayerPicker && (
@@ -297,8 +392,19 @@ export function ExploreClient() {
                       <Button
                         key={layer.id}
                         size="sm"
-                        variant={extraLayers.has(layer.id) ? 'default' : 'outline'}
-                        onClick={() => toggleExtraLayer(layer.id)}
+                        variant={
+                          extraLayers.has(layer.id) && !hiddenLayers.has(layer.id)
+                            ? 'default'
+                            : 'outline'
+                        }
+                        aria-pressed={extraLayers.has(layer.id) && !hiddenLayers.has(layer.id)}
+                        onClick={() => {
+                          if (extraLayers.has(layer.id) && !hiddenLayers.has(layer.id)) {
+                            setLayerVisible(layer.id, false);
+                          } else {
+                            toggleExtraLayer(layer.id);
+                          }
+                        }}
                       >
                         {layer.label}
                       </Button>
@@ -315,7 +421,19 @@ export function ExploreClient() {
             <PlaceStoriesPanel />
           ) : selected ? (
             <div className="rounded-lg border border-border bg-card p-4">
-              <h2 className="font-medium">{selected.name}</h2>
+              <div className="flex items-start justify-between gap-2">
+                <h2 className="font-medium">{selected.name}</h2>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="shrink-0 gap-1"
+                  onClick={clearSelection}
+                  aria-label="Clear selection"
+                >
+                  <X className="size-3.5" />
+                  Clear
+                </Button>
+              </div>
               <p className="mt-2 text-sm text-muted-foreground">{selected.detail}</p>
               {delayHint && (
                 <p className="mt-2 text-xs font-medium text-amber-800 dark:text-amber-200">
@@ -323,15 +441,12 @@ export function ExploreClient() {
                 </p>
               )}
               <p className="mt-2 text-xs text-muted-foreground">Source: {selected.source}</p>
-              <Button size="sm" variant="ghost" className="mt-2" onClick={() => setSelected(null)}>
-                Close
-              </Button>
             </div>
           ) : (
             <div className="rounded-lg border border-dashed border-border p-4 text-sm text-muted-foreground">
               {googleAvailable
-                ? `Tap a marker on the map to learn more about this ${topic.label.toLowerCase()} view.`
-                : 'Enable Google Maps to interact with map markers, or switch topics above.'}
+                ? `Tap a marker, lake, drain, or valley on the map to learn more about this ${topic.label.toLowerCase()} view.`
+                : 'Enable Google Maps to interact with map layers, or use search and topic picker above.'}
             </div>
           )}
 

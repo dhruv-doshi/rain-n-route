@@ -12,6 +12,7 @@ import { computeScores, sortRoutes } from '@/lib/scoring';
 import { sampleWaypoints } from '@/lib/geo';
 import { computeWeatherImpact } from '@/lib/weatherImpact';
 import { applySpatialFloodToRisk, computeFloodExposure } from '@/lib/floodExposure';
+import { computeRouteFloodPossibility } from '@/lib/floodPossibility';
 import { suggestGear } from '@/lib/gearSuggestions';
 import type { RiskLevel, WeatherRiskSummary } from '@/types';
 
@@ -145,9 +146,12 @@ export async function enrichWithWeather(trip: PlannedTrip): Promise<PlannedTrip>
       try {
         const { hourly, aqi } = await fetchWeatherFromApi(representativePoint, 12);
         const maxMm = hourly.length > 0 ? Math.max(...hourly.map((h) => h.precipitationMm)) : 0;
+        const maxProb =
+          hourly.length > 0 ? Math.max(...hourly.map((h) => h.precipitationProbability)) : 0;
         const baseRisk = computeWeatherImpact(hourly, aqi);
         const risk = mergeSpatialFloodRisk(baseRisk, route.geometry, maxMm);
-        return { ...route, weatherRisk: risk };
+        const floodPossibility = computeRouteFloodPossibility(route.geometry, maxMm, maxProb);
+        return { ...route, weatherRisk: risk, floodPossibility };
       } catch {
         return route;
       }

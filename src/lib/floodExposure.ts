@@ -194,10 +194,10 @@ export function applySpatialFloodToRisk(
   const existing = factors.find((f) => f.kind === 'flood');
   let spatialLevel = exposure.spatialLevel;
   if (spatialLevel === 'low' && exposure.hits.length > 0) {
-    spatialLevel = maxRainMm >= 1 ? 'moderate' : 'low';
+    spatialLevel = maxRainMm >= 5 ? 'moderate' : 'low';
   }
   if (spatialLevel === 'low' && exposure.hits.length >= 2) {
-    spatialLevel = 'moderate';
+    spatialLevel = maxRainMm >= 10 ? 'moderate' : 'low';
   }
 
   const mergedLevel =

@@ -21,12 +21,20 @@ const TRANSIT_MODE_COLORS = {
   bus: '#16a34a',
 } as const;
 
-interface Props {
-  activeLayers: Set<ExploreLayerId>;
-  onFeatureClick?: (feature: { id: string; name: string; detail: string; source: string }) => void;
+interface FeaturePayload {
+  id: string;
+  name: string;
+  detail: string;
+  source: string;
 }
 
-export function ExploreGoogleLayers({ activeLayers, onFeatureClick }: Props) {
+interface Props {
+  activeLayers: Set<ExploreLayerId>;
+  onFeatureClick?: (feature: FeaturePayload) => void;
+  onMapClick?: () => void;
+}
+
+export function ExploreGoogleLayers({ activeLayers, onFeatureClick, onMapClick }: Props) {
   const map = useMapInstance();
   const overlaysRef = useRef<(google.maps.Marker | google.maps.Polyline | google.maps.Polygon)[]>(
     [],
@@ -36,6 +44,14 @@ export function ExploreGoogleLayers({ activeLayers, onFeatureClick }: Props) {
     if (!map) return;
     const data = getBengaluruData();
     const overlays: (google.maps.Marker | google.maps.Polyline | google.maps.Polygon)[] = [];
+
+    function attachClick(
+      overlay: google.maps.Marker | google.maps.Polyline | google.maps.Polygon,
+      feature: FeaturePayload,
+    ) {
+      if (!onFeatureClick) return;
+      overlay.addListener('click', () => onFeatureClick(feature));
+    }
 
     function addMarker(
       lat: number,
@@ -59,9 +75,7 @@ export function ExploreGoogleLayers({ activeLayers, onFeatureClick }: Props) {
           strokeWeight: 1,
         },
       });
-      if (onFeatureClick) {
-        marker.addListener('click', () => onFeatureClick({ id, name: title, detail, source }));
-      }
+      attachClick(marker, { id, name: title, detail, source });
       overlays.push(marker);
     }
 
@@ -77,6 +91,13 @@ export function ExploreGoogleLayers({ activeLayers, onFeatureClick }: Props) {
             fillColor: LAYER_COLORS.valleys,
             fillOpacity: 0.08,
           });
+          attachClick(poly, {
+            id: v.id,
+            name: v.name,
+            detail:
+              'Valley watershed — rain on the plateau drains here toward tanks and rajakaluves.',
+            source: v.source,
+          });
           overlays.push(poly);
         }
       }
@@ -85,15 +106,22 @@ export function ExploreGoogleLayers({ activeLayers, onFeatureClick }: Props) {
     if (activeLayers.has('drains')) {
       for (const d of data.drains) {
         for (const line of d.lines) {
-          overlays.push(
-            new google.maps.Polyline({
-              map,
-              path: line.map(([lng, lat]) => ({ lat, lng })),
-              strokeColor: LAYER_COLORS.drains,
-              strokeOpacity: 0.7,
-              strokeWeight: 2,
-            }),
-          );
+          const polyline = new google.maps.Polyline({
+            map,
+            path: line.map(([lng, lat]) => ({ lat, lng })),
+            strokeColor: LAYER_COLORS.drains,
+            strokeOpacity: 0.7,
+            strokeWeight: 4,
+          });
+          attachClick(polyline, {
+            id: d.id,
+            name: d.name,
+            detail: d.valley
+              ? `Primary rajakaluve in ${d.valley}`
+              : 'Primary stormwater drain from MOD / CAG audit',
+            source: d.source,
+          });
+          overlays.push(polyline);
         }
       }
     }
@@ -101,17 +129,22 @@ export function ExploreGoogleLayers({ activeLayers, onFeatureClick }: Props) {
     if (activeLayers.has('lakes')) {
       for (const lake of data.lakes) {
         if (!lake.polygon?.[0]) continue;
-        overlays.push(
-          new google.maps.Polygon({
-            map,
-            paths: lake.polygon[0].map(([lng, lat]) => ({ lat, lng })),
-            strokeColor: LAYER_COLORS.lakes,
-            strokeOpacity: 0.8,
-            strokeWeight: 1,
-            fillColor: LAYER_COLORS.lakes,
-            fillOpacity: 0.15,
-          }),
-        );
+        const poly = new google.maps.Polygon({
+          map,
+          paths: lake.polygon[0].map(([lng, lat]) => ({ lat, lng })),
+          strokeColor: LAYER_COLORS.lakes,
+          strokeOpacity: 0.8,
+          strokeWeight: 1,
+          fillColor: LAYER_COLORS.lakes,
+          fillOpacity: 0.15,
+        });
+        attachClick(poly, {
+          id: lake.id,
+          name: lake.name,
+          detail: 'Existing tank / lake — part of Bengaluru’s historic cascade storage system.',
+          source: lake.source,
+        });
+        overlays.push(poly);
       }
     }
 
@@ -195,6 +228,12 @@ export function ExploreGoogleLayers({ activeLayers, onFeatureClick }: Props) {
       overlaysRef.current = [];
     };
   }, [map, activeLayers, onFeatureClick]);
+
+  useEffect(() => {
+    if (!map || !onMapClick) return;
+    const listener = map.addListener('click', () => onMapClick());
+    return () => listener.remove();
+  }, [map, onMapClick]);
 
   return null;
 }

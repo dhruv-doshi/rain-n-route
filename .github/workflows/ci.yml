@@ -48,3 +48,20 @@ jobs:
         run: pnpm build
         env:
           NEXT_PUBLIC_USE_MOCK_SERVICES: 'true'
+
+      - name: Bundle size budget
+        run: |
+          SIZE_KB=$(du -sk .next/static | cut -f1)
+          echo "Next static assets: ${SIZE_KB} KB"
+          if [ "$SIZE_KB" -gt 4096 ]; then
+            echo "Static bundle exceeds 4 MB budget (${SIZE_KB} KB)"
+            exit 1
+          fi
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: E2E smoke
+        run: pnpm exec playwright test tests/e2e/explore.spec.ts --project=chromium
+        env:
+          NEXT_PUBLIC_USE_MOCK_SERVICES: 'true'
