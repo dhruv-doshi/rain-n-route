@@ -7,6 +7,8 @@
  */
 
 import { ServiceError } from '@/lib/http';
+import { BENGALURU_BBOX, BENGALURU_ONLY_MESSAGE, isInBengaluruServiceArea } from '@/lib/geo';
+import { estimateRouteCost } from '@/lib/routeCost';
 import type {
   GeoResult,
   GeoSuggestion,
@@ -28,6 +30,21 @@ import type {
   GoogleRouteStep,
 } from './google-types';
 import type { AutocompleteOptions, MapsProvider, ResolvePlaceOptions } from './types';
+
+function assertBengaluruServiceArea(coords: LatLng): void {
+  if (!isInBengaluruServiceArea(coords)) {
+    throw new ServiceError('VALIDATION_ERROR', BENGALURU_ONLY_MESSAGE, false);
+  }
+}
+
+function bengaluruLocationRestriction() {
+  return {
+    rectangle: {
+      low: { latitude: BENGALURU_BBOX.minLat, longitude: BENGALURU_BBOX.minLng },
+      high: { latitude: BENGALURU_BBOX.maxLat, longitude: BENGALURU_BBOX.maxLng },
+    },
+  };
+}
 
 // ────────────────────────────────────────────────────────────────────
 // Constants
@@ -303,11 +320,12 @@ export class GoogleMapsProvider implements MapsProvider {
         input: query.trim(),
         sessionToken: options.sessionToken,
         includedRegionCodes: ['in'],
+        locationRestriction: bengaluruLocationRestriction(),
         ...(options.bias && {
           locationBias: {
             circle: {
               center: { latitude: options.bias.lat, longitude: options.bias.lng },
-              radius: 50000,
+              radius: 25000,
             },
           },
         }),
@@ -357,18 +375,21 @@ export class GoogleMapsProvider implements MapsProvider {
     }
 
     const place: GooglePlaceDetails = await response.json();
-    return {
+    const result: GeoResult = {
       id: place.id,
       label: options.fallbackLabel || place.formattedAddress,
       coords: { lat: place.location.latitude, lng: place.location.longitude },
       placeType: classifyGooglePlaceTypes(place.types),
     };
+    assertBengaluruServiceArea(result.coords);
+    return result;
   }
 
   // ─── Forward Geocode ──────────────────────────────────────────────
 
   async geocode(query: string): Promise<GeoResult[]> {
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(query)}&region=in&key=${this.serverKey}`;
+    const { minLat, maxLat, minLng, maxLng } = BENGALURU_BBOX;
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(query)}&region=in&components=country:IN&bounds=${minLat},${minLng}|${maxLat},${maxLng}&key=${this.serverKey}`;
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -397,7 +418,9 @@ export class GoogleMapsProvider implements MapsProvider {
       throw new ServiceError('PROVIDER_ERROR', 'Geocoding request failed', false);
     }
 
-    return this.adaptGeocodeResults(data.results ?? []);
+    return this.adaptGeocodeResults(data.results ?? []).filter((r) =>
+      isInBengaluruServiceArea(r.coords),
+    );
   }
 
   private adaptGeocodeResults(
@@ -423,6 +446,7 @@ export class GoogleMapsProvider implements MapsProvider {
     if (coords.lat < -90 || coords.lat > 90 || coords.lng < -180 || coords.lng > 180) {
       throw new ServiceError('VALIDATION_ERROR', 'Coordinates out of valid range', false);
     }
+    assertBengaluruServiceArea(coords);
 
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&region=in&key=${this.serverKey}`;
     const response = await fetch(url);
@@ -454,17 +478,21 @@ export class GoogleMapsProvider implements MapsProvider {
     }
 
     const first = data.results[0];
-    return {
+    const result: GeoResult = {
       id: first.place_id,
       label: first.formatted_address,
       coords: { lat: first.geometry.location.lat, lng: first.geometry.location.lng },
       placeType: classifyGooglePlaceTypes(first.types),
     };
+    assertBengaluruServiceArea(result.coords);
+    return result;
   }
 
   // ─── Route ────────────────────────────────────────────────────────
 
   async route(req: RouteRequest): Promise<RouteResponse> {
+    assertBengaluruServiceArea(req.from);
+    assertBengaluruServiceArea(req.to);
     // Step 1: Build per-mode requests, deduplicating Google modes
     const modeRequests = this.buildModeRequests(req);
 
@@ -625,18 +653,20 @@ export class GoogleMapsProvider implements MapsProvider {
     // Generate deterministic ID
     const id = `${domainMode}-${req.from.lat.toFixed(4)},${req.from.lng.toFixed(4)}-${req.to.lat.toFixed(4)},${req.to.lng.toFixed(4)}`;
 
-    return {
+    const route: RouteOption = {
       id,
       modes: [domainMode],
       totalDuration,
       totalDistance: distance,
-      estimatedCost: 0, // Cost estimation not provided by Google Routes API
+      estimatedCost: 0,
       numTransfers,
       walkDistance,
       carbonGrams: 0, // Not provided by Routes API
       steps,
       geometry,
     };
+
+    return { ...route, estimatedCost: estimateRouteCost(route) };
   }
 
   // ─── Error Helpers ────────────────────────────────────────────────

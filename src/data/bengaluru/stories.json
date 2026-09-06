@@ -1,0 +1,87 @@
+[
+  {
+    "id": "story-ulsoor",
+    "name": "Ulsoor Lake",
+    "lat": 12.983,
+    "lng": 77.622,
+    "durationSec": 90,
+    "text": "Ulsoor is one of Bengaluru's oldest tanks, built to harvest rainwater on granite terrain where water runs off rather than soaking in. When rajakaluves are blocked, this valley sends overflow toward the Koramangala–Challaghatta chain.",
+    "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Ulsoor" }],
+    "source": "Curated"
+  },
+  {
+    "id": "story-bellandur",
+    "name": "Bellandur Lake cascade",
+    "lat": 12.9352,
+    "lng": 77.6785,
+    "durationSec": 120,
+    "text": "Bellandur sits in the Koramangala–Challaghatta valley. Historically, tanks here overflowed in sequence toward Varthur. Encroachment on rajakaluves means the same rain that once fed the lake now floods ORR underpasses.",
+    "links": [
+      {
+        "label": "Building a Resilient Bengaluru",
+        "url": "https://buildingaresilientbengaluru.com/ecology-map/"
+      }
+    ],
+    "source": "Curated"
+  },
+  {
+    "id": "story-cubbon",
+    "name": "Cubbon Park",
+    "lat": 12.976,
+    "lng": 77.592,
+    "durationSec": 75,
+    "text": "Cubbon Park sits on higher ground relative to surrounding valleys. During heavy rain, water drains toward surrounding rajakaluves — one reason central Bengaluru often fares better than valley-floor corridors like Silk Board.",
+    "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Cubbon_Park" }],
+    "source": "Curated"
+  },
+  {
+    "id": "story-pete",
+    "name": "Bengaluru Pete",
+    "lat": 12.962,
+    "lng": 77.577,
+    "durationSec": 90,
+    "text": "The Pete was the fortified heart of old Bengaluru. Robert Home's 1791 survey maps show a dense tank network here. Many of those tanks are now built over, but the valley systems still dictate where water goes when it rains.",
+    "links": [{ "label": "MOD story map", "url": "https://buildingaresilientbengaluru.com/" }],
+    "source": "Curated"
+  },
+  {
+    "id": "story-hebbal",
+    "name": "Hebbal valley",
+    "lat": 13.0358,
+    "lng": 77.597,
+    "durationSec": 85,
+    "text": "The Hebbal–Nagawara valley drains north toward the Arkavathi basin. Hebbal flyover and nearby underpasses are classic flood traps when storm drains cannot carry peak runoff from Yelahanka and Manyata corridors.",
+    "links": [{ "label": "OpenCity drains", "url": "https://data.opencity.in" }],
+    "source": "Curated"
+  },
+  {
+    "id": "story-bugle-rock",
+    "name": "Bugle Rock",
+    "lat": 12.942,
+    "lng": 77.573,
+    "durationSec": 60,
+    "text": "Bugle Rock is a dramatic granite outcrop in Basavanagudi — a reminder of Bengaluru's geology. Hard rock means rapid runoff into the Vrishabhavathi valley rather than absorption.",
+    "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Bugle_Rock" }],
+    "source": "Curated"
+  },
+  {
+    "id": "story-vidhana",
+    "name": "Vidhana Soudha",
+    "lat": 12.9797,
+    "lng": 77.5907,
+    "durationSec": 70,
+    "text": "Built in the 1950s when Bengaluru was still a garden city of tanks, Vidhana Soudha overlooks a landscape reshaped by decades of valley-floor development. The valleys below still collect the rain.",
+    "links": [{ "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Vidhana_Soudha" }],
+    "source": "Curated"
+  },
+  {
+    "id": "story-hal",
+    "name": "HAL Old Airport",
+    "lat": 12.952,
+    "lng": 77.665,
+    "durationSec": 80,
+    "text": "The old HAL airport corridor sits along the eastern valley slope. Marathahalli and Bellandur traffic converges here — a hotspot where commute delays and monsoon waterlogging often coincide.",
+    "links": [{ "label": "Bengawalk", "url": "https://bengawalk.com" }],
+    "source": "Curated"
+  }
+]

@@ -11,6 +11,21 @@ export function Header() {
           <span>Rain-N-Route</span>
         </Link>
 
+        <nav className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1 text-sm">
+          <Link
+            href="/"
+            className="rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Plan
+          </Link>
+          <Link
+            href="/explore"
+            className="rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Explore
+          </Link>
+        </nav>
+
         <div className="flex items-center">
           <ThemeToggle />
         </div>

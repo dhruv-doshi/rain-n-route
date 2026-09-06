@@ -1,0 +1,2162 @@
+[
+  {
+    "id": "flood_prone-1",
+    "name": "Bhadrappa layout",
+    "lat": 13.0484082909097,
+    "lng": 77.5760195323719,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-2",
+    "name": "Sampangiram Nagar",
+    "lat": 12.9936285184412,
+    "lng": 77.5746801037001,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-3",
+    "name": "KEB Compound Maththikere",
+    "lat": 13.0362993665224,
+    "lng": 77.5586167901292,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-4",
+    "name": "Gubbanna Layout",
+    "lat": 12.979208530649,
+    "lng": 77.5556456666107,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-5",
+    "name": "Minerva Mill",
+    "lat": 12.9794524061035,
+    "lng": 77.5644641478985,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-6",
+    "name": "Binny Mill Tank Area",
+    "lat": 12.9687461731971,
+    "lng": 77.5680827922834,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-7",
+    "name": "Binny Mill Tank Area",
+    "lat": 12.9742403689976,
+    "lng": 77.5717029034626,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-8",
+    "name": "Kamakshipalya Tank Slum Area",
+    "lat": 12.9886834477827,
+    "lng": 77.5270908138867,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-9",
+    "name": "Shivananda circle_Railway under pass",
+    "lat": 12.9877884559723,
+    "lng": 77.5778290177912,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-10",
+    "name": "Okalipuram Junction",
+    "lat": 12.9826870750483,
+    "lng": 77.5689299545501,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-11",
+    "name": "Mekhri circle",
+    "lat": 13.0169907396307,
+    "lng": 77.5837934475058,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-12",
+    "name": "Railway underbridge near Kino theatre",
+    "lat": 12.9845070969248,
+    "lng": 77.5748676833932,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-13",
+    "name": "Jagajeevan ram nagar",
+    "lat": 12.9655880581422,
+    "lng": 77.5506791839937,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-14",
+    "name": "Padarayan pura",
+    "lat": 12.9645626214676,
+    "lng": 77.5496064708584,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-15",
+    "name": "Cotton pete",
+    "lat": 12.9666850889455,
+    "lng": 77.5654467948301,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-16",
+    "name": "City Market Area",
+    "lat": 12.9652646790215,
+    "lng": 77.5841381432569,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-17",
+    "name": "Jayanagar 3rd Block LIC Colony",
+    "lat": 12.9297680655436,
+    "lng": 77.5895308406719,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-18",
+    "name": "Krishnappa Garden behind Byrasandra Tank D/s",
+    "lat": 12.9299432220019,
+    "lng": 77.5984756164525,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-19",
+    "name": "Wilson Garden Area up to Bannerghatta Road",
+    "lat": 12.94803361376,
+    "lng": 77.5971767211248,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-20",
+    "name": "Arekempannahalli Area",
+    "lat": 12.9462654306049,
+    "lng": 77.5931066062809,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-21",
+    "name": "Marehahalli Tank",
+    "lat": 12.9153014272189,
+    "lng": 77.5884362542258,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-22",
+    "name": "Bismillanagar – Agencies",
+    "lat": 12.9258533949181,
+    "lng": 77.6021990381511,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-23",
+    "name": "Ejipura",
+    "lat": 12.938392303162,
+    "lng": 77.6308201304403,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-24",
+    "name": "Koramangala Slum",
+    "lat": 12.9248172689016,
+    "lng": 77.6279742060404,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-25",
+    "name": "Cholurpalya",
+    "lat": 12.9720098012112,
+    "lng": 77.549050659257,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-26",
+    "name": "Bapujinagar",
+    "lat": 12.9567706596381,
+    "lng": 77.5397292977655,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-27",
+    "name": "Sanjaya Gandhi Slum Area",
+    "lat": 12.9272333443431,
+    "lng": 77.5924590296566,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-28",
+    "name": "NGV to HSR Layout",
+    "lat": 12.9485540001667,
+    "lng": 77.6201472893617,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-29",
+    "name": "Shanthi Nagar",
+    "lat": 12.9542588171904,
+    "lng": 77.5932394856098,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-30",
+    "name": "Vidyapeeta circle",
+    "lat": 12.9333959675497,
+    "lng": 77.560866420845,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-31",
+    "name": "Srinvas nagar",
+    "lat": 12.9355822257389,
+    "lng": 77.5547781949542,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-32",
+    "name": "KH Road",
+    "lat": 12.9554637045861,
+    "lng": 77.5920319676972,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-33",
+    "name": "Magadi Police station",
+    "lat": 12.9744908364828,
+    "lng": 77.5515100928131,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-34",
+    "name": "RPC layout",
+    "lat": 12.9627817776568,
+    "lng": 77.5378980802288,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-35",
+    "name": "Ghali Anjaneya temple road",
+    "lat": 12.9527270765932,
+    "lng": 77.5412892455988,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-36",
+    "name": "Brindavananagar below Matthikere Tank Market",
+    "lat": 13.0348090486984,
+    "lng": 77.5551490591783,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-37",
+    "name": "Shankarappa Garden Gopalapura",
+    "lat": 12.9216713081842,
+    "lng": 77.5230110502165,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-38",
+    "name": "Kamakshipalya Tank Slum Area",
+    "lat": 12.9928063456362,
+    "lng": 77.5220423616625,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-39",
+    "name": "Yeshwanthpur Railway station",
+    "lat": 13.0237767512959,
+    "lng": 77.5503772276235,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-40",
+    "name": "BEML Layout in RR Nagar",
+    "lat": 12.9077359056874,
+    "lng": 77.5196606016522,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-41",
+    "name": "Nayandahalli",
+    "lat": 12.9410926623963,
+    "lng": 77.5247623890697,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-42",
+    "name": "Kengeri Yellamma temple",
+    "lat": 12.8989117811536,
+    "lng": 77.4827357145787,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-43",
+    "name": "Bhovi Colony, near Sane Guruvanahalli Tank",
+    "lat": 13.0120970535359,
+    "lng": 77.6762073762645,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-44",
+    "name": "HAL Airport Road",
+    "lat": 12.9545043770751,
+    "lng": 77.6822640125691,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-45",
+    "name": "Sulthan Palya Main Road",
+    "lat": 13.029909094329,
+    "lng": 77.6047832157688,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-46",
+    "name": "Pillappa Garden – Agencies",
+    "lat": 13.0259073108735,
+    "lng": 77.5911778338861,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-47",
+    "name": "Anandanagara",
+    "lat": 13.0313282901683,
+    "lng": 77.5913121170567,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-48",
+    "name": "Miller Tank,",
+    "lat": 12.9919937964763,
+    "lng": 77.5980641442409,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-49",
+    "name": "Miller Tank, Chinnappa Garden",
+    "lat": 13.0022055362563,
+    "lng": 77.6029722401728,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-50",
+    "name": "Saraswathipuram – Jogu Palya",
+    "lat": 12.9723832240064,
+    "lng": 77.6328895046426,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-51",
+    "name": "K R Garden",
+    "lat": 12.9540152394115,
+    "lng": 77.6561560190804,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-52",
+    "name": "Rudrappa Garden",
+    "lat": 12.9599637430321,
+    "lng": 77.6179956694604,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-53",
+    "name": "TV tower-Jaymahal extension",
+    "lat": 13.0080769194141,
+    "lng": 77.5919039680898,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-54",
+    "name": "hotel Chalukya Junction",
+    "lat": 12.9844988501416,
+    "lng": 77.5881613485635,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-55",
+    "name": "Dommlur",
+    "lat": 12.9609332364794,
+    "lng": 77.638739052261,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-56",
+    "name": "Ulsoor",
+    "lat": 12.9819583642869,
+    "lng": 77.6239676660707,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-57",
+    "name": "DJ Halli",
+    "lat": 13.0092675390655,
+    "lng": 77.6102881503737,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-58",
+    "name": "KR circle Underpass",
+    "lat": 12.9754291432402,
+    "lng": 77.5873230437196,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-59",
+    "name": "Ashok Nagar ,museum road",
+    "lat": 12.9707756363863,
+    "lng": 77.6047966021774,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-60",
+    "name": "UB city road",
+    "lat": 12.9713287895918,
+    "lng": 77.596618073961,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-61",
+    "name": "New Thippasandra",
+    "lat": 12.9720323148392,
+    "lng": 77.6541428920762,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-62",
+    "name": "Cox town",
+    "lat": 12.9954416110413,
+    "lng": 77.6234084406428,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-63",
+    "name": "Thippasandra",
+    "lat": 12.9737073498141,
+    "lng": 77.6468109190841,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-64",
+    "name": "Indiranagar 80ft road",
+    "lat": 12.9688733328378,
+    "lng": 77.6477438290099,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-65",
+    "name": "Pulakeshinagara",
+    "lat": 12.9968405532487,
+    "lng": 77.6099036344411,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-66",
+    "name": "Banaswadi",
+    "lat": 13.0119037874296,
+    "lng": 77.6471286288786,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-67",
+    "name": "Sarjapur road",
+    "lat": 13.0065860880774,
+    "lng": 77.4993792626398,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-68",
+    "name": "NGV to HSR Layout",
+    "lat": 12.9067696947654,
+    "lng": 77.647667755358,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-69",
+    "name": "Kallena Agrahara in Arekere",
+    "lat": 12.8709701779312,
+    "lng": 77.5935020858486,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_prone-70",
+    "name": "RR Layout in Arekere &amp; Hulimavu junction",
+    "lat": 12.8842403779908,
+    "lng": 77.5965807107272,
+    "category": "flood_prone",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-1",
+    "name": "Unknown",
+    "lat": 12.867499000001,
+    "lng": 77.5324350003062,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-2",
+    "name": "Unknown",
+    "lat": 12.8717750001904,
+    "lng": 77.5280829995545,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-3",
+    "name": "Unknown",
+    "lat": 12.8777110000686,
+    "lng": 77.5426940003978,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-4",
+    "name": "Unknown",
+    "lat": 12.877864999889,
+    "lng": 77.5412729999903,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-5",
+    "name": "Unknown",
+    "lat": 12.8789069996308,
+    "lng": 77.6374179998471,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-6",
+    "name": "Unknown",
+    "lat": 12.8799690003176,
+    "lng": 77.6040510003254,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-7",
+    "name": "Unknown",
+    "lat": 12.8805180001676,
+    "lng": 77.6039869998664,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-8",
+    "name": "Unknown",
+    "lat": 12.8805860001823,
+    "lng": 77.6044149998363,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-9",
+    "name": "Unknown",
+    "lat": 12.8817559999585,
+    "lng": 77.608253000444,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-10",
+    "name": "Unknown",
+    "lat": 12.8859370001465,
+    "lng": 77.6420749998582,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-11",
+    "name": "Unknown",
+    "lat": 12.8965700001818,
+    "lng": 77.611508000245,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-12",
+    "name": "Unknown",
+    "lat": 12.8978170003302,
+    "lng": 77.6929070003515,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-13",
+    "name": "Unknown",
+    "lat": 12.9009220002675,
+    "lng": 77.6331209998401,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-14",
+    "name": "Unknown",
+    "lat": 12.9013600001532,
+    "lng": 77.6314429996222,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-15",
+    "name": "Unknown",
+    "lat": 12.9018859997625,
+    "lng": 77.6112620004318,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-16",
+    "name": "Unknown",
+    "lat": 12.9033309997057,
+    "lng": 77.5988530001048,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-17",
+    "name": "Unknown",
+    "lat": 12.9044550001162,
+    "lng": 77.6028070002702,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-18",
+    "name": "Unknown",
+    "lat": 12.9047820003245,
+    "lng": 77.6267580001024,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-19",
+    "name": "Unknown",
+    "lat": 12.9049030001327,
+    "lng": 77.6030360002863,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-20",
+    "name": "Unknown",
+    "lat": 12.909073000038,
+    "lng": 77.6449330003609,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-21",
+    "name": "Unknown",
+    "lat": 12.9093590002885,
+    "lng": 77.6415849997452,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-22",
+    "name": "Unknown",
+    "lat": 12.9110659996409,
+    "lng": 77.5127089997889,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-23",
+    "name": "Unknown",
+    "lat": 12.911655000009,
+    "lng": 77.6324019996395,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-24",
+    "name": "Unknown",
+    "lat": 12.911655000009,
+    "lng": 77.6324019996395,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-25",
+    "name": "Unknown",
+    "lat": 12.9140560001083,
+    "lng": 77.574917000122,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-26",
+    "name": "Unknown",
+    "lat": 12.9157499999453,
+    "lng": 77.6167499995868,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-27",
+    "name": "Unknown",
+    "lat": 12.9157930001939,
+    "lng": 77.5205070003507,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-28",
+    "name": "Unknown",
+    "lat": 12.9164060001552,
+    "lng": 77.5225559997874,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-29",
+    "name": "Unknown",
+    "lat": 12.9164329997018,
+    "lng": 77.5208829999744,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-30",
+    "name": "Unknown",
+    "lat": 12.9164720003761,
+    "lng": 77.599888999588,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-31",
+    "name": "Unknown",
+    "lat": 12.9171940003384,
+    "lng": 77.6227219995918,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-32",
+    "name": "Unknown",
+    "lat": 12.918066999854,
+    "lng": 77.5019910002475,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-33",
+    "name": "Unknown",
+    "lat": 12.9186389995745,
+    "lng": 77.6218890001268,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-34",
+    "name": "Unknown",
+    "lat": 12.9210900003641,
+    "lng": 77.7324980001139,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-35",
+    "name": "Unknown",
+    "lat": 12.9216939998662,
+    "lng": 77.5999439997024,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-36",
+    "name": "Unknown",
+    "lat": 12.9222039999469,
+    "lng": 77.5114800003827,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-37",
+    "name": "Unknown",
+    "lat": 12.9228170001818,
+    "lng": 77.5185219998343,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-38",
+    "name": "Unknown",
+    "lat": 12.9230000002928,
+    "lng": 77.6004439997076,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-39",
+    "name": "Unknown",
+    "lat": 12.9232390000653,
+    "lng": 77.5389369996774,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-40",
+    "name": "Unknown",
+    "lat": 12.9234149999601,
+    "lng": 77.5050029996364,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-41",
+    "name": "Unknown",
+    "lat": 12.9246960001373,
+    "lng": 77.5391330000573,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-42",
+    "name": "Unknown",
+    "lat": 12.9248170004001,
+    "lng": 77.5215560001489,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-43",
+    "name": "Unknown",
+    "lat": 12.9249439996397,
+    "lng": 77.6090279999762,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-44",
+    "name": "Unknown",
+    "lat": 12.926463999968,
+    "lng": 77.6781159995721,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-45",
+    "name": "Unknown",
+    "lat": 12.9285690002317,
+    "lng": 77.5203309995722,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-46",
+    "name": "Unknown",
+    "lat": 12.9287960003197,
+    "lng": 77.7179079998361,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-47",
+    "name": "Unknown",
+    "lat": 12.9302500000676,
+    "lng": 77.6010279998388,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-48",
+    "name": "Unknown",
+    "lat": 12.9315919998495,
+    "lng": 77.5129919999065,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-49",
+    "name": "Unknown",
+    "lat": 12.9319170000067,
+    "lng": 77.5939170002161,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-50",
+    "name": "Unknown",
+    "lat": 12.9320229995686,
+    "lng": 77.5353230002493,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-51",
+    "name": "Unknown",
+    "lat": 12.9327910000653,
+    "lng": 77.5168580003841,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-52",
+    "name": "Unknown",
+    "lat": 12.9329440004321,
+    "lng": 77.5889720000425,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-53",
+    "name": "Unknown",
+    "lat": 12.9338059995997,
+    "lng": 77.6303889996797,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-54",
+    "name": "Unknown",
+    "lat": 12.9347220002171,
+    "lng": 77.6301390003163,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-55",
+    "name": "Unknown",
+    "lat": 12.9363549996158,
+    "lng": 77.7050130001721,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-56",
+    "name": "Unknown",
+    "lat": 12.9368889998067,
+    "lng": 77.6264169996428,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-57",
+    "name": "Unknown",
+    "lat": 12.9380780003797,
+    "lng": 77.7468440000649,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-58",
+    "name": "Unknown",
+    "lat": 12.9386389997591,
+    "lng": 77.6287500002291,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-59",
+    "name": "Unknown",
+    "lat": 12.9389319999565,
+    "lng": 77.7231780003678,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-60",
+    "name": "Unknown",
+    "lat": 12.9420450004498,
+    "lng": 77.4829419999122,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-61",
+    "name": "Unknown",
+    "lat": 12.943583000005,
+    "lng": 77.5814719998392,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-62",
+    "name": "Unknown",
+    "lat": 12.944652999721,
+    "lng": 77.525586000155,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-63",
+    "name": "Unknown",
+    "lat": 12.9453019997598,
+    "lng": 77.5350700000603,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-64",
+    "name": "Unknown",
+    "lat": 12.9454799999144,
+    "lng": 77.5289369997109,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-65",
+    "name": "Unknown",
+    "lat": 12.9463060000123,
+    "lng": 77.5896389996749,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-66",
+    "name": "Unknown",
+    "lat": 12.9472350000525,
+    "lng": 77.5633780004369,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-67",
+    "name": "Unknown",
+    "lat": 12.9473279997002,
+    "lng": 77.5633749999135,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-68",
+    "name": "Unknown",
+    "lat": 12.9478609998277,
+    "lng": 77.6191940003729,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-69",
+    "name": "Unknown",
+    "lat": 12.9495949995645,
+    "lng": 77.4876939998255,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-70",
+    "name": "Unknown",
+    "lat": 12.9499429997715,
+    "lng": 77.7006789995642,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-71",
+    "name": "Unknown",
+    "lat": 12.9503890003974,
+    "lng": 77.6258889999632,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-72",
+    "name": "Unknown",
+    "lat": 12.9505679997939,
+    "lng": 77.538597000007,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-73",
+    "name": "Unknown",
+    "lat": 12.9509999995556,
+    "lng": 77.6056110001208,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-74",
+    "name": "Unknown",
+    "lat": 12.9511669997171,
+    "lng": 77.5989999996095,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-75",
+    "name": "Unknown",
+    "lat": 12.951944000318,
+    "lng": 77.6059440001871,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-76",
+    "name": "Unknown",
+    "lat": 12.9529720003271,
+    "lng": 77.5968330003742,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-77",
+    "name": "Unknown",
+    "lat": 12.9530350001226,
+    "lng": 77.5412530000206,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-78",
+    "name": "Unknown",
+    "lat": 12.9537479997871,
+    "lng": 77.5742830002665,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-79",
+    "name": "Unknown",
+    "lat": 12.9550209998133,
+    "lng": 77.6905489997383,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-80",
+    "name": "Unknown",
+    "lat": 12.9556239996646,
+    "lng": 77.6490480004463,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-81",
+    "name": "Unknown",
+    "lat": 12.9556519996609,
+    "lng": 77.7205450004042,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-82",
+    "name": "Unknown",
+    "lat": 12.9561390000171,
+    "lng": 77.5970280003726,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-83",
+    "name": "Unknown",
+    "lat": 12.9561819998388,
+    "lng": 77.7410439996623,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-84",
+    "name": "Unknown",
+    "lat": 12.9563169999223,
+    "lng": 77.5425799995643,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-85",
+    "name": "Unknown",
+    "lat": 12.9569400002218,
+    "lng": 77.7359389999681,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-86",
+    "name": "Unknown",
+    "lat": 12.9570390000152,
+    "lng": 77.5620830002074,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-87",
+    "name": "Unknown",
+    "lat": 12.957241999757,
+    "lng": 77.5686809997419,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-88",
+    "name": "Unknown",
+    "lat": 12.9576869996214,
+    "lng": 77.5144290004146,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-89",
+    "name": "Unknown",
+    "lat": 12.9584879997902,
+    "lng": 77.7449189996862,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-90",
+    "name": "Unknown",
+    "lat": 12.9592619996094,
+    "lng": 77.5113029995796,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-91",
+    "name": "Unknown",
+    "lat": 12.9598240002569,
+    "lng": 77.7080749997724,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-92",
+    "name": "Unknown",
+    "lat": 12.96111100043,
+    "lng": 77.6430559997718,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-93",
+    "name": "Unknown",
+    "lat": 12.9621110002995,
+    "lng": 77.582806000285,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-94",
+    "name": "Unknown",
+    "lat": 12.9624099995629,
+    "lng": 77.4919100002234,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-95",
+    "name": "Unknown",
+    "lat": 12.9624170000544,
+    "lng": 77.5839720004376,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-96",
+    "name": "Unknown",
+    "lat": 12.9630000001948,
+    "lng": 77.5798060002524,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-97",
+    "name": "Unknown",
+    "lat": 12.9637220001151,
+    "lng": 77.6146390004251,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-98",
+    "name": "Unknown",
+    "lat": 12.9653170002783,
+    "lng": 77.5665249996156,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-99",
+    "name": "Unknown",
+    "lat": 12.9653170002783,
+    "lng": 77.5665249996156,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-100",
+    "name": "Unknown",
+    "lat": 12.9657029995558,
+    "lng": 77.517394000081,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-101",
+    "name": "Unknown",
+    "lat": 12.9658829998577,
+    "lng": 77.5526190001116,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-102",
+    "name": "Unknown",
+    "lat": 12.9659500000668,
+    "lng": 77.5174889995426,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-103",
+    "name": "Unknown",
+    "lat": 12.9663889997484,
+    "lng": 77.6827779996137,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-104",
+    "name": "Unknown",
+    "lat": 12.9684050002546,
+    "lng": 77.5496969995646,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-105",
+    "name": "Unknown",
+    "lat": 12.969065999681,
+    "lng": 77.6921780002252,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-106",
+    "name": "Unknown",
+    "lat": 12.9692999997563,
+    "lng": 77.7366859995484,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-107",
+    "name": "Unknown",
+    "lat": 12.9706109999042,
+    "lng": 77.609667000206,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-108",
+    "name": "Unknown",
+    "lat": 12.9708330001648,
+    "lng": 77.6336109997223,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-109",
+    "name": "Unknown",
+    "lat": 12.9711689997559,
+    "lng": 77.5186560004364,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-110",
+    "name": "Unknown",
+    "lat": 12.9716670001861,
+    "lng": 77.6333329999603,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-111",
+    "name": "Unknown",
+    "lat": 12.9722480000324,
+    "lng": 77.5541089999492,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-112",
+    "name": "Unknown",
+    "lat": 12.972618999646,
+    "lng": 77.5628830003884,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-113",
+    "name": "Unknown",
+    "lat": 12.9737299998207,
+    "lng": 77.5466510000851,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-114",
+    "name": "Unknown",
+    "lat": 12.9752170001849,
+    "lng": 77.5604169997079,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-115",
+    "name": "Unknown",
+    "lat": 12.9752170001849,
+    "lng": 77.5604169997079,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-116",
+    "name": "Unknown",
+    "lat": 12.9756190003332,
+    "lng": 77.5627040001008,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-117",
+    "name": "Unknown",
+    "lat": 12.9765969995814,
+    "lng": 77.5673469998796,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-118",
+    "name": "Unknown",
+    "lat": 12.9783330001697,
+    "lng": 77.6272219997728,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-119",
+    "name": "Unknown",
+    "lat": 12.9788889998589,
+    "lng": 77.7337530001081,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-120",
+    "name": "Unknown",
+    "lat": 12.9799999996435,
+    "lng": 77.5697720002867,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-121",
+    "name": "Unknown",
+    "lat": 12.9834499997698,
+    "lng": 77.5655249998615,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-122",
+    "name": "Unknown",
+    "lat": 12.9841170002625,
+    "lng": 77.5460639998798,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-123",
+    "name": "Unknown",
+    "lat": 12.9863889998184,
+    "lng": 77.6041670001918,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-124",
+    "name": "Unknown",
+    "lat": 12.9863890001152,
+    "lng": 77.6102780001299,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-125",
+    "name": "Unknown",
+    "lat": 12.9870139997285,
+    "lng": 77.4895020004309,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-126",
+    "name": "Unknown",
+    "lat": 12.987563999594,
+    "lng": 77.5592970002844,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-127",
+    "name": "Unknown",
+    "lat": 12.9888890003729,
+    "lng": 77.6902780000745,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-128",
+    "name": "Unknown",
+    "lat": 12.990277999831,
+    "lng": 77.6683329996398,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-129",
+    "name": "Unknown",
+    "lat": 12.990871999651,
+    "lng": 77.5440499997635,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-130",
+    "name": "Unknown",
+    "lat": 12.9912430000379,
+    "lng": 77.5214369999444,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-131",
+    "name": "Unknown",
+    "lat": 12.9913279999354,
+    "lng": 77.5705640000386,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-132",
+    "name": "Unknown",
+    "lat": 12.9920149996462,
+    "lng": 77.7181370002738,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-133",
+    "name": "Unknown",
+    "lat": 12.9934829997549,
+    "lng": 77.557166999634,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-134",
+    "name": "Unknown",
+    "lat": 12.9947220001824,
+    "lng": 77.6588889998819,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-135",
+    "name": "Unknown",
+    "lat": 12.9949200004422,
+    "lng": 77.6928709998418,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-136",
+    "name": "Unknown",
+    "lat": 12.9960140000966,
+    "lng": 77.5733829999703,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-137",
+    "name": "Unknown",
+    "lat": 12.9964130000207,
+    "lng": 77.4881040000855,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-138",
+    "name": "Unknown",
+    "lat": 12.9974140000488,
+    "lng": 77.5780420000429,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-139",
+    "name": "Unknown",
+    "lat": 12.9976689998968,
+    "lng": 77.5731080003203,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-140",
+    "name": "Unknown",
+    "lat": 12.998219999936,
+    "lng": 77.5167400001607,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-141",
+    "name": "Unknown",
+    "lat": 13.0010000003161,
+    "lng": 77.5278780003759,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-142",
+    "name": "Unknown",
+    "lat": 13.0015319999151,
+    "lng": 77.5164540000044,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-143",
+    "name": "Unknown",
+    "lat": 13.0017559998102,
+    "lng": 77.5325529996695,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-144",
+    "name": "Unknown",
+    "lat": 13.0033059997124,
+    "lng": 77.5636110003156,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-145",
+    "name": "Unknown",
+    "lat": 13.0035669996389,
+    "lng": 77.5290469997468,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-146",
+    "name": "Unknown",
+    "lat": 13.0041169998666,
+    "lng": 77.5294920002743,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-147",
+    "name": "Unknown",
+    "lat": 13.0041750002618,
+    "lng": 77.5293170001005,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-148",
+    "name": "Unknown",
+    "lat": 13.0044060003846,
+    "lng": 77.5290939999229,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-149",
+    "name": "Unknown",
+    "lat": 13.0058639995654,
+    "lng": 77.5300419997567,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-150",
+    "name": "Unknown",
+    "lat": 13.0066670000632,
+    "lng": 77.6722220004205,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-151",
+    "name": "Unknown",
+    "lat": 13.0066669998917,
+    "lng": 77.6963890001064,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-152",
+    "name": "Unknown",
+    "lat": 13.0088889996928,
+    "lng": 77.6369440003274,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-153",
+    "name": "Unknown",
+    "lat": 13.0095110001703,
+    "lng": 77.5355280001312,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-154",
+    "name": "Unknown",
+    "lat": 13.0095110001703,
+    "lng": 77.5355280001312,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-155",
+    "name": "Unknown",
+    "lat": 13.0095110001703,
+    "lng": 77.5355280001312,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-156",
+    "name": "Unknown",
+    "lat": 13.0105559999868,
+    "lng": 77.6802779998802,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-157",
+    "name": "Unknown",
+    "lat": 13.0108329998322,
+    "lng": 77.6813890003321,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-158",
+    "name": "Unknown",
+    "lat": 13.0109529999659,
+    "lng": 77.5280640003205,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-159",
+    "name": "Unknown",
+    "lat": 13.0113890001174,
+    "lng": 77.6791670000031,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-160",
+    "name": "Unknown",
+    "lat": 13.0126399999882,
+    "lng": 77.5117799998828,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-161",
+    "name": "Unknown",
+    "lat": 13.0127779998621,
+    "lng": 77.6788889999928,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-162",
+    "name": "Unknown",
+    "lat": 13.0128949999045,
+    "lng": 77.5613889997101,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-163",
+    "name": "Unknown",
+    "lat": 13.0186110004055,
+    "lng": 77.6655560003485,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-164",
+    "name": "Unknown",
+    "lat": 13.0188889999146,
+    "lng": 77.6347219997556,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-165",
+    "name": "Unknown",
+    "lat": 13.0247220002418,
+    "lng": 77.5824999999099,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-166",
+    "name": "Unknown",
+    "lat": 13.0297769996971,
+    "lng": 77.5846359999877,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-167",
+    "name": "Unknown",
+    "lat": 13.0330969996944,
+    "lng": 77.5201420002763,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-168",
+    "name": "Unknown",
+    "lat": 13.033173000101,
+    "lng": 77.4905820000948,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-169",
+    "name": "Unknown",
+    "lat": 13.0333329999155,
+    "lng": 77.5902780004546,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-170",
+    "name": "Unknown",
+    "lat": 13.0333329997996,
+    "lng": 77.6002779999901,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-171",
+    "name": "Unknown",
+    "lat": 13.0355560000782,
+    "lng": 77.5972219997212,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-172",
+    "name": "Unknown",
+    "lat": 13.0366669997307,
+    "lng": 77.6811109998455,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-173",
+    "name": "Unknown",
+    "lat": 13.0366980002346,
+    "lng": 77.4871170004473,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-174",
+    "name": "Unknown",
+    "lat": 13.0367360000285,
+    "lng": 77.55670599993,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-175",
+    "name": "Unknown",
+    "lat": 13.0391669999123,
+    "lng": 77.6380559998534,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-176",
+    "name": "Unknown",
+    "lat": 13.0397289999055,
+    "lng": 77.5199260002574,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-177",
+    "name": "Unknown",
+    "lat": 13.0411110003888,
+    "lng": 77.61222199988,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-178",
+    "name": "Unknown",
+    "lat": 13.0413700000185,
+    "lng": 77.4780799999728,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-179",
+    "name": "Unknown",
+    "lat": 13.0424999996035,
+    "lng": 77.6155559996975,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-180",
+    "name": "Unknown",
+    "lat": 13.0425000003776,
+    "lng": 77.5913889998385,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-181",
+    "name": "Unknown",
+    "lat": 13.0427780001412,
+    "lng": 77.6447219998583,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-182",
+    "name": "Unknown",
+    "lat": 13.0430560002637,
+    "lng": 77.5988889997057,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-183",
+    "name": "Unknown",
+    "lat": 13.0436110002171,
+    "lng": 77.6280559999516,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-184",
+    "name": "Unknown",
+    "lat": 13.0436109999325,
+    "lng": 77.6002780002857,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-185",
+    "name": "Unknown",
+    "lat": 13.0466670000846,
+    "lng": 77.5708330003102,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-186",
+    "name": "Unknown",
+    "lat": 13.0468099997455,
+    "lng": 77.500740000131,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-187",
+    "name": "Unknown",
+    "lat": 13.0472219998923,
+    "lng": 77.6236110002089,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-188",
+    "name": "Unknown",
+    "lat": 13.0472220002583,
+    "lng": 77.5933330000545,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-189",
+    "name": "Unknown",
+    "lat": 13.0550000002269,
+    "lng": 77.5716669996158,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-190",
+    "name": "Unknown",
+    "lat": 13.0577779997751,
+    "lng": 77.6147219998168,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-191",
+    "name": "Unknown",
+    "lat": 13.0606799996662,
+    "lng": 77.5117799995436,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-192",
+    "name": "Unknown",
+    "lat": 13.0608700000336,
+    "lng": 77.5011599998644,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-193",
+    "name": "Unknown",
+    "lat": 13.0640699996863,
+    "lng": 77.5347100003529,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-194",
+    "name": "Unknown",
+    "lat": 13.0663400000601,
+    "lng": 77.5117800000453,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-195",
+    "name": "Unknown",
+    "lat": 13.0672400001178,
+    "lng": 77.5006499998342,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-196",
+    "name": "Unknown",
+    "lat": 13.0672400001178,
+    "lng": 77.5006499998342,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-197",
+    "name": "Unknown",
+    "lat": 13.0691669998851,
+    "lng": 77.5627780001287,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-198",
+    "name": "Unknown",
+    "lat": 13.0925000001134,
+    "lng": 77.5936109999906,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-199",
+    "name": "Unknown",
+    "lat": 13.1030559999236,
+    "lng": 77.6011110002963,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "flood_vulnerable-200",
+    "name": "Unknown",
+    "lat": 13.1102779998028,
+    "lng": 77.5933329998893,
+    "category": "flood_vulnerable",
+    "source": "OpenCity / BBMP / KSRSAC"
+  }
+]

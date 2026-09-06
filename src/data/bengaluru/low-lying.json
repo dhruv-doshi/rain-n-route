@@ -1,0 +1,1026 @@
+[
+  {
+    "id": "low_lying-1",
+    "name": "Gurudarshan Layout,Near Doddabommasandra",
+    "lat": 13.0715371271425,
+    "lng": 77.5593241390377,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-2",
+    "name": "Devi Nagara",
+    "lat": 13.0520729036575,
+    "lng": 77.5730246337936,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-3",
+    "name": "JRD Tata Nagar",
+    "lat": 13.0552790788261,
+    "lng": 77.573363637155,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-4",
+    "name": "Bhadrappa Layout, Nagashettihalli",
+    "lat": 13.0486685553505,
+    "lng": 77.5739608091609,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-5",
+    "name": "Someshwara Nagar",
+    "lat": 13.0923268027641,
+    "lng": 77.5792967997007,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-6",
+    "name": "EWS working colony 3rd stage",
+    "lat": 13.0935430976927,
+    "lng": 77.5824405738244,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-7",
+    "name": "Attur, Near Dairy Circle",
+    "lat": 13.107284706071,
+    "lng": 77.5689946485051,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-8",
+    "name": "Balaji Layout, Near Tata Nagar",
+    "lat": 13.05400991038,
+    "lng": 77.576471832231,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-9",
+    "name": "Shankrappa Layout,MAruthi nagar",
+    "lat": 13.1036621250704,
+    "lng": 77.6051141303453,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-10",
+    "name": "Kempapura",
+    "lat": 13.0484853586708,
+    "lng": 77.6048096524019,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-11",
+    "name": "Mariyanna Palya",
+    "lat": 13.0513188409369,
+    "lng": 77.6153719042868,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-12",
+    "name": "Telecom layout,Ashwathnagar",
+    "lat": 13.0558438602303,
+    "lng": 77.6346562236285,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-13",
+    "name": "Sanguruvanahalli",
+    "lat": 12.9908666662383,
+    "lng": 77.5408666666729,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-14",
+    "name": "8TH CROSS 6TH BLOCK SANKARAPPA GARDEN ,RAJAJINAGAR",
+    "lat": 12.9813991521908,
+    "lng": 77.5525326297742,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-15",
+    "name": "BHAKSHI GARDEN",
+    "lat": 12.9684298800879,
+    "lng": 77.566054909962,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-16",
+    "name": "SANJEEVAPPA GARDEN",
+    "lat": 13.0282233491054,
+    "lng": 77.5588053181909,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-17",
+    "name": "NAGANNA NAGAR,NEAR BINNIY MILL ROAD",
+    "lat": 12.9670968958218,
+    "lng": 77.5687506218599,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-18",
+    "name": "KANTEERAVA NAGARA",
+    "lat": 13.0196048115791,
+    "lng": 77.5415463996097,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-19",
+    "name": "KAMALANAGAR",
+    "lat": 13.0226867408992,
+    "lng": 77.5578611429665,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-20",
+    "name": "12th cross gubbanalayout industrial area",
+    "lat": 12.9787048562282,
+    "lng": 77.5555462012644,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-21",
+    "name": "SARVABHOUMA NAGAR-WARD NO 131 NAYANDHALLI",
+    "lat": 12.9507786914149,
+    "lng": 77.5263786003369,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-22",
+    "name": "14TH CROSS P&amp;T COLONY,CHOLARPALYA",
+    "lat": 12.9913230396652,
+    "lng": 77.5477410304143,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-23",
+    "name": "1ST MAIN 8TH CROSS N.R.GARDEN,CHOLARPALYA",
+    "lat": 12.9929410729399,
+    "lng": 77.5435531792751,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-24",
+    "name": "MUDALPALYA",
+    "lat": 13.014326605879,
+    "lng": 77.5313868890026,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-25",
+    "name": "METRO LAYOUT-WARD NO 131,NEAR NAYANDHALLI",
+    "lat": 12.9654374195325,
+    "lng": 77.530223812323,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-26",
+    "name": "bismillanagar",
+    "lat": 12.9269520831511,
+    "lng": 77.6031109926665,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-27",
+    "name": "rudrappa garden",
+    "lat": 12.9563239937434,
+    "lng": 77.5475717608872,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-28",
+    "name": "samrudhinagar",
+    "lat": 12.9526248968046,
+    "lng": 77.5468931526243,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-29",
+    "name": "silkboardjunction",
+    "lat": 12.8966741990632,
+    "lng": 77.5598718344172,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-30",
+    "name": "SARVABHOUMA NAGAR-WARD NO 131 NAYANDHALLI",
+    "lat": 12.9507786914149,
+    "lng": 77.5263786003369,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-31",
+    "name": "SOMESHWARA COLONY NEAR SILK BOARD JUNCTION",
+    "lat": 12.9155182467913,
+    "lng": 77.6159962568356,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-32",
+    "name": "MARUTHI NAGAR, SANKRAPPA LAYOUT",
+    "lat": 12.9178430901315,
+    "lng": 77.628961332382,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-33",
+    "name": "VENKATAREDDY NAGAR,SIDDAPURA",
+    "lat": 12.9487522566802,
+    "lng": 77.5965047621556,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-34",
+    "name": "VITTALA NAGAR , NEAR KEMPEGOWDANAGAR",
+    "lat": 12.9531080573237,
+    "lng": 77.5422852024616,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-35",
+    "name": "MARUTHI NAGARA ,NEAR BAPUJI NAGARA",
+    "lat": 12.9554968119099,
+    "lng": 77.538395591297,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-36",
+    "name": "RANGANATHA LAYOUT,BHEL CIRCLE",
+    "lat": 12.9475113405221,
+    "lng": 77.5353843832805,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-37",
+    "name": "PWD QUARTERS NEAR WISLSON GARDEN",
+    "lat": 12.9485943903588,
+    "lng": 77.5979684702579,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-38",
+    "name": "ASHWINI LAYOUT",
+    "lat": 12.9405389984356,
+    "lng": 77.6291898267498,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-39",
+    "name": "EJIPURA",
+    "lat": 12.9431092534146,
+    "lng": 77.6272964099633,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-40",
+    "name": "LAKSHMAN RAO NAGARA",
+    "lat": 12.9490792579336,
+    "lng": 77.6146833451546,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-41",
+    "name": "Kengunta,Near Mallathalli",
+    "lat": 12.9592538035114,
+    "lng": 77.499259070136,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-42",
+    "name": "Sri Hari layout",
+    "lat": 12.9574379990271,
+    "lng": 77.4941712244285,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-43",
+    "name": "Near Vidyanikethan School",
+    "lat": 12.9560321588592,
+    "lng": 77.4886975317529,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-44",
+    "name": "Vinayaka Layout,Near Nagarabhavi",
+    "lat": 12.9647878349789,
+    "lng": 77.5148894417433,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-45",
+    "name": "Bandemata-Near Kengeri",
+    "lat": 12.9131382566425,
+    "lng": 77.4885216619697,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-46",
+    "name": "Janapriya Apartments,Near Rajarajeshwari Temple",
+    "lat": 12.9276328453853,
+    "lng": 77.5089051560258,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-47",
+    "name": "Kenchenahalli",
+    "lat": 12.9304723356581,
+    "lng": 77.5094453240125,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-48",
+    "name": "Shivanna Layout,Near Halagevaddarahalli",
+    "lat": 12.9204643601057,
+    "lng": 77.5190201065997,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-49",
+    "name": "BRINDAVAN NAGAR",
+    "lat": 13.0346251587191,
+    "lng": 77.5545798971634,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-50",
+    "name": "CHICKKABIDRIKAL",
+    "lat": 13.0445656358456,
+    "lng": 77.4905174317657,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-51",
+    "name": "ANJANA NAGARA ,NEAR ANJANEYA TEMPLE (WARD NO 72)",
+    "lat": 12.9886740252605,
+    "lng": 77.4819589559286,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-52",
+    "name": "BYRAVESHWARA NAGARA , HAGGANAHALLI",
+    "lat": 12.9893216008603,
+    "lng": 77.5042014204633,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-53",
+    "name": "CHOWDESHWARINAGAR,RAJIV GANDHI CIRCLE ,LAGGERE",
+    "lat": 13.0097106932318,
+    "lng": 77.5269523740393,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-54",
+    "name": "KALIKA NAGARA MAIN ROAD (WARD NO 41)",
+    "lat": 13.0099364369115,
+    "lng": 77.4919584197319,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-55",
+    "name": "KOTTIGEPALYA",
+    "lat": 12.9859703230919,
+    "lng": 77.5120418872617,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-56",
+    "name": "RUKMINI NAGARA NEAR MAGADI ROAD (WARD NO 73)",
+    "lat": 13.0415863390777,
+    "lng": 77.4938813384294,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-57",
+    "name": "SHIVANANDANAGARA",
+    "lat": 13.0067812943811,
+    "lng": 77.4951423539782,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-58",
+    "name": "KALLAPA LAYOUT NEAR BASAVANAGARA",
+    "lat": 12.9678401398011,
+    "lng": 77.68690014911,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-59",
+    "name": "TALA KAVERI LAYOUT NEAR HAL AIRPORT",
+    "lat": 12.9604936418399,
+    "lng": 77.6862077155083,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-60",
+    "name": "SJR DENTAL COLLEGE MAIN ROAD",
+    "lat": 12.948995700582,
+    "lng": 77.7030290587202,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-61",
+    "name": "GANDHIPURAM NEAR WHITE FIELD",
+    "lat": 12.9713155689837,
+    "lng": 77.7559353478791,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-62",
+    "name": "UDAYANAGARA NEAR A NARAYANPURA",
+    "lat": 12.9900814783436,
+    "lng": 77.6755986418536,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-63",
+    "name": "PAI LAYOUT",
+    "lat": 12.9914150366501,
+    "lng": 77.6688288350888,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-64",
+    "name": "CHINAPPA LAYOUT",
+    "lat": 12.9853658544149,
+    "lng": 77.6855870790913,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-65",
+    "name": "GARUDACHARPLAYA BASAVANAGARA",
+    "lat": 12.9866177680058,
+    "lng": 77.7194865485595,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-66",
+    "name": "PASTTANDUR AGRAHARA NEAR ITPL",
+    "lat": 12.9749466444273,
+    "lng": 77.7350766808123,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-67",
+    "name": "SAI BABA ASHRAM KADUGODI",
+    "lat": 13.0015538942678,
+    "lng": 77.7541586165213,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-68",
+    "name": "PATTALAMMA LAYOUT NEAR KADUGODI",
+    "lat": 12.9988285462643,
+    "lng": 77.7590733023577,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-69",
+    "name": "SIDDHARTHA LAYOUT KADUGODI",
+    "lat": 12.9970066317567,
+    "lng": 77.7631919179187,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-70",
+    "name": "TRIVENI NAGAR NEAR KR PURAM",
+    "lat": 13.023151384561,
+    "lng": 77.7199022142409,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-71",
+    "name": "KRISHNANAGARA , NEAR CHIKKADEVSANDRA",
+    "lat": 13.0053442229902,
+    "lng": 77.7065480462501,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-72",
+    "name": "VINAYAKA LAYOUT NEAR BASAVANAPURA MAIN ROAD",
+    "lat": 13.0142993398719,
+    "lng": 77.7066730094247,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-73",
+    "name": "HOYSALANAGARA KR PURA",
+    "lat": 13.0172434237938,
+    "lng": 77.6659831346454,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-74",
+    "name": "RR LAYOUT NEAR VIJNANAPURA",
+    "lat": 13.0115014743169,
+    "lng": 77.6758085923833,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-75",
+    "name": "DR AMBEDKAR NAGAR NEAR VIJNANAPURA",
+    "lat": 13.0151964152723,
+    "lng": 77.6866487764669,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-76",
+    "name": "ABBAREDDY LAYOUT ,VIJNANA NAGARA",
+    "lat": 12.9803526268145,
+    "lng": 77.6808290469289,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-77",
+    "name": "Vaddara palya, Near Hennur Bande",
+    "lat": 13.040109608308,
+    "lng": 77.6443741089786,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-78",
+    "name": "BHUVANESHWARI NAGARA WARD NO 15",
+    "lat": 13.0429792423788,
+    "lng": 77.5079819461216,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-79",
+    "name": "BAGALKUNTE( L NARSIMHAYA LAYOUT)",
+    "lat": 13.0642508306955,
+    "lng": 77.5030166638335,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-80",
+    "name": "KEMPEGOWDANAGAR",
+    "lat": 13.0451117355453,
+    "lng": 77.5106455509689,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-81",
+    "name": "NELEGADARANAHALLI",
+    "lat": 13.0336315289934,
+    "lng": 77.5021422802449,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-82",
+    "name": "SHIVAPURA KERE NEAR NTTF",
+    "lat": 13.0260111585721,
+    "lng": 77.5058579547525,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-83",
+    "name": "SHAMPURA SLUM",
+    "lat": 13.0228208475321,
+    "lng": 77.6134973249953,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-84",
+    "name": "BASAVANNA NAGARA NEAR KADUGODANAHALLI",
+    "lat": 13.0197394058802,
+    "lng": 77.619731194629,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-85",
+    "name": "THAMMANA LAYOUT NEAR LINGARAJAPURA,",
+    "lat": 13.0099472299161,
+    "lng": 77.6287575718124,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-86",
+    "name": "MUNIREDDY PALYA",
+    "lat": 13.0070649025176,
+    "lng": 77.6010257257137,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-87",
+    "name": "CHINAPPA GARDEN",
+    "lat": 13.0029676087343,
+    "lng": 77.6025996341993,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-88",
+    "name": "AMBEDKAR NAGAR NEAR BYAPPANAHALLI",
+    "lat": 12.9880986194854,
+    "lng": 77.6405022618689,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-89",
+    "name": "BANDAPPA COLONY , NEAR NEW BYAPPANAHALLI",
+    "lat": 12.9843178984092,
+    "lng": 77.6406788155904,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-90",
+    "name": "CAMBRIDGE LAYOUT",
+    "lat": 12.9732903758183,
+    "lng": 77.6266700833542,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-91",
+    "name": "BHARATHI NAGARA",
+    "lat": 12.9879213450881,
+    "lng": 77.6114142619749,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-92",
+    "name": "RAJIV GANDHI COLONY ,NEAR QUEENS ROAD",
+    "lat": 12.9892315908177,
+    "lng": 77.6012056646917,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-93",
+    "name": "MURUGESHPALYA",
+    "lat": 12.9561352291091,
+    "lng": 77.6559917414575,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-94",
+    "name": "SRINIVAGILU TANK BED LAYOUT",
+    "lat": 12.9362383124114,
+    "lng": 77.63672590623,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-95",
+    "name": "SHANTHI NAGARA",
+    "lat": 12.9564860857783,
+    "lng": 77.5995507450686,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-96",
+    "name": "SAMPANGI RAMA NAGARA",
+    "lat": 12.9729386784169,
+    "lng": 77.5922263953977,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-97",
+    "name": "SEETHAPPA LAYOUT NEAR RABINDRANATH TAGORE LAYOUT",
+    "lat": 13.0338719413767,
+    "lng": 77.6037671559015,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-98",
+    "name": "BAMBOO BAZAR",
+    "lat": 12.9926509102014,
+    "lng": 77.6038238812386,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-99",
+    "name": "munireddypalya anekappa block",
+    "lat": 13.0131255526489,
+    "lng": 77.5944385482952,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-100",
+    "name": "SHANKAR NAGAR",
+    "lat": 13.0311184601201,
+    "lng": 77.5711870842795,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-101",
+    "name": "Govindapura,Nesar Nagavara",
+    "lat": 13.0336836305647,
+    "lng": 77.6150247006031,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-102",
+    "name": "ILLIYAS NAGAR KUMARSWAMY LAYOUT",
+    "lat": 12.9058296131737,
+    "lng": 77.5697855769244,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-103",
+    "name": "MUNISUBBAREDDY LAYOUT HONGASANDRA",
+    "lat": 12.8989336873366,
+    "lng": 77.6284697894838,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-104",
+    "name": "AMBEDKAR COLONY NEAR HONGASANDRA",
+    "lat": 12.892686607447,
+    "lng": 77.6281468991609,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-105",
+    "name": "MICO LAYOUT",
+    "lat": 12.887502662661,
+    "lng": 77.6269561383418,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-106",
+    "name": "ROYQAL MERIDIAN LAYOUT",
+    "lat": 12.8875862464811,
+    "lng": 77.6243630245224,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-107",
+    "name": "VISHWA PRIYA NAGARA NEAR BEGUR MAIN RAOD",
+    "lat": 12.8820505434111,
+    "lng": 77.6290511776546,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-108",
+    "name": "BEGUR KERE AREA",
+    "lat": 12.8764046160013,
+    "lng": 77.624941297316,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-109",
+    "name": "SUBASH NAGARA",
+    "lat": 12.8698824764384,
+    "lng": 77.6395408230583,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-110",
+    "name": "GARVE BHAVI PALYA",
+    "lat": 12.8944407153102,
+    "lng": 77.637980096622,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-111",
+    "name": "PARAPPAN AGRAHARA",
+    "lat": 12.880294295714,
+    "lng": 77.6611585673198,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-112",
+    "name": "G K LAYOUT",
+    "lat": 12.8736972746511,
+    "lng": 77.6603268039859,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-113",
+    "name": "KUDLU VILLAGE",
+    "lat": 12.8894267732205,
+    "lng": 77.6575038153887,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-114",
+    "name": "B.T.R GARDEN LAYOUT",
+    "lat": 12.8885118028988,
+    "lng": 77.6423639181386,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-115",
+    "name": "RAGHAVENDRA SLUM NEAR LAKSHMI LAYOUT",
+    "lat": 12.89072551613,
+    "lng": 77.631708269581,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-116",
+    "name": "MUNIREDDY LAYOUT NEAR MANGAMMNAPALYA",
+    "lat": 12.905056828351,
+    "lng": 77.6371421706667,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-117",
+    "name": "VYSHYA BANK COLONY NEAR AREKERE",
+    "lat": 12.8833498614989,
+    "lng": 77.6042850230189,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-118",
+    "name": "KRISHNA LAYOUT NEAR HULIMAVU KERE",
+    "lat": 12.8778216573113,
+    "lng": 77.605805171246,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-119",
+    "name": "BDA LAYOUT",
+    "lat": 12.8578442680614,
+    "lng": 77.5914921841584,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-120",
+    "name": "PUTTENHALLI",
+    "lat": 12.9011915440869,
+    "lng": 77.5849201458667,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-121",
+    "name": "ASHTA LAKSHMI LAYOUT ,PUTTENHALLI",
+    "lat": 12.901838949215,
+    "lng": 77.5866124577705,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-122",
+    "name": "GANAPATHPURA NEAR CHUNCHANGHATTA MAIN RAOD",
+    "lat": 12.8863083535853,
+    "lng": 77.5703904084562,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-123",
+    "name": "HARI NAGAR NEAR KONANKUNTTE",
+    "lat": 12.8832966341697,
+    "lng": 77.5752011006453,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-124",
+    "name": "VITTAL NAGAR NEAR ISRO LAYOUT,UTTARAHALLI",
+    "lat": 12.9026252348706,
+    "lng": 77.5538648525391,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-125",
+    "name": "sanjaynagar",
+    "lat": 12.9178341662909,
+    "lng": 77.5450093250347,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-126",
+    "name": "Yelechenahalli",
+    "lat": 12.9056508417207,
+    "lng": 77.5712721864802,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-127",
+    "name": "Kanakanagar-Near kumaraswamylayout",
+    "lat": 12.9024803332078,
+    "lng": 77.5717608637709,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  },
+  {
+    "id": "low_lying-128",
+    "name": "Dorakere",
+    "lat": 12.9033576655262,
+    "lng": 77.5457117499136,
+    "category": "low_lying",
+    "source": "OpenCity / BBMP / KSRSAC"
+  }
+]

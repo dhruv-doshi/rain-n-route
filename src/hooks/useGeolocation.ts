@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import type { GeoSuggestion } from '@/types';
+import { BENGALURU_ONLY_MESSAGE, isInBengaluruServiceArea } from '@/lib/geo';
 
 interface GeolocationState {
   loading: boolean;
@@ -31,6 +32,11 @@ export function useGeolocation(): UseGeolocationReturn {
     return new Promise((resolve) => {
       navigator.geolocation.getCurrentPosition(
         async ({ coords }) => {
+          if (!isInBengaluruServiceArea({ lat: coords.latitude, lng: coords.longitude })) {
+            setState({ loading: false, error: BENGALURU_ONLY_MESSAGE, result: null });
+            resolve(null);
+            return;
+          }
           try {
             const res = await fetch(
               `/api/maps/reverse-geocode?lat=${coords.latitude}&lng=${coords.longitude}`,

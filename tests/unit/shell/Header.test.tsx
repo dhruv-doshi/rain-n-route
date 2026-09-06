@@ -16,4 +16,10 @@ describe('Header', () => {
     render(<Header />);
     expect(screen.queryByRole('link', { name: /dashboard/i })).not.toBeInTheDocument();
   });
+
+  it('renders Plan and Explore navigation', () => {
+    render(<Header />);
+    expect(screen.getByRole('link', { name: /^plan$/i })).toHaveAttribute('href', '/');
+    expect(screen.getByRole('link', { name: /^explore$/i })).toHaveAttribute('href', '/explore');
+  });
 });

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import type { LatLng, PlannedTrip, SortMode } from '@/types';
+import { BENGALURU_ONLY_MESSAGE, isInBengaluruServiceArea } from '@/lib/geo';
 import { planRoute, enrichWithWeather } from '@/services/routing';
 import { useTripStore } from '@/store/tripStore';
 
@@ -54,6 +55,12 @@ export function usePlanTrip(rawFrom: string, rawTo: string, departAt?: string): 
       return;
     }
 
+    if (!isInBengaluruServiceArea(from.coords) || !isInBengaluruServiceArea(to.coords)) {
+      setStatus('error');
+      setError(BENGALURU_ONLY_MESSAGE);
+      return;
+    }
+
     const controller = new AbortController();
 
     setStatus('loading');
@@ -83,7 +90,9 @@ export function usePlanTrip(rawFrom: string, rawTo: string, departAt?: string): 
         const msg =
           (err as { code?: string }).code === 'RATE_LIMITED'
             ? 'Too many requests — please wait a moment and try again.'
-            : 'Could not fetch routes. Check your connection and try again.';
+            : (err as { code?: string }).code === 'VALIDATION_ERROR'
+              ? BENGALURU_ONLY_MESSAGE
+              : 'Could not fetch routes. Check your connection and try again.';
         setError(msg);
         setStatus('error');
       });

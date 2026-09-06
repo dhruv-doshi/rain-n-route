@@ -88,7 +88,7 @@ export function FromToForm() {
       <div className="relative flex flex-col gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm">
         <AddressAutocomplete
           label="From"
-          placeholder="Search starting point…"
+          placeholder="Search in Bengaluru…"
           value={from}
           onSelect={selectFrom}
           onClear={() => {
@@ -117,7 +117,7 @@ export function FromToForm() {
 
         <AddressAutocomplete
           label="To"
-          placeholder="Search destination…"
+          placeholder="Search destination in Bengaluru…"
           value={to}
           onSelect={selectTo}
           onClear={() => {

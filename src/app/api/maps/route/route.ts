@@ -2,6 +2,9 @@ import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { LRUCache } from 'lru-cache';
 import { validationErrorResponse, withRateLimit } from '@/lib/apiHelpers';
+import { BENGALURU_ONLY_MESSAGE, isInBengaluruServiceArea } from '@/lib/geo';
+import { withEstimatedCost } from '@/lib/routeCost';
+import { ServiceError } from '@/lib/http';
 import { getMapsProvider } from '@/services';
 import { buildCacheKey } from '@/services/maps/google';
 import type { RouteResponse } from '@/types';
@@ -51,6 +54,10 @@ export async function POST(req: NextRequest): Promise<Response> {
 
     const reqData = parsed.data;
 
+    if (!isInBengaluruServiceArea(reqData.from) || !isInBengaluruServiceArea(reqData.to)) {
+      throw new ServiceError('VALIDATION_ERROR', BENGALURU_ONLY_MESSAGE, false);
+    }
+
     // Build deterministic cache key (coords rounded to 4dp, modes sorted, time bucketed)
     const cacheKey = buildCacheKey(reqData);
 
@@ -60,17 +67,24 @@ export async function POST(req: NextRequest): Promise<Response> {
     if (!skipCacheRead) {
       const cached = routeCache.get(cacheKey);
       if (cached) {
-        return Response.json(cached, { headers: { 'X-Cache': 'HIT' } });
+        return Response.json(
+          { ...cached, routes: cached.routes.map(withEstimatedCost) },
+          { headers: { 'X-Cache': 'HIT' } },
+        );
       }
     }
 
     const provider = getMapsProvider();
     const result = await provider.route(reqData);
+    const enriched: RouteResponse = {
+      ...result,
+      routes: result.routes.map(withEstimatedCost),
+    };
 
     // Only cache successful responses (errors are never cached — they throw above)
-    routeCache.set(cacheKey, result);
+    routeCache.set(cacheKey, enriched);
 
-    return Response.json(result, {
+    return Response.json(enriched, {
       headers: { 'X-Cache': 'MISS', 'Cache-Control': 'public, s-maxage=300' },
     });
   });

@@ -6,6 +6,7 @@ import { MOCK_ROUTE_RESPONSE } from '@/services/maps/mock';
 
 const CAR_ROUTE = MOCK_ROUTE_RESPONSE.routes[0];
 const TRANSIT_ROUTE = MOCK_ROUTE_RESPONSE.routes[1];
+const WALK_ROUTE = MOCK_ROUTE_RESPONSE.routes[3];
 
 describe('RouteOptionCard', () => {
   it('renders formatted duration', () => {
@@ -14,13 +15,18 @@ describe('RouteOptionCard', () => {
   });
 
   it('renders Free when estimatedCost is 0', () => {
-    render(<RouteOptionCard route={CAR_ROUTE} isSelected={false} onSelect={vi.fn()} />);
+    render(<RouteOptionCard route={WALK_ROUTE} isSelected={false} onSelect={vi.fn()} />);
     expect(screen.getByText('Free')).toBeInTheDocument();
+  });
+
+  it('renders estimated fuel cost for car route', () => {
+    render(<RouteOptionCard route={CAR_ROUTE} isSelected={false} onSelect={vi.fn()} />);
+    expect(screen.getByText('₹58.94')).toBeInTheDocument();
   });
 
   it('renders cost in rupees for transit route', () => {
     render(<RouteOptionCard route={TRANSIT_ROUTE} isSelected={false} onSelect={vi.fn()} />);
-    expect(screen.getByText('₹45')).toBeInTheDocument();
+    expect(screen.getByText('₹35')).toBeInTheDocument();
   });
 
   it('renders Non-stop when numTransfers is 0', () => {

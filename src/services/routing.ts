@@ -11,6 +11,42 @@ import type {
 import { computeScores, sortRoutes } from '@/lib/scoring';
 import { sampleWaypoints } from '@/lib/geo';
 import { computeWeatherImpact } from '@/lib/weatherImpact';
+import { applySpatialFloodToRisk, computeFloodExposure } from '@/lib/floodExposure';
+import { suggestGear } from '@/lib/gearSuggestions';
+import type { RiskLevel, WeatherRiskSummary } from '@/types';
+
+const LEVEL_ORDER: Record<RiskLevel, number> = { low: 0, moderate: 1, high: 2, severe: 3 };
+
+function mergeSpatialFloodRisk(
+  base: WeatherRiskSummary,
+  geometry: string,
+  maxRainMm: number,
+): WeatherRiskSummary {
+  const exposure = computeFloodExposure(geometry, maxRainMm);
+  if (exposure.hits.length === 0 && exposure.spatialLevel === 'low') {
+    return base;
+  }
+  const factors = applySpatialFloodToRisk(base.factors, exposure, maxRainMm);
+  const overall =
+    factors.length > 0
+      ? factors.reduce<RiskLevel>(
+          (best, f) => (LEVEL_ORDER[f.level] > LEVEL_ORDER[best] ? f.level : best),
+          'low',
+        )
+      : 'low';
+  const BUFFER_MINUTES: Record<RiskLevel, number> = {
+    low: 0,
+    moderate: 5,
+    high: 15,
+    severe: 30,
+  };
+  return {
+    overall,
+    factors,
+    gear: suggestGear(factors),
+    bufferMinutesRecommended: BUFFER_MINUTES[overall],
+  };
+}
 
 export interface PlanRouteParams {
   from: LatLng;
@@ -100,7 +136,6 @@ async function fetchWeatherFromApi(
  */
 export async function enrichWithWeather(trip: PlannedTrip): Promise<PlannedTrip> {
   const { from, to } = trip.request;
-  console.log('[weather enrichment] Starting enrichment for', trip.routes.length, 'routes');
 
   const enrichedRoutes = await Promise.all(
     trip.routes.map(async (route): Promise<RouteOption> => {
@@ -108,30 +143,16 @@ export async function enrichWithWeather(trip: PlannedTrip): Promise<PlannedTrip>
       const representativePoint = points[Math.floor(points.length / 2)];
 
       try {
-        console.log('[weather enrichment] Fetching weather for', representativePoint);
         const { hourly, aqi } = await fetchWeatherFromApi(representativePoint, 12);
-        const risk = computeWeatherImpact(hourly, aqi);
-        console.log(
-          '[weather enrichment] Computed risk:',
-          risk.overall,
-          'with',
-          risk.factors.length,
-          'factors',
-        );
+        const maxMm = hourly.length > 0 ? Math.max(...hourly.map((h) => h.precipitationMm)) : 0;
+        const baseRisk = computeWeatherImpact(hourly, aqi);
+        const risk = mergeSpatialFloodRisk(baseRisk, route.geometry, maxMm);
         return { ...route, weatherRisk: risk };
-      } catch (err) {
-        console.error('[weather enrichment] Error enriching route:', err);
+      } catch {
         return route;
       }
     }),
   );
 
-  console.log(
-    '[weather enrichment] Complete - enriched',
-    enrichedRoutes.filter((r) => r.weatherRisk).length,
-    'of',
-    enrichedRoutes.length,
-    'routes',
-  );
   return { ...trip, routes: enrichedRoutes };
 }
